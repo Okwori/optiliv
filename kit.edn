@@ -1,0 +1,8 @@
+{:full-name "com.pringwa/optiliv"
+ :ns-name   "com.pringwa.optiliv"
+ :sanitized "com/pringwa/optiliv"
+ :name      "optiliv"
+ :modules   {:root         "modules"
+             :repositories [{:url  "https://github.com/kit-clj/modules.git"
+                             :tag  "master"
+                             :name "kit-modules"}]}}
