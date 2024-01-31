@@ -54,6 +54,6 @@
  :db.sql/migrations {:store :database,
                      :db {:datasource #ig/ref :db.sql/connection},
                      :migrate-on-init? true}
- :db.sql/connection #profile {:dev {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv?user=YOUR_USERNAME&password=YOUR_PASSWORD"},
+ :db.sql/connection #profile {:dev {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv?user=postgres&password=postgres"},
                               :test {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv_test?user=optiliv&password=optiliv"},
                               :prod {:jdbc-url #env JDBC_URL}}}
