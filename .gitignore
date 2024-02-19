@@ -20,3 +20,4 @@ modules/
 
 # Project Files
 kit.edn
+resources/system.edn
