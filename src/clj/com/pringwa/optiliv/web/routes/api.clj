@@ -1,6 +1,7 @@
 (ns com.pringwa.optiliv.web.routes.api
   (:require
     [com.pringwa.optiliv.web.controllers.health :as health]
+    [com.pringwa.optiliv.web.controllers.login :as login]
     [com.pringwa.optiliv.web.middleware.exception :as exception]
     [com.pringwa.optiliv.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -38,7 +39,8 @@
            :swagger {:info {:title "com.pringwa.optiliv API"}}
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
-    {:get health/healthcheck!}]])
+    {:get health/healthcheck!}]
+   ["/login" {:post {:handler login/handler}}]])
 
 (derive :reitit.routes/api :reitit/routes)
 
