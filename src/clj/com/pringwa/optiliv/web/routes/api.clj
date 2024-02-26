@@ -36,17 +36,18 @@
 
 ;; Routes
 (defn api-routes [_opts]
-  [["/swagger.json"
-    {:get {:no-doc  true
-           :swagger {:info {:title "com.pringwa.optiliv API"}}
-           :handler (swagger/create-swagger-handler)}}]
-   ["/health"
-    {:get health/healthcheck!}]
-   ["/v1" {}
-    ["/current-user" {:get {:handler current-user/handler}}]
-    ["/login" {:post {:handler login/handler}}]
-    ["/logout" {:delete logout/handler}]]
-   ])
+  ["" {:query-fn (:query-fn _opts)}
+   [["/swagger.json"
+     {:get {:no-doc  true
+            :swagger {:info {:title "com.pringwa.optiliv API"}}
+            :handler (swagger/create-swagger-handler)}}]
+    ["/health"
+     {:get health/healthcheck!}]
+    ["/v1" {}
+     ["/current-user" {:get {:handler current-user/handler}}]
+     ["/login" {:post {:handler login/handler}}]
+     ["/logout" {:delete logout/handler}]]
+    ]])
 
 (derive :reitit.routes/api :reitit/routes)
 
