@@ -8,11 +8,11 @@
                     (fn [db [error]]
                       (assoc-in db [:xhr xhr-subkey]
                                 {:in-flight? false
-                                 :error (let [response (:response error)]
-                                          (if (map? response)
-                                            (:error response)
-                                            response))
-                                 :success? false})))))
+                                 :error      (let [response (:response error)]
+                                               (if (map? response)
+                                                 (:error response)
+                                                 response))
+                                 :success?   false})))))
 
 (reg-xhr-failure-event :current-user/load :current-user)
 
@@ -20,6 +20,6 @@
                 (fn [db [error]]
                   (assoc-in db [:xhr :login]
                             {:in-flight? false
-                             :error (:status-text error)
-                             :success? false})))
+                             :error      (:status-text error)
+                             :success?   false})))
 
