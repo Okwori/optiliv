@@ -7,11 +7,11 @@
             [re-frame.core :as rf]))
 
 (defn ^:private get-config [path key-base]
-  {:method :get
-   :uri (api-url path)
+  {:method          :get
+   :uri             (api-url path)
    :response-format (ajax/transit-response-format)
-   :on-success [(make-event-name key-base :success)]
-   :on-failure [(make-event-name key-base :failure)]})
+   :on-success      [(make-event-name key-base :success)]
+   :on-failure      [(make-event-name key-base :failure)]})
 
 (defn ^:private get-effect-map [cofx api-path event-base xhr-subkey]
   {:http-xhrio (get-config api-path event-base)
