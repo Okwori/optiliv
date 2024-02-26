@@ -19,7 +19,8 @@
 ;; Routes
 (defn page-routes [_opts]
   [["/" {:get home}]
-   ["/logout" {:get home}]])
+   ["/logout" {:get home}]
+   ["/home" {:get home}]])
 
 (defn route-data [opts]
   (merge
