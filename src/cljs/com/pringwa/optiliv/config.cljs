@@ -7,4 +7,4 @@
 (js/console.log "api-host" OPTILIV_API_HOST)
 
 (defn api-url [path]
-  (str OPTILIV_API_HOST "/api" path))
+  (str OPTILIV_API_HOST "/api/v1" path))

@@ -15,5 +15,9 @@
 
 (defn ^:private get-effect-map [cofx api-path event-base xhr-subkey]
   {:http-xhrio (get-config api-path event-base)
-   :db (assoc-in (:db cofx) [:xhr xhr-subkey] {:in-flight? true})})
+   :db         (assoc-in (:db cofx) [:xhr xhr-subkey] {:in-flight? true})})
 
+(k/reg-event-fx
+  :current-user/load
+  (fn [cofx]
+    (get-effect-map cofx "/current-user" :current-user/load :current-user)))
