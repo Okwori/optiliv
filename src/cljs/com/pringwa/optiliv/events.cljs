@@ -4,11 +4,17 @@
             [re-frame.core :as rf :refer [path]]
             [ajax.core :as ajax]))
 
-
 (k/reg-event-fx
   :navigate-to
   (fn [cofx args]
     {:navigate-to args}))
+
+(k/reg-event-fx
+  :navigate-to-authenticated-home
+  (fn [{:keys [db]} _]
+    {:navigate-to (case (-> db :current-user :type)
+                    "Optiliv" [:home]
+                    [:login])}))
 
 (k/reg-event-db
   ::set-modal-visibility
