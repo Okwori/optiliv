@@ -5,33 +5,39 @@ WHERE id = :id;
 
 -- :name get-account :? :1
 -- :doc retrieves account info based on email and password
-SELECT a.email, a.password, a.full_name as 'full-name', a.active, a.last_login as 'last-login',
-        at.name as 'type', at.id
-FROM account a inner join account_type at on at.id = a.account_type_id
+SELECT a.email, a.password, a.full_name as "full-name", a.active, a.last_login as "last-login",
+        at.name as "type", at.id
+FROM account a
+    inner join account_type at on at.id = a.account_type_id
 WHERE email = :email;
 
 -- :name create-session :! :n
 INSERT INTO session
 (user_id)
-VALUES (:identity)
+VALUES (:identity);
 
 -- :name get-session :? :1
-SELECT TOP 1 a.email, a.full_name as 'full-name', a.active, a.last_login as 'last-login',
-        at.name as 'type', at.id
-FROM account a inner join account_type at on at.id = a.account_type_id inner join session s on s.user_id = a.id
-WHERE s.user_id = :identity;
+SELECT a.email, a.full_name as "full-name", a.active, a.last_login as "last-login",
+        at.name as "type", at.id
+FROM account a
+    inner join account_type at on at.id = a.account_type_id
+    inner join session s on s.user_id = a.id
+WHERE s.user_id = :identity
+LIMIT 1;
 
 -- :name delete-session! :! :n
 DELETE FROM session
-WHERE user_id = :identity
+WHERE user_id = :identity;
 
 -- :name get-roles :? :*
 SELECT at.name as role
-FROM account_roles ar inner join account_type at on ar.account_type_id = at.id
-WHERE ar.account_id = :identity
+FROM account_roles ar
+    inner join account_type at on ar.account_type_id = at.id
+WHERE ar.account_id = :identity;
 
 -- :name get-roles :? :*
 SELECT at.name as role
-FROM account_roles ar inner join account_type at on ar.account_type_id = at.id
-WHERE ar.account_id = :identity
+FROM account_roles ar
+    inner join account_type at on ar.account_type_id = at.id
+WHERE ar.account_id = :identity;
 
