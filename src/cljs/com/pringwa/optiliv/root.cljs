@@ -8,13 +8,15 @@
 (def routes
   [["/" :login]])
 
-(k/reg-controller :login
-                  {:params #(when (= :login (-> % :data :name)) true)
-                   :start (fn [] nil)})
+(k/reg-controller
+  :login
+  {:params #(when (= :login (-> % :data :name)) true)
+   :start  (fn [] nil)})
 
-(k/reg-controller :logout
-                  {:params #(when (= :logout (-> % :data :name)) true)
-                   :start (fn [] [:logout])})
+(k/reg-controller
+  :logout
+  {:params #(when (= :logout (-> % :data :name)) true)
+   :start  (fn [] [:logout])})
 
 (defn root-component []
   (k/switch-route (fn [route] (get-in route [:data :name]))
