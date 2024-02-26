@@ -9,3 +9,7 @@
 (defn route-data-key
   [req k]
   (get-in req (conj route-data-path k)))
+
+(defn error-response [status msg]
+  {:status status
+   :body {:error msg}})

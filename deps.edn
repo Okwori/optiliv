@@ -33,7 +33,11 @@
            re-frame/re-frame                  {:mvn/version "1.4.3"
                                                :exclusions [com.taoensso/timbre]}
            kee-frame/kee-frame                {:mvn/version "1.1.2"
-                                               :exclusions [metosin/reitit-core org.clojure/core.async]}}
+                                               :exclusions [metosin/reitit-core org.clojure/core.async]}
+
+           ;; Encrypt
+           clojurewerkz/scrypt                {:mvn/version "1.2.0"}
+           crypto-random/crypto-random        {:mvn/version "1.2.1"}}
 
  :aliases {:build {:deps       {io.github.clojure/tools.build {:git/sha "24f2894"
                                                                :git/tag "v0.9.5"

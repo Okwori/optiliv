@@ -7,13 +7,17 @@
             [re-frame.core :as rf]))
 
 (defn ^:private get-config [path key-base]
-  {:method :get
-   :uri (api-url path)
+  {:method          :get
+   :uri             (api-url path)
    :response-format (ajax/transit-response-format)
-   :on-success [(make-event-name key-base :success)]
-   :on-failure [(make-event-name key-base :failure)]})
+   :on-success      [(make-event-name key-base :success)]
+   :on-failure      [(make-event-name key-base :failure)]})
 
 (defn ^:private get-effect-map [cofx api-path event-base xhr-subkey]
   {:http-xhrio (get-config api-path event-base)
-   :db (assoc-in (:db cofx) [:xhr xhr-subkey] {:in-flight? true})})
+   :db         (assoc-in (:db cofx) [:xhr xhr-subkey] {:in-flight? true})})
 
+(k/reg-event-fx
+  :current-user/load
+  (fn [cofx]
+    (get-effect-map cofx "/current-user" :current-user/load :current-user)))

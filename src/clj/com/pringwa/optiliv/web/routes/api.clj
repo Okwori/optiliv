@@ -1,6 +1,9 @@
 (ns com.pringwa.optiliv.web.routes.api
   (:require
+    [com.pringwa.optiliv.web.controllers.current-user :as current-user]
     [com.pringwa.optiliv.web.controllers.health :as health]
+    [com.pringwa.optiliv.web.controllers.login :as login]
+    [com.pringwa.optiliv.web.controllers.logout :as logout]
     [com.pringwa.optiliv.web.middleware.exception :as exception]
     [com.pringwa.optiliv.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -33,12 +36,18 @@
 
 ;; Routes
 (defn api-routes [_opts]
-  [["/swagger.json"
-    {:get {:no-doc  true
-           :swagger {:info {:title "com.pringwa.optiliv API"}}
-           :handler (swagger/create-swagger-handler)}}]
-   ["/health"
-    {:get health/healthcheck!}]])
+  ["" {:query-fn (:query-fn _opts)}
+   [["/swagger.json"
+     {:get {:no-doc  true
+            :swagger {:info {:title "com.pringwa.optiliv API"}}
+            :handler (swagger/create-swagger-handler)}}]
+    ["/health"
+     {:get health/healthcheck!}]
+    ["/v1" {}
+     ["/current-user" {:get {:handler current-user/handler}}]
+     ["/login" {:post {:handler login/handler}}]
+     ["/logout" {:delete logout/handler}]]
+    ]])
 
 (derive :reitit.routes/api :reitit/routes)
 

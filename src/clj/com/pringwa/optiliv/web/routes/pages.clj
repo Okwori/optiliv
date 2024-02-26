@@ -18,12 +18,13 @@
 
 ;; Routes
 (defn page-routes [_opts]
-  [["/" {:get home}]])
+  [["/" {:get home}]
+   ["/logout" {:get home}]])
 
 (defn route-data [opts]
   (merge
    opts
-   {:middleware 
+   {:middleware
     [;; Default middleware for pages
      (wrap-page-defaults)
      ;; query-params & form-params
