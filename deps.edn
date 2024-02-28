@@ -2,6 +2,7 @@
            "resources" "src/cljs"]
 
  :deps    {org.clojure/clojure                {:mvn/version "1.11.1"}
+           org.clojure/clojurescript          {:mvn/version "1.11.132"}
 
            ;; Routing
            metosin/reitit                     {:mvn/version "0.6.0"}
@@ -31,9 +32,12 @@
 
            ;; UI
            re-frame/re-frame                  {:mvn/version "1.4.3"
-                                               :exclusions [com.taoensso/timbre]}
+                                               ;:exclusions [com.taoensso/timbre]
+                                               }
            kee-frame/kee-frame                {:mvn/version "1.1.2"
-                                               :exclusions [metosin/reitit-core org.clojure/core.async]}
+                                               :exclusions  [metosin/reitit-core org.clojure/core.async]}
+           reagent/reagent                    {:mvn/version "1.1.1"}
+           com.taoensso/timbre                {:mvn/version "6.4.0"}
 
            ;; Encrypt
            clojurewerkz/scrypt                {:mvn/version "1.2.0"}
