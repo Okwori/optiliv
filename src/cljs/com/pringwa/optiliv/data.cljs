@@ -42,7 +42,6 @@
   :<- [::current-user]
   (fn [current-user _] (:email current-user)))
 
-
 (reg-sub
   ::modal-type
   :<- [::modal]
