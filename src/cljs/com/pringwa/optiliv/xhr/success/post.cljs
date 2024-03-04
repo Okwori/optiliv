@@ -3,7 +3,7 @@
 
 (k/reg-event-fx
   :login-success
-  (fn [cofx [form-data data]]
+  (fn [cofx [_ data]]
     (let [{:keys [type email id full-name roles]} data]
       {:db             (-> (:db cofx)
                            (assoc-in [:xhr :login]
