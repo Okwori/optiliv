@@ -19,6 +19,7 @@
 ;; Routes
 (defn page-routes [_opts]
   [["/" {:get home}]
+   ["/login" {:get home}]
    ["/logout" {:get home}]
    ["/home" {:get home}]])
 
