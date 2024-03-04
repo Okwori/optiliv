@@ -36,7 +36,7 @@
 
 ;; Routes
 (defn api-routes [_opts]
-  ["" {:query-fn (:query-fn _opts)}
+  ["" {:query-fn (:query-fn _opts) :send-fn (:send-fn _opts)}
    [["/swagger.json"
      {:get {:no-doc  true
             :swagger {:info {:title "com.pringwa.optiliv API"}}

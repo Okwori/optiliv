@@ -5,16 +5,19 @@
     [com.pringwa.optiliv.config :as config]
     [com.pringwa.optiliv.env :refer [defaults]]
 
-    ;; Edges       
+    ;; Edges
     [kit.edge.server.undertow]
     [com.pringwa.optiliv.web.handler]
 
     ;; Routes
     [com.pringwa.optiliv.web.routes.api]
-    
-    [com.pringwa.optiliv.web.routes.pages] 
-    [kit.edge.utils.nrepl] 
-    [kit.edge.db.sql.conman] 
+
+    ;;Email
+    [com.pringwa.optiliv.email]
+
+    [com.pringwa.optiliv.web.routes.pages]
+    [kit.edge.utils.nrepl]
+    [kit.edge.db.sql.conman]
     [kit.edge.db.sql.migratus])
   (:gen-class))
 
