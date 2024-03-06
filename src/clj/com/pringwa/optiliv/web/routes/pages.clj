@@ -16,10 +16,21 @@
 (defn home [request]
   (layout/render request "home.html"))
 
+(defn cws [request]
+  (layout/render request "cws.html"))
+
+(defn cfs [request]
+  (layout/render request "cfs.html"))
+
+(defn cfs2 [request]
+  (layout/render request "cfs2.html"))
+
 ;; Routes
 (defn page-routes [_opts]
   [["/" {:get home}]
-   ["/login" {:get home}]
+   ["/cws" {:get cws}]
+   ["/cfs" {:get cfs}]
+   ["/cfs2" {:get cfs2}]
    ["/logout" {:get home}]
    ["/home" {:get home}]])
 
