@@ -12,3 +12,6 @@ test:
 
 uberjar:
 	clj -T:build all
+
+frontend:
+	npx shadow-cljs watch app
