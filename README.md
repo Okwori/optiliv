@@ -34,6 +34,8 @@ Alternatively, run:
     clj -M:dev
     npx shadow-cljs watch app
 
+In the REPL of the first terminal, type `(go)` to start the webserver
+
 By default, application runs on `http://localhost:3000`
 
 ### Prod
