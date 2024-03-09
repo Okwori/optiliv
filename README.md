@@ -1,37 +1,47 @@
 # OptiLiv
 
-Start a [REPL](#repls) in your editor or terminal of choice.
+An application to help you find the most optimal place to live!
+ 
+## Prerequisites
 
-Start the server with:
+- [Java Development Kit (version 11+)](https://bell-sw.com/pages/downloads/)
+- [Clojure CLI tools (version 1.11+)](https://clojure.org/guides/install_clojure)
+- [Postgresql](https://www.postgresql.org/download)
+- [Node](https://nodejs.org/en/download)
 
-```clojure
-(go)
-```
+## Setup
+The system configuration live within `resources/system.edn`
 
-The default API is available under http://localhost:3000/api
+### Database Configuration
+Enter your Postgres DB details in the map within `:db.sql/connection` key of `:system/env`.
 
-System configuration is available under `resources/system.edn`.
+### Email 
+The email config lives within the key ` :email/send-fn`, the options:
 
-To reload changes:
+- ` :email-type` The default is `:email-type/stdout-print` which prints the email to console. Or real email with
+`:email-type/smtp` which will require setting the `:smtp-server`, `:smtp-port`, `:smtp-username`,
+  and `:smtp-password`
 
-```clojure
-(reset)
-```
+## Running
+### Dev
+To start a web server and frontend for the application, run in two terminals:
 
-## REPLs
+    make run
+    make frontend
 
-### Cursive
+Alternatively, run:
+    
+    clj -M:dev
+    npx shadow-cljs watch app
 
-Configure a [REPL following the Cursive documentation](https://cursive-ide.com/userguide/repl.html). Using the default "Run with IntelliJ project classpath" option will let you select an alias from the ["Clojure deps" aliases selection](https://cursive-ide.com/userguide/deps.html#refreshing-deps-dependencies).
+By default, application runs on `http://localhost:3000`
 
-### CIDER
+### Prod
+TODO...
 
-Use the `cider` alias for CIDER nREPL support (run `clj -M:dev:cider`). See the [CIDER docs](https://docs.cider.mx/cider/basics/up_and_running.html) for more help.
+## Test
+TODO...
 
-Note that this alias runs nREPL during development. To run nREPL in production (typically when the system starts), use the kit-nrepl library through the +nrepl profile as described in [the documentation](https://kit-clj.github.io/docs/profiles.html#profiles).
+## License
 
-### Command Line
-
-Run `clj -M:dev:nrepl` or `make repl`.
-
-Note that, just like with [CIDER](#cider), this alias runs nREPL during development. To run nREPL in production (typically when the system starts), use the kit-nrepl library through the +nrepl profile as described in [the documentation](https://kit-clj.github.io/docs/profiles.html#profiles).
+Copyright © 2024 Simon Okwori, Danielle Zabala, Natasha Fields, Jason Berard
