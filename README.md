@@ -26,7 +26,7 @@ The email config lives within the key ` :email/send-fn`, the options:
 ### Dev
 To start a web server and frontend for the application, run in two terminals:
 ```shell
-    make run
+    make backend
 ```
 ```shell
     make frontend

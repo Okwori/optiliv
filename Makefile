@@ -1,7 +1,7 @@
 clean:
 	rm -rf target
 
-run:
+backend:
 	clj -M:dev
 
 repl:
