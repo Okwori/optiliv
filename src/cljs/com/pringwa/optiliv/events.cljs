@@ -13,7 +13,7 @@
   :navigate-to-authenticated-home
   (fn [{:keys [db]} _]
     {:navigate-to (case (-> db :current-user :type)
-                    "Optiliv" [:home]
+                    "Optiliv" [:home]  ; TODO Add more routes for the other user groups
                     [:login])}))
 
 (k/reg-event-db
@@ -29,5 +29,10 @@
   (fn [db [& subkeys]]
     (assoc-in db (into [:xhr] subkeys)
               {:in-flight? false, :error nil, :success? false})))
+
+(rf/reg-fx
+  :reset-form
+  (fn [form-id]
+    (-> form-id js/document.getElementById .reset)))
 
 

@@ -37,7 +37,8 @@
  :reitit.routes/api
  {:base-path "/api"
   :env #ig/ref :system/env
-  :query-fn #ig/ref :db.sql/query-fn}
+  :query-fn #ig/ref :db.sql/query-fn
+  :send-fn #ig/ref :email/send-fn}
 
  :router/routes
  {:routes #ig/refset :reitit/routes}
@@ -56,4 +57,11 @@
                      :migrate-on-init? true}
  :db.sql/connection #profile {:dev {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv?user=YOUR_USERNAME&password=YOUR_PASSWORD"},
                               :test {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv_test?user=optiliv&password=optiliv"},
-                              :prod {:jdbc-url #env JDBC_URL}}}
+                              :prod {:jdbc-url #env JDBC_URL}}
+ :email/send-fn {:email-type :email-type/stdout-print
+                 :smtp-username "pringwa.inc@gmail.com"
+                 :smtp-password ""
+                 :smtp-server "smtp.gmail.com"
+                 :smtp-port 587
+                 :tls true}}
+

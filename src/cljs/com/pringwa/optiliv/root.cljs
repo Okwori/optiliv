@@ -7,26 +7,25 @@
     [kee-frame.core :as k]))
 
 (def routes
-  [["/" :login]
-   ["/home" :home]])
+  [["/" :home]
+   ["/login" :login]
+   ["/logout" :logout]])
 
-(k/reg-controller
-  :home
+(k/reg-controller :home
   {:params #(when (= :home (-> % :data :name)) true)
    :start  (fn [] nil)})
 
-(k/reg-controller
-  :login
+(k/reg-controller :login
   {:params #(when (= :login (-> % :data :name)) true)
    :start  (fn [] nil)})
 
-(k/reg-controller
-  :logout
+(k/reg-controller :logout
   {:params #(when (= :logout (-> % :data :name)) true)
    :start  (fn [] [:logout])})
 
 (defn root-component []
   (k/switch-route (fn [route] (get-in route [:data :name]))
                   :login [login-page]
+                  :logout "Signing off... see you!"
                   :home [home-page]
                   nil [:div "..loading!"]))
