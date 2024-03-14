@@ -26,22 +26,22 @@ The email config lives within the key ` :email/send-fn`, the options:
 ### Dev
 To start a web server and frontend for the application, run in two terminals:
 ```shell
-    make backend
+make backend
 ```
 ```shell
-    make frontend
+make frontend
 ```
 Alternatively, run:
 ```shell
-    clj -M:dev
+clj -M:dev
 ```
 ```shell
-    npx shadow-cljs watch app
+npx shadow-cljs watch app
 ```
 
 In the REPL of the first terminal, type to start the webserver:
 ```clojure
- (go) 
+(go) 
 ```
 
 By default, application runs on `http://localhost:3000`
@@ -51,7 +51,7 @@ The default API is available under `http://localhost:3000/api`
 To reload changes:
 
 ```clojure
-    (reset)
+(reset)
 ```
 
 ### Prod
