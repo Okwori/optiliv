@@ -56,7 +56,7 @@
                      :db {:datasource #ig/ref :db.sql/connection},
                      :migrate-on-init? true}
  :db.sql/connection #profile {:dev {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv?user=YOUR_USERNAME&password=YOUR_PASSWORD"},
-                              :test {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv_test?user=optiliv&password=optiliv"},
+                              :test {:jdbc-url "jdbc:postgresql://localhost:5432/optiliv_test?user=YOUR_USERNAME&password=YOUR_PASSWORD"},
                               :prod {:jdbc-url #env JDBC_URL}}
  :email/send-fn {:email-type :email-type/stdout-print
                  :smtp-username "pringwa.inc@gmail.com"
