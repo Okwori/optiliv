@@ -43,6 +43,11 @@
   (fn [current-user _] (:email current-user)))
 
 (reg-sub
+  ::page-state
+  :<- [::page]
+  (fn [page-substate [_ page-type]] (get page-substate page-type)))
+
+(reg-sub
   ::modal-type
   :<- [::modal]
   (fn [modal-state _]
@@ -66,3 +71,20 @@
   (fn [xhr-state [_ & subkeys]]
     (get-in xhr-state subkeys)))
 
+(reg-sub
+  ::mismatch-error
+  :<- [::page-state :page-type/reset-password]
+  (fn [page-state _]
+    (:mismatch-error page-state)))
+
+(reg-sub
+  ::mismatch-error2
+  :<- [::page-state :page-type/change-password]
+  (fn [page-state _]
+    (:mismatch-error page-state)))
+
+(reg-sub
+  ::show-mobile-menu?
+  :<- [::page-state :page-type/home]
+  (fn [page-state _]
+    (:show-mobile-menu? page-state)))
