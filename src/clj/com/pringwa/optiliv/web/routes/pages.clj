@@ -28,11 +28,16 @@
 ;; Routes
 (defn page-routes [_opts]
   [["/" {:get home}]
+   ["/change-email" {:get home}]
+   ["/change-password" {:get home}]
    ["/cws" {:get cws}]
    ["/cfs" {:get cfs}]
    ["/cfs2" {:get cfs2}]
+   ["/login" {:get home}]
    ["/logout" {:get home}]
-   ["/home" {:get home}]])
+   ["/home" {:get home}]
+   ["/signup" {:get home}]
+   ["/verify-email" {:get home}]])
 
 (defn route-data [opts]
   (merge

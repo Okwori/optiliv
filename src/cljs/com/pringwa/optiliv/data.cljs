@@ -14,6 +14,10 @@
   (fn [db _] (get db :page)))
 
 (reg-sub
+  ::new-user-password
+  (fn [db _] (:new-user-password db)))
+
+(reg-sub
   ::xhr-base
   (fn [db _] (:xhr db)))
 
@@ -36,6 +40,11 @@
   ::current-user-roles
   :<- [::current-user]
   (fn [current-user _] (:roles current-user)))
+
+(reg-sub
+  ::current-user-state
+  :<- [::current-user]
+  (fn [current-user _] (:state current-user)))
 
 (reg-sub
   ::email
@@ -83,6 +92,29 @@
   (fn [page-state _]
     (:mismatch-error page-state)))
 
+(reg-sub
+  ::signup-token
+  :<- [::page-state :page-type/signup]
+  (fn [page-state _]
+    (:token page-state)))
+
+(reg-sub
+  ::signup-token
+  :<- [::page-state :page-type/signup]
+  (fn [page-state _]
+    (:token page-state)))
+
+(reg-sub
+  ::signup-email
+  :<- [::page-state :page-type/signup]
+  (fn [page-state _]
+    (:email page-state)))
+
+(reg-sub
+  ::signup-full-name
+  :<- [::page-state :page-type/signup]
+  (fn [page-state _]
+    (:full-name page-state)))
 (reg-sub
   ::show-mobile-menu?
   :<- [::page-state :page-type/home]

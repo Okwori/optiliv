@@ -25,3 +25,13 @@
                               [:login-failure])
      :db         (assoc-in (:db cofx) [:xhr :login] {:in-flight? true})}))
 
+(k/reg-event-fx
+  :change-email
+  (fn [{:keys [db]} [form-data]]
+    ;; stifle duplicate requests
+    (when-not (get-in db [:xhr :change-email :in-flight?])
+      {:http-xhrio (post-config "/change-email" form-data
+                                [:change-email-success]
+                                [:change-email-failure]
+                                {:response-format (ajax/text-response-format)})
+       :db         (assoc-in db [:xhr :change-email] {:in-flight? true})})))

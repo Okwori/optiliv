@@ -1,9 +1,14 @@
 (ns com.pringwa.optiliv.web.routes.api
   (:require
     [com.pringwa.optiliv.web.controllers.current-user :as current-user]
+    [com.pringwa.optiliv.web.controllers.change-email :as change-email]
+    [com.pringwa.optiliv.web.controllers.change-password :as change-password]
     [com.pringwa.optiliv.web.controllers.health :as health]
     [com.pringwa.optiliv.web.controllers.login :as login]
     [com.pringwa.optiliv.web.controllers.logout :as logout]
+    [com.pringwa.optiliv.web.controllers.signup :as signup]
+    [com.pringwa.optiliv.web.controllers.verify-email :as verify-email]
+    [com.pringwa.optiliv.web.controllers.verify-token :as verify-token]
     [com.pringwa.optiliv.web.middleware.exception :as exception]
     [com.pringwa.optiliv.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -44,9 +49,14 @@
     ["/health"
      {:get health/healthcheck!}]
     ["/v1" {}
-     ["/current-user" {:get {:handler current-user/handler}}]
+     ["/change-password" {:put change-password/handler}]
+     ["/current-user" {:get current-user/handler}]
+     ["/change-email" {:post change-email/handler}]
      ["/login" {:post {:handler login/handler}}]
-     ["/logout" {:delete logout/handler}]]]])
+     ["/logout" {:delete logout/handler}]
+     ["/signup" {:post signup/handler}]
+     ["/verify-email" {:get verify-email/handler}]
+     ["/verify-token" {:get verify-token/handler}]]]])
 
 (derive :reitit.routes/api :reitit/routes)
 

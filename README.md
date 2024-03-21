@@ -13,7 +13,8 @@ An application to help you find the most optimal place to live!
 The system configuration live within `resources/system.edn`
 
 ### Database Configuration
-Enter your Postgres DB details in the map within `:db.sql/connection` key of `:system/env`.
+- Create a Database `optiliv` in your PostgreSQL instance.
+- Enter your Postgres DB details in the map within `:db.sql/connection` key of `:system/env`.
 
 ### Email 
 The email config lives within the key ` :email/send-fn`, the options:

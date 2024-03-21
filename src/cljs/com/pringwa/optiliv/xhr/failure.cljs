@@ -14,7 +14,15 @@
                                                  response))
                                  :success?   false})))))
 
+(reg-xhr-failure-event :change-email :change-email)
+(reg-xhr-failure-event :change-password :change-password)
 (reg-xhr-failure-event :current-user/load :current-user)
+(reg-xhr-failure-event :verify-token :verify-token)
+(reg-xhr-failure-event :verify-email :verify-email)
+(reg-xhr-failure-event :logout :logout)
+(reg-xhr-failure-event :forgot-password :forgot-password)
+(reg-xhr-failure-event :reset-password :reset-password)
+(reg-xhr-failure-event :signup :signup)
 
 (k/reg-event-db :login-failure
                 (fn [db [error]]

@@ -6,10 +6,10 @@ WHERE id = :id;
 -- :name get-account :? :1
 -- :doc retrieves account info based on email and password
 SELECT a.email, a.password, a.full_name as "full-name", a.active, a.last_login as "last-login",
-        at.name as "type", at.id
-FROM account a
-    inner join account_type at on at.id = a.account_type_id
-WHERE email = :email;
+        at.name as "type", at.id, ast.name as "state"
+FROM account a inner join account_type at on at.id = a.account_type_id
+    inner join account_state ast on a.account_state_id = ast.id
+WHERE a.email = :email;
 
 -- :name create-session :! :n
 INSERT INTO session
@@ -41,3 +41,22 @@ FROM account_roles ar
     inner join account_type at on ar.account_type_id = at.id
 WHERE ar.account_id = :identity;
 
+-- :name get-account-by-token :? :1
+-- :doc retrieves account info based on unique user generated tokens
+SELECT a.id, a.email, a.password, a.full_name as "full-name", a.active, a.last_login as "last-login",
+        ast.name as "state", at.name as "type"
+FROM account a inner join account_type at on a.account_type_id = at.id
+             inner join account_state ast on a.account_state_id = ast.id
+WHERE a.token = :token;
+
+-- :name update-account! :! :n
+UPDATE account
+SET email = :email,
+    account_state_id = :state,
+    token = :token
+WHERE id = :id;
+
+-- :name update-account-password! :! :n
+UPDATE account
+SET password = :pwd
+WHERE id = :id;

@@ -1,8 +1,7 @@
 (ns com.pringwa.optiliv.web.controllers.login
   (:require [clojure.string :as string]
             [clojurewerkz.scrypt.core :as sc]
-            [com.pringwa.optiliv.web.routes.utils :as utils]
-            [taoensso.timbre :as log])
+            [com.pringwa.optiliv.web.routes.utils :as utils])
   (:import (java.util Date)))
 
 (defn- authenticate [req]
@@ -18,7 +17,6 @@
 
 (defn handler
   [{:keys [session] :as req}]
-  (log/info "Login process started")
   (let [{:keys [query-fn]} (utils/route-data req)]
     (if-let [result (authenticate req)]
       (let [roles (->> (query-fn :get-roles {:identity (:id result)})
@@ -29,6 +27,5 @@
             ]
         {:status  200
          :body    (assoc result :roles roles)
-         :session (assoc session :identity (:id result)
-                                 :roles roles)})
+         :session (assoc session :identity (:id result) :roles roles) :email (:email result)})
       {:status 403})))

@@ -14,8 +14,21 @@
 
 (reg-xhr-success-event
   :current-user/load :current-user
-  (fn [fx {:keys [type full-name email id roles]}]
+  (fn [fx {:keys [type full-name email id roles state]}]
     (assoc-in fx [:db :current-user]
               {:email email, :full-name full-name :type type,
-               :id    id :roles roles})))
+               :id    id :roles roles :state state})))
 
+(reg-xhr-success-event
+  :verify-token :verify-token
+  (fn [fx data]
+    (-> fx
+        (assoc-in [:db :page :page-type/signup :email] (:email data))
+        (assoc-in [:db :page :page-type/signup :full-name] (:full-name data)))))
+
+(reg-xhr-success-event
+  :verify-email :verify-email
+  (fn [fx _data]
+    (if (get-in fx [:db :current-user :email])
+      (assoc-in fx [:db :current-user :state] "initialized")
+      fx)))

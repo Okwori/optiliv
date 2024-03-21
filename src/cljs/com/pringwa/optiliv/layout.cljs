@@ -1,4 +1,10 @@
-(ns com.pringwa.optiliv.layout)
+(ns com.pringwa.optiliv.layout
+  (:require
+    [com.pringwa.optiliv.data :as data]
+    [com.pringwa.optiliv.page.unverified-email
+     :refer [unverified-email-page-inner]]
+    [reagent.core :as r]
+    [re-frame.core :as rf]))
 
 (defn standard
   [page-id & children]
@@ -13,3 +19,14 @@
       [:section.section.is-main-section
        (conj [:div.container (id "modal")] child)]
       last-child])))
+
+(defn- unverified-page []
+  [modal "unverified-email"
+   [unverified-email-page-inner]])
+
+(defn with-verified-email-check [verified-email-content]
+  (r/with-let
+    [user-state (rf/subscribe [::data/current-user-state])]
+    (if (= "email-unverified" @user-state)
+      [unverified-page]
+      verified-email-content)))
