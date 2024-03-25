@@ -10,109 +10,91 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/main.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <!--    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">-->
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <!--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">-->
-    <!-- Bulma Version 0.9.x-->
-    <!--    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css" />-->
-    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <!--    <link rel="stylesheet" type="text/css" href="/css/cws.css">-->
-    <!--    <link rel="stylesheet" href="/css/cws.css">-->
 </head>
 
 <body>
-<section id="hero" class="hero is-info is-fullheight">
-    <!--    <div class=""></div>-->
+<section class="hero is-info is-fullheight has-background-image"
+         style="background-image: url('img/golden_sky.png'); background-size: cover; background-position: center;
+         background-attachment: fixed; background-repeat: no-repeat;">
     <div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
                     <img src="img/logo.png" alt="OptiLiv's Logo"/>
-                    <span class="navbar-burger burger" data-target="navbarMenu"></span>
-                </div>
-                <div id="navbarMenu" class="navbar-menu">
-                    <div class="navbar-end">
-                          <span class="navbar-item">
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <span class="navbar-item">
+                        <a class="button is-white is-outlined" href="#">
+                            <span class="mdi mdi-18px mdi-home"></span>
+                            <span>Home</span>
+                        </a>
+                    </span>
+                    <span class="navbar-item">
                             <a class="button is-white is-outlined" href="#">
-                                <span class="mdi mdi-home"></span>
-                                <span>Home</span>
-                            </a>
-                          </span>
-                        <span class="navbar-item">
-                            <a class="button is-white is-outlined" href="#">
-                                <span class="mdi mdi-book"></span>
+                                <span class="mdi mdi-18px mdi-book-multiple-outline"></span>
                                 <span>Terms</span>
                             </a>
                           </span>
-                        <span class="navbar-item">
+                    <span class="navbar-item">
                             <a class="button is-white is-outlined" href="#">
-                                <span class="icon">
-                                    <i class="fa fa-phone"></i>
-                                </span>
+                                <span class="mdi mdi-18px mdi-phone-outline"></span>
                                 <span>Contacts</span>
                             </a>
                           </span>
-                        <span class="navbar-item">
+                    <span class="navbar-item">
                             <a class="button is-white is-outlined" href="#">
-                                <span class="icon">
-                                    <i class="fa fa-headphones"></i>
-                                </span>
+                                <span class="mdi mdi-18px mdi-headphones"></span>
                                 <span>Find Your Agent</span>
                             </a>
                           </span>
-                    </div>
                 </div>
             </div>
         </nav>
-    </div>
 
-    <div class="hero-body">
-        <div class="container has-text-left">
-            <div class="column is-5">
-                <h1 class="title">
-                    Welcome to <br> OptiLiv!
-                </h1>
-                <h3 class="goal">
-                    With the ever-growing market of real estate, new consumers are always in need of having a source to
-                    help them discover their new place of residence. OptiLiv goes beyond the place of residence and adds
-                    in more features for the users to weigh in along with other factors.
-                </h3>
-                <div class="field has-addons">
-                    <div class="control-one">
-                        <a class="button is-info" type="submit">
-                            Let's Get Started!
-                        </a>
+        <div class="hero-body">
+            <div class="columns is-centered">
+                <div class="column is-two-fifths">
+                    <div class="card">
+                        <div class="card-content bulma-overlay-mixin-parent">
+                            <h1 class="title has-text-grey">
+                                Welcome to <br> OptiLiv!
+                            </h1>
+                            <h3 class="goal">
+                                With the ever-growing market of real estate, new consumers are always in need of having a
+                                source
+                                to help them discover their new place of residence. OptiLiv goes beyond the place of
+                                residence
+                                and adds in more features for the users to weigh in along with other factors.
+                            </h3>
+                            <div class="field has-addons">
+                                <a class="button is-info" type="submit">
+                                    Let's Get Started!
+                                </a>
+                                <a class="button is-info" type="submit">
+                                    Skip Guide
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="control-two">
-                        <a class="button is-info" type="submit">
-                            Skip Guide
-                        </a>
+                </div>
+                <div class="column is-4 time-info">
+                    <h1 id="current-time">12:00:00</h1>
+                    <div class="quotes">
+                        <p>TODAY'S QUOTE</p>
+                        <h2>"Don't Count The Days, Make The Days Count" <br> -Muhammad Ali</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container time-info">
-            <h1 id="current-time">12:00:00</h1>
-            <div class="quotes">
-                <p>TODAY'S QUOTE</p>
-                <h2>"Don't Count The Days, Make The Days Count" <br> -Muhammad Ali</h2>
-            </div>
-        </div>
+
     </div>
 </section>
-<footer>
-    <div class="footer-icons">
-        <ul>
-            <li><a href="#" class="fa fa-facebook"></a></li>
-            <li><a href="#" class="fa fa-twitter"></a></li>
-            <li><a href="#" class="fa fa-instagram"></a></li>
-        </ul>
-    </div>
-</footer>
 
 <script>
     let time = document.getElementById("current-time");
