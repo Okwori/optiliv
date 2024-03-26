@@ -13,18 +13,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body style="-ms-overflow-style: none; scrollbar-width: none; overflow: hidden;">
 <section class="hero is-info is-fullheight has-background-image"
-         style="background-image: url('img/golden_sky.png'); background-size: cover; background-position: center;
-         background-attachment: fixed; background-repeat: no-repeat;">
+         style="background: linear-gradient(rgba(0,0,0,0.90) 10%, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('/img/golden_sky.png');
+          background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;">
     <div class="hero-head">
         <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/">
+                <a class="navbar-item" href="#">
                     <img src="img/logo.png" alt="OptiLiv's Logo"/>
                 </a>
             </div>
@@ -59,14 +60,17 @@
         </nav>
 
         <div class="hero-body">
-            <div class="columns is-centered">
+            <div class="columns is-variable is-fullwidth" style="margin-top:4rem">
                 <div class="column is-two-fifths">
-                    <div class="card">
+                    <div class="card"
+                         style="background-color: rgba(232, 202, 70, 0.474); border-radius: 15px;">
                         <div class="card-content bulma-overlay-mixin-parent">
-                            <h1 class="title has-text-grey">
+                            <h1 class="title"
+                                style="font-family: 'Kaisei HarunoUmi'; font-weight: lighter; font-size: 80px; padding-left: 5px;">
                                 Welcome to <br> OptiLiv!
                             </h1>
-                            <h3 class="goal">
+                            <h3 class="goal"
+                                style="font-family: 'Kaisei HarunoUmi'; font-size: 15px; padding: 5px; margin-top: -10px; color: white;">
                                 With the ever-growing market of real estate, new consumers are always in need of having a
                                 source
                                 to help them discover their new place of residence. OptiLiv goes beyond the place of
@@ -74,21 +78,28 @@
                                 and adds in more features for the users to weigh in along with other factors.
                             </h3>
                             <div class="field has-addons">
-                                <a class="button is-info" type="submit">
+                                <a class="button is-info" type="submit"
+                                style="background-color: #a94455cc; margin-right: 20px;">
                                     Let's Get Started!
                                 </a>
-                                <a class="button is-info" type="submit">
+                                <a class="button is-info" type="submit"
+                                   style="background-color: #a94455cc; margin-right: 20px;">
                                     Skip Guide
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="column is-4 time-info">
-                    <h1 id="current-time">12:00:00</h1>
-                    <div class="quotes">
-                        <p>TODAY'S QUOTE</p>
-                        <h2>"Don't Count The Days, Make The Days Count" <br> -Muhammad Ali</h2>
+                <div class="column is-one-quarter"></div>
+                <div class="column is-placed-right time-info" style="margin-left: -25%;">
+                    <h1 id="current-time"
+                        style="position: absolute; color: #fff; font-family:'Libre Baskerville'; font-size: 82px;
+                               font-weight: 600; letter-spacing: 3px;">12:00:00</h1>
+                    <div class="quotes" style="font-family: 'Gabriola';font-size: 25px; font-weight: 500; text-shadow: 2px 2px #9c3535;
+                         margin-top: 35%">
+                        <p style="font-size: 35px; margin-bottom: -30px;">TODAY'S QUOTE</p>
+                        <h2 style="margin-bottom:0;">"Don't Count The Days, Make The Days Count" </h2>
+                        <h2 style="text-align: right; margin:0; padding:0"> -Muhammad Ali </h2>
                     </div>
                 </div>
             </div>
