@@ -1,20 +1,294 @@
 <!DOCTYPE html>
-<html lang="en" class="has-aside-left has-aside-mobile-transition has-navbar-fixed-top">
+<html lang="en">
 <head>
-    <meta charset="UTF-8"  />
-    <meta content/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Live Optimally: We find you apartments and homes tailored for you across the country! " />
-    <title>Welcome to optiliv</title>
-
-    <!-- styles -->
+    <meta name="description" content="todo: describe app here" />
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
-    <!-- Fonts -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.4/css/bulma.min.css">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <script type="module" src="./index.js"></script> -->
 </head>
 <body>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="City, Neighborhood, ZIP, Address">
+                        <span class="icon is-left">
+                            <i class="fas fa-search"></i>
+                          </span>
+                    </div>
+                </div>
+            </div>
+            <!-- For Sale/Rent dropdown -->
+            <div class="column is-2">
+                <div class="field">
+                    <div class="control">
+                        <div class="select ">
+                            <select>
+                                <option>For Sale</option>
+                                <option>For Rent</option>
+                                <option>Sold</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Price dropdown -->
+            <div class="column is-1">
+                <div class="field">
+                    <div class="control custom-control">
+                        <div class="select">
+                            <select>
+                                <option value="-1">Price</option>
+                                <option value="50,000">$50,000</option>
+                                <option value="100,000">$100,000</option>
+                                <option value="150,000">$150,000</option>
+                                <option value="200,000">$200,000</option>
+                                <option value="250,000">$250,000</option>
+                                <option value="300,000">$300,000</option>
+                                <option value="350,000">$350,000</option>
+                                <option value="400,000">$400,000</option>
+                                <option value="450,000">$450,000</option>
+                                <option value="500,000">$500,000</option>
+                                <option value="550,000">$550,000</option>
+                                <option value="600,000">$600,000</option>
+                                <option value="650,000">$650,000</option>
+                                <option value="700,000">$700,000</option>
+                                <option value="750,000">$750,000</option>
+                                <option value="800,000">$800,000</option>
+                                <option value="850,000">$850,000</option>
+                                <option value="900,000">$900,000</option>
+                                <option value="950,000">$950,000</option>
+                                <option value="1,000,000">$1M</option>
+                                <option value="1,250,000">$1.25M</option>
+                                <option value="1,500,000">$1.50M</option>
+                                <option value="1,750,000">$1.75M</option>
+                                <option value="2,000,000">$2M</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Property Type dropdown -->
+            <div class="column is-2">
+                <div class="field">
+                    <div class="control custom-control">
+                        <div class="select">
+                            <select>
+                                <option disabled selected>Property Type</option>
+                                <option>House</option>
+                                <option>Apartment</option>
+                                <option>Condo</option>
+                                <option>Townhouse</option>
+                                <option>Lot/Land</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- All Filter Button -->
+            <div class="column is-2">
+                <div class="field">
+                    <div class="control custom-control">
+                        <button class="button is-warning" onclick="toggleFilters()">All Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="filters-modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <h3 class="title is-4 has-text-centered">All Filters</h3>
+                    <hr class="navbar-divider">
+                    <div class="columns">
+                        <div class="column is-6">
+                            <h6 class="title is-6">Price</h6>
+                            <div class="select">
+                                <select>
+                                    <option value="-1">No Min</option>
+                                    <option value="50,000">$50,000</option>
+                                    <option value="100,000">$100,000</option>
+                                    <option value="150,000">$150,000</option>
+                                    <option value="200,000">$200,000</option>
+                                    <option value="250,000">$250,000</option>
+                                    <option value="300,000">$300,000</option>
+                                    <option value="350,000">$350,000</option>
+                                    <option value="400,000">$400,000</option>
+                                    <option value="450,000">$450,000</option>
+                                    <option value="500,000">$500,000</option>
+                                    <option value="550,000">$550,000</option>
+                                    <option value="600,000">$600,000</option>
+                                    <option value="650,000">$650,000</option>
+                                    <option value="700,000">$700,000</option>
+                                    <option value="750,000">$750,000</option>
+                                    <option value="800,000">$800,000</option>
+                                    <option value="850,000">$850,000</option>
+                                    <option value="900,000">$900,000</option>
+                                    <option value="950,000">$950,000</option>
+                                    <option value="1,000,000">$1M</option>
+                                    <option value="1,250,000">$1.25M</option>
+                                    <option value="1,500,000">$1.50M</option>
+                                    <option value="1,750,000">$1.75M</option>
+                                    <option value="2,000,000">$2M</option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select>
+                                    <option value="-1">No Max</option>
+                                    <option value="50,000">$50,000</option>
+                                    <option value="100,000">$100,000</option>
+                                    <option value="150,000">$150,000</option>
+                                    <option value="200,000">$200,000</option>
+                                    <option value="250,000">$250,000</option>
+                                    <option value="300,000">$300,000</option>
+                                    <option value="350,000">$350,000</option>
+                                    <option value="400,000">$400,000</option>
+                                    <option value="450,000">$450,000</option>
+                                    <option value="500,000">$500,000</option>
+                                    <option value="550,000">$550,000</option>
+                                    <option value="600,000">$600,000</option>
+                                    <option value="650,000">$650,000</option>
+                                    <option value="700,000">$700,000</option>
+                                    <option value="750,000">$750,000</option>
+                                    <option value="800,000">$800,000</option>
+                                    <option value="850,000">$850,000</option>
+                                    <option value="900,000">$900,000</option>
+                                    <option value="950,000">$950,000</option>
+                                    <option value="1,000,000">$1M</option>
+                                    <option value="1,250,000">$1.25M</option>
+                                    <option value="1,500,000">$1.50M</option>
+                                    <option value="1,750,000">$1.75M</option>
+                                    <option value="2,000,000">$2M</option>
+                                </select>
+                            </div><br><br>
+                            <h6 class="title is-6">Square Feet </h6>
+                            <div class="select">
+                                <select>
+                                    <option value="-1">No Max</option>
+                                    <option value="500">500 sqft</option>
+                                    <option value="750">750 sqft</option>
+                                    <option value="1,000">1,0s00 sqft</option>
+                                    <option value="1,500">1,500 sqft</option>
+                                    <option value="2,000">2,000 sqft</option>
+                                    <option value="2,500">2,500 sqft</option>
+                                    <option value="3,000">3,000 sqft</option>
+                                    <option value="3,500">3,500 sqft</option>
+                                    <option value="4,000">4,000 sqft</option>
+                                    <option value="4,500">4,500 sqft</option>
+                                    <option value="5,000">5,000 sqft</option>
+                                    <option value="5,500">5,500 sqft</option>
+                                    <option value="6,000">6,000 sqft</option>
+                                    <option value="6,500">6,500 sqft</option>
+                                    <option value="7,000">7,000 sqft</option>
+                                    <option value="7,500">7,500 sqft</option>
+                                    <option value="8,000">8,000 sqft</option>
+                                    <option value="8,500">8,500 sqft</option>
+                                    <option value="9,000">9,000 sqft</option>
+                                    <option value="9,500">9,500 sqft</option>
+                                    <option value="10,000">10,000 sqft</option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select>
+                                    <option value="-1">No Max</option>
+                                    <option value="500">500 sqft</option>
+                                    <option value="750">750 sqft</option>
+                                    <option value="1,000">1,000 sqft</option>
+                                    <option value="1,500">1,500 sqft</option>
+                                    <option value="2,000">2,000 sqft</option>
+                                    <option value="2,500">2,500 sqft</option>
+                                    <option value="3,000">3,000 sqft</option>
+                                    <option value="3,500">3,500 sqft</option>
+                                    <option value="4,000">4,000 sqft</option>
+                                    <option value="4,500">4,500 sqft</option>
+                                    <option value="5,000">5,000 sqft</option>
+                                    <option value="5,500">5,500 sqft</option>
+                                    <option value="6,000">6,000 sqft</option>
+                                    <option value="6,500">6,500 sqft</option>
+                                    <option value="7,000">7,000 sqft</option>
+                                    <option value="7,500">7,500 sqft</option>
+                                    <option value="8,000">8,000 sqft</option>
+                                    <option value="8,500">8,500 sqft</option>
+                                    <option value="9,000">9,000 sqft</option>
+                                    <option value="9,500">9,500 sqft</option>
+                                    <option value="10,000">10,000 sqft</option>
+                                </select>
+                            </div><br><br>
+
+                            <h6 class="title is-6">Year Built</h6>
+                            <div class="select">
+                                <select>
+                                    <option value="-1">Any</option>
+                                    <option value="1900">1900</option>
+                                    <option value="1920">1920</option>
+                                    <option value="1950">1950</option>
+                                    <option value="1960">1960</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1990">1990</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2010">2010</option>
+                                </select>
+                            </div>
+                            <div class="select">
+                                <select>
+                                    <option value="-1">Any</option>
+                                    <option value="1900">1900</option>
+                                    <option value="1920">1920</option>
+                                    <option value="1950">1950</option>
+                                    <option value="1960">1960</option>
+                                    <option value="1970">1970</option>
+                                    <option value="1980">1980</option>
+                                    <option value="1990">1990</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2010">2010</option>
+                                </select>
+                            </div><br><br>
+    </div>
+                        <div class="column is-8">
+                            <div class="card large">
+                                <div class="card-content">
+                                    <div class="media">
+                                        <div class="media-content">
+                                            <div id="googleMap" style="width:100%;height:500px;"></div>
+                                            <script>
+                                                function myMap() {
+                                                    var mapProp= {
+                                                        center:new google.maps.LatLng(32.5252,-93.7502),
+                                                        zoom:5,
+                                                    };
+                                                    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                                                }
+                                            </script>
+                                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo9newQ_qNyc1HUK_LcpOtaQlUXTjc2co&callback=myMap"></script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<footer>
+    <div class="footer-icons">
+        <ul>
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-twitter"></a></li>
+            <li><a href="#" class="fa fa-instagram"></a></li>
+        </ul>
+    </div>
+</footer>
 
 </body>
 </html>
