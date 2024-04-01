@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>OptiLiv Privacy Policy</h1>
-<p>Last Revised: March 3, 2024</p>
+<p>Last Revised: March 31, 2024</p>
 <p>OptiLiv Real-Estate Marketplace doing business as OptiLiv is committed to protecting the privacy and accuracy of confidential information to the extent possible, subject to provisions of state and federal law. Other than as required by laws that guarantee public access to certain types of information, or in response to subpoenas or other legal instruments that authorize access, personal information is not actively shared. In particular, we do not re-distribute or sell personal information collected on our web servers. OptiLiv values the privacy of our users. This Online Privacy Policy Agreement (“Privacy Policy”) will help you understand how we collect and use personal information from those who visit our website or make use of our online facilities and services. This policy has been designed to ensure our users of our commitment and obligation with handling our user’s personal data.</p>
 
 <h2>Table of Contents</h2>
@@ -51,7 +51,16 @@
     Passwords<br>
     Contact preferences<br>
     Billing Addresses<br>
-    debit/credit card numbers<br>
+    debit/credit card numbers<br><br>
+    <b>Cookies<br></b>
+    OptiLiv Real-Estate Marketplace site may use "cookies" in order to deliver web content specific to individual users'
+    interests or to keep track of online purchasing transactions. Sensitive personal information is not stored within cookies.
+    We will also track your searches and preferences in order to deliver the best services catered to each user. This includes,
+    but not limited to, home search criteria, pre-approvals, and interests/preferences.
+    <b><br>Webforms<br></b>
+    OptiLiv uses webforms on this site. These forms require users to give contact information such as first name, last name, and
+    email address. Contact information from the registration form is used only to send material relating to the purpose of accessing our
+    services for which it was collected and will not be sold to another party.
 
 
 
@@ -59,37 +68,106 @@
 
 <section id="use-of-information">
     <h2>2. Use of Information</h2>
-    <!-- Insert Use of Information Section Here -->
+    We need to collect information regarding the users' personal information such as their name and email address to set each user up to be
+    identified as an individual instead of as a collective. Having the ability to set apart each user grants us the ability to find or target
+    individuals in case of an emergency dealing with their account. With data collection, it will help OptiLiv improve services, grow and retain customers,
+    and draw insights from it. OptiLiv takes the privacy of our users seriously and will not take advantage of such data. Especially through engagement tracking,
+    this allows us to make our judgements on our site which in turn make it more appealing and interactable with our users.
+    The data being collected will help us understand our users on a more granular level, helping us be more conscious of the customer behaviors.
+    There are a lot of factors that influence customer behavior such as demographics, personality, preferences, hobbies, etc. OptiLiv wants to have the ability
+    to factor in such details, refining our business and service to each user, thus increasing customer retention rates. With our built-in feature of having the user
+    factor in more options in their such, they will have the ability to save such information and with that we can offer up any suggestions that the user may like as
+    they move forward with their journey. For engagement tracking, our tool will include features that lets our users give us feedback through surveys and allows us to
+    view user interaction on our pages, allowing us to improve the UI/UX design.<br>
+    OptiLiv  will only use personal information collected from this site for the purpose of communication back to individuals who contact us via the site.<br>
+    OptiLiv uses browser-IP-address information and anonymous-browser history to report information about site accesses and for profiling purposes.
+    This information is used to improve Web presentation and utilization. IP address information may also be used for troubleshooting purposes.<br>
+    We will use the information of debit/credit card information from users to create a subscription for them that will
+    be renewed monthly unless the user cancels their subscription through their account<br>
+    Our services give our users to create their accounts through the means of their social media accounts. If you opted to register your account
+    through any of your social media accounts, wherever you choose to make your account, we will acquire certain information regarding your profile about
+    you through your social media provider. Personal information received may vary across different platforms, but it will often include your name, email address,
+    friends list, profile picture, and/or any information that you decided to make public on such platforms.<br>
+
+    We will use the information provided from your social media provider in compliance with the purpose for such information listed in this privacy policy.
+    Please note that we do not have any control, and are not responsible for, other uses of your personal information by your provider.
+    It is highly recommended that you view your third-party provider’s policy in regards to how your personal information is being handled through them.
+
+
+
 </section>
 
 <section id="sharing-of-information">
     <h2>3. Sharing of Information</h2>
-    <!-- Insert Sharing of Information Section Here -->
+    OptiLiv will not disclose, without your consent, personal information collected about you, except for certain explicit circumstances in which disclosure is required by law.
+    OptiLiv will not distribute or sell personal information to third-party organizations.
+
+
 </section>
 
 <section id="data-from-minors">
     <h2>4. Data from Minors</h2>
-    <!-- Insert Data from Minors Section Here -->
+    Upon creation of your account, you as the user are agreeing that you are providing us with complete and accurate information.
+    We do not market to those under the age of 18, so by complying with our terms, you are stating that you are of the age of 18 or older.
+    We do not knowingly collect or solicit any data from those under the age of 18. If it is revealed that you are under the age of consent,
+    we will deactivate and terminate your account accordingly and take reasonable measures to promptly delete any data that link to your account effectively
+    from our records. If you find out that we have collected information from anyone under 18, please contact us at support@optiliv.org.
+
 </section>
 
 <section id="user-rights">
     <h2>5. User Rights</h2>
-    <!-- Insert User Rights Section Here -->
+    Under the regulations of the General Data Protection Regulation (“GDPR”) of the EU, individuals located in the European Economic Area (“EEA”) have rights
+    in respect to their personal information and OptiLiv will provide these capabilities to all our users worldwide.
+    <br>They are as follows:<br>
+    The right to access your personal data<br>
+    The right to erase your personal data<br>
+    The right to rectify or correct any misinformation regarding your personal data<br>
+    The right to restrict processing: this means that you can change your communication preferences or opt out of out auto notification system<br>
+    The right to personal data portability: this means that you can obtain and use the data we have collected about you and use them to your own liking without any explanations<br>
+    You can access your personal data through your account settings. If you need to contact support in order to receive a personal data report, you can contact us support@optiliv.org
+    You may withdraw consent of having us sending cookies to you by doing so in your browser settings<br>
+    You may withdraw from any email notifications regarding marketing or promotional communications at any time by clicking the link found at the bottom of OptiLiv’s updates.
+    You can also change your contact preference<br>
+    You can request that your personal data be deleted by contacting us at support@optiliv.org<br>
+
 </section>
 
 <section id="revision-policy">
     <h2>6. Revision Policy</h2>
-    <!-- Insert Revision Policy Section Here -->
+    This Privacy Statement was last revised on the 3rd day of March in the year 2024. We may change this Privacy Statement at any time and for any reason.
+    We encourage you to review this Privacy Statement each time you visit the web site.
+    When users sign up in order to use our application, they will also have to provide us with their email address in order for us to send notifications to them,
+    letting them know about any changes made to any of our policies. Users can opt out of this email notification system, but, regardless, we will send notifications
+    to their account made on our website and it is the users obligation to check their notifications sent to them. If the user does not agree with any of the changes made,
+    they can terminate their account. Although, if the user does not explicitly say whether or not they agree to the new revisions of the policy, then we will take that as
+    the user agreeing with said changes.
+    If we make a significant change to our Privacy Statement, we will post a notice on the homepage of our web site for a period of time after the change is made.
+
+
 </section>
 
 <section id="external-sites">
     <h2>7. External/Third-Party Sites</h2>
-    <!-- Insert External/Third-Party Sites Section Here -->
+    Social Media Login Data
+    Upon the creation of your account, you may be faced with the option to register with us through your existing social media account details.
+    This includes, but not limited to, Facebook, Twitter, and Instagram. By registering your account this way, please understand that these different
+    service providers have their own privacy policy in which we have no control over, so make sure that you are following their guidelines and protocols as well.<br>
+    This website may contain links to other web sites. Some of those web sites may be operated by third parties. We provide the links for your convenience,
+    but we do not review, control, or monitor the privacy practices of web sites operated by others.<br>
+    We are not responsible for the performance of web sites operated by third parties or for your business dealings with them. Therefore,
+    whenever you leave this web site we recommend that you review each web site's privacy practices and make your own conclusions regarding the adequacy of these practices.
+
 </section>
 
 <section id="acceptance-of-terms">
     <h2>8. Acceptance of Terms</h2>
-    <!-- Insert Acceptance of Terms Section Here -->
+    By accessing this website, you agree to the terms and conditions described in the Online Privacy Policy.
+    If you do not agree to our terms, then you should not use our site. Furthermore, your continuing use of our website after the
+    publication of any updates or modifications to our Terms and Conditions means that you agree and accept those changes.
+    Based on the applicable laws of your country, you may have the rights to request access to the personal information we are collecting from you,
+    change any information, or delete it. To request ant revisions, updates, or deletion, please contact us at policy@optiliv.org.
+
 </section>
 
 <section id="contact-us">
