@@ -18,6 +18,10 @@
   (fn [db _] (:new-user-password db)))
 
 (reg-sub
+  ::user-groups
+  (fn [db _] (:user-groups db)))
+
+(reg-sub
   ::xhr-base
   (fn [db _] (:xhr db)))
 
@@ -120,3 +124,11 @@
   :<- [::page-state :page-type/home]
   (fn [page-state _]
     (:show-mobile-menu? page-state)))
+
+(reg-sub
+  ::user-groups-vec
+  :<- [::user-groups]
+  (fn [groups _]
+    (if (= groups {})
+      []
+      (vals groups))))
