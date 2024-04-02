@@ -22,6 +22,11 @@
   (fn [cofx]
     (get-effect-map cofx "/current-user" :current-user/load :current-user)))
 
+(k/reg-event-fx
+  :register/load-user-groups
+  (fn [cofx]
+    (get-effect-map cofx "/user-groups" :register/load-user-groups :user-groups)))
+
 (rf/reg-cofx
   :search-param
   (fn [coeffects key]

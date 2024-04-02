@@ -9,6 +9,7 @@
     [com.pringwa.optiliv.web.controllers.signup :as signup]
     [com.pringwa.optiliv.web.controllers.verify-email :as verify-email]
     [com.pringwa.optiliv.web.controllers.verify-token :as verify-token]
+    [com.pringwa.optiliv.web.controllers.user-groups :as user-groups]
     [com.pringwa.optiliv.web.middleware.exception :as exception]
     [com.pringwa.optiliv.web.middleware.formats :as formats]
     [integrant.core :as ig]
@@ -55,6 +56,7 @@
      ["/login" {:post {:handler login/handler}}]
      ["/logout" {:delete logout/handler}]
      ["/signup" {:post signup/handler}]
+     ["/user-groups" {:get user-groups/handler}]
      ["/verify-email" {:get verify-email/handler}]
      ["/verify-token" {:get verify-token/handler}]]]])
 

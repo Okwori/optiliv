@@ -60,3 +60,6 @@ WHERE id = :id;
 UPDATE account
 SET password = :pwd
 WHERE id = :id;
+
+-- :name get-all-user-groups :? :*
+SELECT * FROM account_type

@@ -36,6 +36,7 @@
    ["/login" {:get home}]
    ["/logout" {:get home}]
    ["/home" {:get home}]
+   ["/register" {:get home}]
    ["/signup" {:get home}]
    ["/verify-email" {:get home}]])
 

@@ -20,6 +20,14 @@
                :id    id :roles roles :state state})))
 
 (reg-xhr-success-event
+  :register/load-user-groups :user-groups
+  (fn [fx data]
+    (-> fx
+        (assoc-in [:db :user-groups] (by-id :id data))
+        (assoc :dispatch-later
+               [{:ms 3000, :dispatch [:clear-xhr :user-groups]}]))))
+
+(reg-xhr-success-event
   :verify-token :verify-token
   (fn [fx data]
     (-> fx
