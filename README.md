@@ -19,8 +19,8 @@ The system configuration live within `resources/system.edn`
 ### Email 
 The email config lives within the key ` :email/send-fn`, the options:
 
-- ` :email-type` The default is `:email-type/stdout-print` which prints the email to console. Or real email with
-`:email-type/smtp` which will require setting the `:smtp-server`, `:smtp-port`, `:smtp-username`,
+- `:email-type` The default is `:email-type/stdout-print` which prints the email to console.
+- `:email-type/smtp` for real email which will require setting the `:smtp-server`, `:smtp-port`, `:smtp-username`,
   and `:smtp-password`
 
 ## Running
@@ -59,7 +59,18 @@ To reload changes:
 TODO...
 
 ## Test
-TODO...
+### Prerequisites
+You also need to install
+[chromedriver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver).
+
+To run Clojure tests:
+```shell
+make .test
+```
+To run end-to-end UI test
+```shell
+make .e2e
+```
 
 ## License
 

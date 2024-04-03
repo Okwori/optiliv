@@ -7,8 +7,11 @@ backend:
 repl:
 	clj -M:dev:nrepl
 
-test:
+.test:
 	clj -M:test
+
+.e2e:
+	clj -M:e2e
 
 uberjar:
 	clj -T:build all
