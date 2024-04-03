@@ -37,7 +37,7 @@ WHERE ar.account_id = :identity;
 
 -- :name get-account-by-token :? :1
 -- :doc retrieves account info based on unique user generated tokens
-SELECT a.id, a.email, a.password, a.full_name as "full-name", a.active, a.last_login as "last-login",
+SELECT a.id, a.email, a.password, a.full_name as "full-name", a.mobile, a.active, a.last_login as "last-login",
         ast.name as "state", at.name as "type"
 FROM account a inner join account_type at on a.account_type_id = at.id
              inner join account_state ast on a.account_state_id = ast.id

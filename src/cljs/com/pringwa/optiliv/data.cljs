@@ -119,6 +119,13 @@
   :<- [::page-state :page-type/signup]
   (fn [page-state _]
     (:full-name page-state)))
+
+(reg-sub
+  ::signup-mobile
+  :<- [::page-state :page-type/signup]
+  (fn [page-state _]
+    (:mobile page-state)))
+
 (reg-sub
   ::show-mobile-menu?
   :<- [::page-state :page-type/home]
