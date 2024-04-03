@@ -35,7 +35,7 @@
           [:div.has-text-success
            "Success! The user will receive an email with a sign-up link."])))))
 
-(defn register-page []                                      ;TODO!
+(defn register-page []
   (let [current-user-type @(rf/subscribe [::data/current-user-type])
         current-user-name (rf/subscribe [::data/current-user-name])
         current-user-name-coll (str/split (or @current-user-name "My Account") #" ")]
