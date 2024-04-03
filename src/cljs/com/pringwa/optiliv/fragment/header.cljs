@@ -61,7 +61,7 @@
 
 (defn header [fname lname burger?]
   (r/with-let
-    [type (rf/subscribe [::data/current-user-group])]
+    [type (rf/subscribe [::data/current-user-type])]
     (let [show-mobile-menu? (rf/subscribe [::data/show-mobile-menu?])]
       [:nav.navbar.is-fixed-top
        [:div.navbar-brand
@@ -83,5 +83,10 @@
 
        [:div#navbar-menu {:class (str "navbar-menu fadeIn animated faster " (when @show-mobile-menu? "is-active"))}
         [:div.navbar-end
-         [nav-link "navbar-item has-divider" :register "Register" "mdi mdi-account-plus-outline"]]
+         (when (= @type "Optiliv")
+          [nav-link "navbar-item has-divider" :register "Register" "mdi mdi-account-plus-outline"])
+         [nav-link "navbar-item has-divider" :agents "Find Agents" "mdi mdi-account-plus-outline"]
+         [nav-link "navbar-item has-divider" :buy "Buy" "mdi mdi-cash-multiple"]
+         [nav-link "navbar-item has-divider" :rent "Rent" "mdi mdi-cash"]
+         [nav-link "navbar-item has-divider" :help "Help" "mdi mdi-help"]]
         [account-submenu fname lname]]])))
