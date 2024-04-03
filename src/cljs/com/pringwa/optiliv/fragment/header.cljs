@@ -72,7 +72,7 @@
           [:a {:class "navbar-item is-hidden-desktop"}
            [:span.icon [:i.mdi.mdi-backburger.mdi-24px]]])
         [:a.navbar-item {:href (k/path-for [:login])}
-         [:img {:src "img/logo.png"
+         [:img {:src "img/logo2.png"
                 :alt "OptiLiv"}]]]
        [:div.navbar-brand.is-right
         [nav-link-icon "navbar-item is-hidden-desktop" :report nil "mdi mdi-bell"]

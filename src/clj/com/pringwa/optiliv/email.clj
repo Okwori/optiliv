@@ -103,7 +103,7 @@
         \n\n"
        "To continue using the OptiLiv web app, you need to verify that you own this email address.\n\n"
        "To do so, just visit this link:\n"
-       "https://localhost:3000/verify-email?token=" token "\n\n"
+       "https://localhost:3000/signup?token=" token "\n\n"
        "If you don't know what any of this means, somebody may have mistyped their email address.
        Feel free to reply to this email and let us know, and we'll take care of it.\n\n"
        "Thanks,\n"
