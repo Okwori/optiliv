@@ -17,6 +17,8 @@
   [["/" :home]
    ["/change-email" :change-email]
    ["/change-password" :change-password]
+   ["/agents" :agents]
+   ["/customers" :customers]
    ["/login" :login]
    ["/logout" :logout]
    ["/register" :register]

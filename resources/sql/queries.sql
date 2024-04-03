@@ -13,7 +13,7 @@ WHERE a.email = :email;
 
 -- :name get-account-by-id :? :1
 SELECT a.email, a.password, a.full_name as "full-name", a.active, a.mobile, a.last_login as "last-login",
-       at.name as "type", at.id, ast.name as "state"
+       at.name as "type", at.id, ast.name as "state", a.account_type_id
 FROM account a inner join account_type at on at.id = a.account_type_id
                inner join account_state ast on a.account_state_id = ast.id
 WHERE a.id = :id;
