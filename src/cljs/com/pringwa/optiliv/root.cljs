@@ -21,9 +21,10 @@
    ["/signup" :signup]
    ["/verify-email" :verify-email]])
 
-(k/reg-controller :home
-                  {:params #(when (= :home (-> % :data :name)) true)
-                   :start  (fn [] nil)})
+(k/reg-controller
+  :home
+  {:params #(when (= :home (-> % :data :name)) true)
+   :start  (fn [] nil)})
 
 (k/reg-controller
   :change-email
