@@ -63,6 +63,15 @@ TODO...
 You also need to install
 [chromedriver](https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver).
 
+### One-time testing setup
+To allow the test to run seamlessly with Clojure CLI
+```clojure
+clojure -R:test -e "(doseq [class '(speclj.platform.SpecFailure
+                                    speclj.platform.SpecPending)]
+                      (compile class))"
+```
+
+### WIP
 To run Clojure tests:
 ```shell
 make .test
