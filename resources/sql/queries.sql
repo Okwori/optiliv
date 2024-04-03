@@ -83,4 +83,8 @@ SET password = :password,
     token = null,
     account_state_id = :state_id
 WHERE
-    id = :id
+    id = :id;
+
+-- :name update-account-roles! :! :n
+INSERT INTO account_roles (account_id, account_type_id)
+VALUES (:id, :group_id)

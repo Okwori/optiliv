@@ -13,7 +13,9 @@
   :navigate-to-authenticated-home
   (fn [{:keys [db]} _]
     {:navigate-to (case (-> db :current-user :type)
-                    "Optiliv" [:home]  ; TODO Add more routes for the other user groups
+                    "Optiliv" [:home]
+                    "Agents" [:agents]
+                    "Customers" [:customers]
                     [:login])}))
 
 (k/reg-event-db

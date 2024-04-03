@@ -6,7 +6,6 @@
     [com.pringwa.optiliv.fragment.header :refer [header]]
     [com.pringwa.optiliv.fragment.select-user-groups :refer [select-user-groups]]
     [com.pringwa.optiliv.fragment.unauthorized :refer [unauthorized]]
-    [com.pringwa.optiliv.fragment.xhr :as xhrs]
     [com.pringwa.optiliv.layout :as layout]
     [clojure.string :as str]
     [reagent.core :as r]

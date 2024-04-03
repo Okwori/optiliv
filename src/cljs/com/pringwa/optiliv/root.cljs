@@ -1,8 +1,10 @@
 (ns com.pringwa.optiliv.root
   (:require
     [com.pringwa.optiliv.events :as events]
+    [com.pringwa.optiliv.page.agents :refer [agents-page]]
     [com.pringwa.optiliv.page.change-email :refer [change-email-page]]
     [com.pringwa.optiliv.page.change-password :refer [change-password-page]]
+    [com.pringwa.optiliv.page.customers :refer [customers-page]]
     [com.pringwa.optiliv.page.login :refer [login-page]]
     [com.pringwa.optiliv.page.home :refer [home-page]]
     [com.pringwa.optiliv.page.register :refer [register-page]]
@@ -20,6 +22,16 @@
    ["/register" :register]
    ["/signup" :signup]
    ["/verify-email" :verify-email]])
+
+(k/reg-controller
+  :agents
+  {:params #(when (= :agents (-> % :data :name)) true)
+   :start  (fn [] nil)})
+
+(k/reg-controller
+  :customers
+  {:params #(when (= :customers (-> % :data :name)) true)
+   :start  (fn [] nil)})
 
 (k/reg-controller
   :home
@@ -66,6 +78,8 @@
                   :login [login-page]
                   :change-email [change-email-page]
                   :change-password [change-password-page]
+                  :agents [agents-page]
+                  :customers [customers-page]
                   :logout "Signing off... see you!"
                   :home [home-page]
                   :register [register-page]

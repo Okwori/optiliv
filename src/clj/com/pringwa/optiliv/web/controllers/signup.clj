@@ -27,12 +27,12 @@
   (if-let [err-msg (error-messages query-fn params)]
     [false err-msg]
     [true (let [token (get params "token")
-                {:strs [full-name mobile password]} params
+                {:strs [full-name mobile]} params
                 {:keys [id]} (query-fn :get-account-by-token {:token token})
                 password (get params "password")
                 encrypted-password (sc/encrypt password 16384 8 1)
                 account (query-fn :get-account-by-id {:id id})
-                ;_ (query-fn :update-account-state! {:id id :state_id 3})
+                _ (query-fn :update-account-roles! {:id id :group_id (:account_type_id account)})
                 ok? (query-fn :update-user! {:id     id :state_id 3 :full_name full-name
                                              :mobile mobile :password encrypted-password})]
             (when ok? account))]))
