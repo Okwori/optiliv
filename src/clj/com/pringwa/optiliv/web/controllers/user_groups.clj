@@ -8,8 +8,7 @@
 
 (defn handler
   [{:keys [session] :as req}]
-  (let [{:keys [query-fn]} (utils/route-data req)
-        _ (println (user-groups query-fn))]
+  (let [{:keys [query-fn]} (utils/route-data req)]
    (if session
      {:status 200
       :body   (user-groups query-fn)}

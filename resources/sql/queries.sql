@@ -35,12 +35,6 @@ FROM account_roles ar
     inner join account_type at on ar.account_type_id = at.id
 WHERE ar.account_id = :identity;
 
--- :name get-roles :? :*
-SELECT at.name as role
-FROM account_roles ar
-    inner join account_type at on ar.account_type_id = at.id
-WHERE ar.account_id = :identity;
-
 -- :name get-account-by-token :? :1
 -- :doc retrieves account info based on unique user generated tokens
 SELECT a.id, a.email, a.password, a.full_name as "full-name", a.active, a.last_login as "last-login",
@@ -62,4 +56,8 @@ SET password = :pwd
 WHERE id = :id;
 
 -- :name get-all-user-groups :? :*
-SELECT * FROM account_type
+SELECT * FROM account_type;
+
+-- :name create-user! :! :n
+INSERT INTO account (email, password, full_name, mobile, token, last_login, active, account_type_id, account_state_id)
+VALUES (:email, null, :full_name, :mobile, :token, null, false, :account_type_id, 1);

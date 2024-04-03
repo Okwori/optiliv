@@ -35,3 +35,11 @@
                                 [:change-email-failure]
                                 {:response-format (ajax/text-response-format)})
        :db         (assoc-in db [:xhr :change-email] {:in-flight? true})})))
+
+(k/reg-event-fx
+  :register
+  (fn [cofx [form-data]]
+    {:http-xhrio (post-config "/register" form-data
+                              [:register-success form-data]
+                              [:register-failure])
+     :db         (assoc-in (:db cofx) [:xhr :register] {:in-flight? true})}))

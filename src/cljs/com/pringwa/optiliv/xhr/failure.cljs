@@ -22,6 +22,7 @@
 (reg-xhr-failure-event :logout :logout)
 (reg-xhr-failure-event :forgot-password :forgot-password)
 (reg-xhr-failure-event :register/load-user-groups :user-groups)
+(reg-xhr-failure-event :register :register)
 (reg-xhr-failure-event :reset-password :reset-password)
 (reg-xhr-failure-event :signup :signup)
 
