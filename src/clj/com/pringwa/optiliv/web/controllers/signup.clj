@@ -48,8 +48,7 @@
 (defn handler
   [{:keys [multipart-params] :as req}]
   (let [{:keys [query-fn send-fn]} (utils/route-data req)
-        [ok? result] (transact query-fn multipart-params)
-        _ (println multipart-params "Result: " result)]
+        [ok? result] (transact query-fn multipart-params)]
     (if ok?
       (do
         (email/welcome-customer-intro send-fn (:email result))
