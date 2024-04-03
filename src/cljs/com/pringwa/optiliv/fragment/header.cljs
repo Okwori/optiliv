@@ -17,7 +17,9 @@
 
 (defn nav-link
   [class path text icon-class]
-  (let [href (if path (k/path-for [path]) "#")
+  (let [href (cond (keyword? path) (k/path-for [path])
+                   (string? path) path
+                   :else "#")
         show-mobile-menu? (rf/subscribe [::data/show-mobile-menu?])]
     [:a
      {:href     href
@@ -85,7 +87,7 @@
         [:div.navbar-end
          (when (= @type "Optiliv")
           [nav-link "navbar-item has-divider" :register "Register" "mdi mdi-account-plus-outline"])
-         [nav-link "navbar-item has-divider" :agents "Find Agents" "mdi mdi-account-plus-outline"]
+         [nav-link "navbar-item has-divider" "/cfs" "Find Agents" "mdi mdi-account-plus-outline"]
          [nav-link "navbar-item has-divider" :buy "Buy" "mdi mdi-cash-multiple"]
          [nav-link "navbar-item has-divider" :rent "Rent" "mdi mdi-cash"]
          [nav-link "navbar-item has-divider" :help "Help" "mdi mdi-help"]]
