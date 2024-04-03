@@ -79,23 +79,21 @@
            [:div.level-item
             [:span.subtitle.is-4.has-text-primary "Basic Info"]]]]]
         [:div.columns
-         ;(when full-name?
          [:div.column
-          [field "full-name" "text" "Full Name" false nil
+          [field "full-name" "text" "Full Name" true nil
            {:disabled false
             :default-value @full-name}
-           "You cannot change this yet, "]]
-         ;)
+           "You cannot change this yet"]]
          [:div.column
-          [field "email" "text" "Email" false nil
+          [field "email" "text" "Email" true nil
            {:disabled true
             :default-value @email}
-           "You cannot change this yet, "]]]
+           "You cannot change this yet"]]]
         [:div.columns
          [:div.column
-          [field "password" "password" "Password" false nil]]
+          [field "password" "password" "Password" true nil]]
          [:div.column
-          [field "confirm-password" "password" "Confirm Password" false nil]]]
+          [field "confirm-password" "password" "Confirm Password" true nil]]]
         [:div.columns
          [:div.column
           [field "mobile" "text" "Mobile" false nil
@@ -104,8 +102,8 @@
          [:div.column]]
         [:div.columns
          [:div.column
-          [:input.button.is-primary {:type "submit", :value "Create"}]]]]
-       [status :signup success-status error-status]]]]))
+          [:input.button.is-primary {:type "submit", :value "Create"}]]]]]
+      [status :signup success-status error-status]]]))
 
 (defn signup-page []
   (r/with-let

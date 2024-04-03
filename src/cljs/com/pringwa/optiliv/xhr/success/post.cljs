@@ -27,3 +27,9 @@
     (-> db
         (assoc-in [:xhr :register]
                   {:in-flight? false, :error nil, :success? true}))))
+
+(k/reg-event-db
+  :signup-success
+  (fn [db [form-data]]
+    (assoc-in db [:xhr :signup]
+              {:in-flight? false, :error nil, :success? true})))

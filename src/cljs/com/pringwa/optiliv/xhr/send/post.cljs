@@ -43,3 +43,13 @@
                               [:register-success form-data]
                               [:register-failure])
      :db         (assoc-in (:db cofx) [:xhr :register] {:in-flight? true})}))
+
+
+(k/reg-event-fx
+  :signup
+  (fn [cofx [form-data]]
+    {:http-xhrio (post-config "/signup" form-data
+                              [:signup-success]
+                              [:signup-failure]
+                              {:response-format (ajax/text-response-format)})
+     :db         (assoc-in (:db cofx) [:xhr :signup] {:in-flight? true})}))

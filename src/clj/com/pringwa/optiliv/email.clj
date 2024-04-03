@@ -86,8 +86,107 @@
     :content (java.io.File. "resources/public/img/logo2.png")}])
 
 (defn welcome-customer [send-email email token]
-  (let [subject "Welcome to OptiLiv "]
+  (let [subject "You got an invitation to OptiLiv "]
     (send-email email subject (welcome-customer-body token) nil nil)))
+
+(defn- welcome-customer-intro-body []
+  [{:type    "text/html"
+    :content (str "<!doctype html>
+<html>
+    <head>
+        <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+        <link rel=\"stylesheet\" href=\"https://unpkg.com/bulma@0.9.4/css/bulma.min.css\"/>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <title>OptiLiv: Find Your Optimal Home</title>
+        <style>
+            html{ font-family: 'Montserrat', sans-serif;}
+            .section{margin:0px 50px;}
+            .column{padding: 30px;}
+            .media-content{padding: 5px;}
+            .card-image{padding-top:20px}
+            img{display: block;
+                margin: 0px auto 0px auto;}
+            a{color:#f8c104;
+            font-weight: bold;
+            font-size: 170%;}
+        </style>
+    </head>
+    <body>
+        <section class=\"section\">
+            <div class=\"container has-text-centered\">
+                <img src=\"images/logo9.png\" style=\"max-height: 80px\">
+                <h2 class=\"title has-text-weight-bold\">WELCOME TO OPTILIV</h2>
+                <p>Whether you're renting, buying or looking for an agent. We are here to find your optimal home. </p>
+
+                <div class=\"columns is-centered\" >
+                    <div class=\"column\">
+                        <div class=\"card\">
+                            <div class=\"card-image\">
+                                <figure class=\"image\">
+                                    <img src=\"images/renticon2.png\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">
+                                </figure>
+                            </div>
+                            <div class=\"card-content\">
+                                <div class=\"media\">
+                                    <div class=\"media-content\">
+                                        <a href=\"\">Rent</a> <span class=\"title is-4\"> a Home</span>
+                                    </div>
+                                </div>
+                                <div class=\"content\">
+                                    Explore our selection of rental properties in various neighborhoods. Find the ideal home that fits your lifestyle and budget.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=\"column\">
+                        <div class=\"card\">
+                            <div class=\"card-image\">
+                                <figure class=\"image \">
+                                    <img src=\"images/buyicon2.png\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">
+                                </figure>
+                            </div>
+                            <div class=\"card-content\">
+                                <div class=\"media-content\">
+                                    <a href=\"\">Buy</a> <span class=\"title is-4\"> a Home</span>
+                                </div>
+                                <div class=\"content\">
+                                    Start your journey to homeownership with us. From starter homes to luxury estates, we offer a wide range
+                                    of properties for sale to help you find your dream home.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=\"column\">
+                        <div class=\"card\">
+                            <div class=\"card-image\">
+                                <figure class=\"image\">
+                                    <img src=\"images/agent.png\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">
+                                </figure>
+                            </div>
+                            <div class=\"card-content\">
+                                <div class=\"media-content\">
+                                    <a href=\"\">Find</a> <span class=\"title is-4\"> an Agent</span>
+                                </div>
+
+                                <div class=\"content\">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>")
+    }
+   {:type    :attachment
+    :content (java.io.File. "resources/public/img/logo2.png")}])
+
+(defn welcome-customer-intro [send-email email]
+  (let [subject "Welcome to OptiLiv"]
+    (send-email email subject (welcome-customer-intro-body) nil nil)))
 
 (defn- email-changed-body [new-email]
   (str "Somebody changed the email address associated with your OptiLiv account.\n\n"

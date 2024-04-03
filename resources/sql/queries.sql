@@ -11,6 +11,13 @@ FROM account a inner join account_type at on at.id = a.account_type_id
     inner join account_state ast on a.account_state_id = ast.id
 WHERE a.email = :email;
 
+-- :name get-account-by-id :? :1
+SELECT a.email, a.password, a.full_name as "full-name", a.active, a.mobile, a.last_login as "last-login",
+       at.name as "type", at.id, ast.name as "state"
+FROM account a inner join account_type at on at.id = a.account_type_id
+               inner join account_state ast on a.account_state_id = ast.id
+WHERE a.id = :id;
+
 -- :name create-session :! :n
 INSERT INTO session
 (user_id)
@@ -55,9 +62,25 @@ UPDATE account
 SET password = :pwd
 WHERE id = :id;
 
+-- :name update-account-state! :! :n
+UPDATE account
+SET account_state_id = :state_id
+WHERE id = :id;
+
 -- :name get-all-user-groups :? :*
 SELECT * FROM account_type;
 
 -- :name create-user! :! :n
 INSERT INTO account (email, password, full_name, mobile, token, last_login, active, account_type_id, account_state_id)
 VALUES (:email, null, :full_name, :mobile, :token, null, false, :account_type_id, 1);
+
+-- :name update-user! :! :n
+UPDATE account
+SET password = :password,
+    full_name = :full_name,
+    mobile = :mobile,
+    active = true,
+    token = null,
+    account_state_id = :state_id
+WHERE
+    id = :id
