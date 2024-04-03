@@ -23,8 +23,7 @@
 
 (k/reg-event-db
   :register-success
-  (fn [db [form-data account]]
-    (let [{:keys [id]} account]
-      (-> db
-          (assoc-in [:xhr :register]
-                    {:in-flight? false, :error nil, :success? true})))))
+  (fn [db _]
+    (-> db
+        (assoc-in [:xhr :register]
+                  {:in-flight? false, :error nil, :success? true}))))

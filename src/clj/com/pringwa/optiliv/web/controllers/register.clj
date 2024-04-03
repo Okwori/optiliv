@@ -15,5 +15,5 @@
                                        :mobile mobile :account_type_id account-type-id})
           _ (when ok? (email/welcome-customer send-fn email token))]
       {:status 201,
-       :body   ok?})
+       :body   {}})
     (utils/error-response 403 "forbidden")))

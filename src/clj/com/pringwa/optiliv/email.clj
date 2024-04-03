@@ -1,10 +1,9 @@
 (ns com.pringwa.optiliv.email
-  (:require [clojure.string :as string]
-            [clojure.instant :refer [read-instant-date]]
-            [integrant.core :as ig]
-            [postal.core :refer [send-message]]))
+  (:require
+    [integrant.core :as ig]
+    [postal.core :refer [send-message]]))
 
-(def ^:private email-from-addr "OptiLiv <notifications@optiliv.com>")
+(def ^:private email-from-addr "OptiLiv <notifications@premiumprep.com>")
 
 (defmethod ig/init-key :email/send-fn
   [_ config]
@@ -30,9 +29,61 @@
 
 (defn- welcome-customer-body [token]
   [{:type    "text/html"
-    :content (str "<p>Great news!</p>
-    <p>Thanks so much,<br>
-    OptiLiv</p>")}])
+    :content (str "<!doctype html> "
+                  "<html> "
+                  "<head> "
+                  "<meta charset=\"UTF-8\"> "
+                  "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.1\"> "
+                  "<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'> "
+                  "<title>OptiLiv: Find Your Optimal Home</title> "
+                  "<style> "
+                  "html{ "
+                  "font-family: 'Montserrat', sans-serif;"
+                  "}"
+                  ".section .container{ "
+                  "padding:0px 0px; "
+                  "margin-top: 0px;} "
+                  ".card-content { "
+                  "background-color: transparent; "
+                  "padding: 0px;}"
+                  ".box { "
+                  "margin: 120px 0px; "
+                  "padding: 100px 50px;} "
+                  ".column{margin-top:20px;} "
+                  ".columns.is.centered{justify-content: center;} "
+                  "img{ "
+                  "display: block; "
+                  "margin-left: auto; "
+                  "margin-right: auto;} "
+                  "h4{padding-top: 30px;} "
+                  ".code{" "color:#f8c104; "
+                  "font-size: 40px;" "} "
+                  ".button{
+                          margin:20px 0px 20px;
+                          padding: 0px 20px;
+                          background-color:#f8c104;}
+                          </style> "
+                  "</head> "
+                  "<body> "
+                  "<section class=\"is-fullheight\"> "
+                  "<div class=\"container\"> "
+                  "<div class=\"column is-4 is-offset-4\"> "
+                  "<div class=\"box\"> "
+                  "<img src=\"cid:logo2.png\" style=\"max-height: 70px\" alt=\"OptiLiv\"> "
+                  "<h4 class=\"title is-4 has-text-centered has-text-weight-bold\">Invitation!</h4>
+                  <p>You have been invited to join OptiLiv! \n Click here to create your account:</p><br>
+                  <a href=\"http://localhost:3000/signup?token=" token "\">"
+                  "http://localhost:3000/signup?token=" token "
+                  </a><br>
+                  <p>If this you did not request access to OptiLiv, ignore this email.</p>
+                  </div>
+                  </div>
+                  </div>
+                  </section>
+                  </body>
+                  </html>")}
+   {:type    :attachment
+    :content (java.io.File. "resources/public/img/logo2.png")}])
 
 (defn welcome-customer [send-email email token]
   (let [subject "Welcome to OptiLiv "]
