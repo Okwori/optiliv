@@ -28,8 +28,10 @@
 ;; Routes
 (defn page-routes [_opts]
   [["/" {:get home}]
+   ["/agents" {:get home}]
    ["/change-email" {:get home}]
    ["/change-password" {:get home}]
+   ["/customers" {:get home}]
    ["/cws" {:get cws}]
    ["/cfs" {:get cfs}]
    ["/cfs2" {:get cfs2}]
