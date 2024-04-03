@@ -6,7 +6,7 @@
     [com.pringwa.optiliv.page.login :refer [login-page]]
     [com.pringwa.optiliv.page.home :refer [home-page]]
     [com.pringwa.optiliv.page.register :refer [register-page]]
-    ;[com.pringwa.optiliv.page.signup :refer [signup-page]]
+    [com.pringwa.optiliv.page.signup :refer [signup-page]]
     [com.pringwa.optiliv.page.verify-email :refer [verify-email-page]]
     com.pringwa.optiliv.xhr
     [kee-frame.core :as k]))
@@ -68,6 +68,6 @@
                   :logout "Signing off... see you!"
                   :home [home-page]
                   :register [register-page]
-                  ;:signup [signup-page]
+                  :signup [signup-page]
                   :verify-email [verify-email-page]
                   nil [:div "..loading!"]))
