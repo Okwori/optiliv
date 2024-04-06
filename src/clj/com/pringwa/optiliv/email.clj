@@ -95,98 +95,108 @@
 
 (defn- welcome-customer-intro-body []
   [{:type    "text/html"
-    :content (str "<!doctype html>
-<html>
-    <head>
-        <meta charset=\"UTF-8\">
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-        <link rel=\"stylesheet\" href=\"https://unpkg.com/bulma@0.9.4/css/bulma.min.css\"/>
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-        <title>OptiLiv: Find Your Optimal Home</title>
-        <style>
-            html{ font-family: 'Montserrat', sans-serif;}
-            .section{margin:0px 50px;}
-            .column{padding: 30px;}
-            .media-content{padding: 5px;}
-            .card-image{padding-top:20px}
-            img{display: block;
-                margin: 0px auto 0px auto;}
-            a{color:#f8c104;
-            font-weight: bold;
-            font-size: 170%;}
-        </style>
-    </head>
-    <body>
-        <section class=\"section\">
-            <div class=\"container has-text-centered\">
-                <img src=\"images/logo9.png\" style=\"max-height: 80px\">
-                <h2 class=\"title has-text-weight-bold\">WELCOME TO OPTILIV</h2>
-                <p>Whether you're renting, buying or looking for an agent. We are here to find your optimal home. </p>
-
-                <div class=\"columns is-centered\" >
-                    <div class=\"column\">
-                        <div class=\"card\">
-                            <div class=\"card-image\">
-                                <figure class=\"image\">
-                                    <img src=\"images/renticon2.png\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">
-                                </figure>
-                            </div>
-                            <div class=\"card-content\">
-                                <div class=\"media\">
-                                    <div class=\"media-content\">
-                                        <a href=\"\">Rent</a> <span class=\"title is-4\"> a Home</span>
-                                    </div>
-                                </div>
-                                <div class=\"content\">
-                                    Explore our selection of rental properties in various neighborhoods. Find the ideal home that fits your lifestyle and budget.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=\"column\">
-                        <div class=\"card\">
-                            <div class=\"card-image\">
-                                <figure class=\"image \">
-                                    <img src=\"images/buyicon2.png\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">
-                                </figure>
-                            </div>
-                            <div class=\"card-content\">
-                                <div class=\"media-content\">
-                                    <a href=\"\">Buy</a> <span class=\"title is-4\"> a Home</span>
-                                </div>
-                                <div class=\"content\">
-                                    Start your journey to homeownership with us. From starter homes to luxury estates, we offer a wide range
-                                    of properties for sale to help you find your dream home.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=\"column\">
-                        <div class=\"card\">
-                            <div class=\"card-image\">
-                                <figure class=\"image\">
-                                    <img src=\"images/agent.png\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">
-                                </figure>
-                            </div>
-                            <div class=\"card-content\">
-                                <div class=\"media-content\">
-                                    <a href=\"\">Find</a> <span class=\"title is-4\"> an Agent</span>
-                                </div>
-
-                                <div class=\"content\">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </body>
-</html>")
+    :content (str "<!doctype html>"
+                  "\n<html>"
+                  "\n    <head>"
+                  "\n        <meta charset=\"UTF-8\">"
+                  "\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
+                  "\n        <link rel=\"stylesheet\" href=\"https://unpkg.com/bulma@0.9.4/css/bulma.min.css\"/>"
+                  "\n        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>"
+                  "\n        <title>OptiLiv: Find Your Optimal Home</title>"
+                  "\n        <style>"
+                  "\n            html{ font-family: 'Montserrat', sans-serif;}"
+                  "\n            .section{margin:0px 50px;}"
+                  "\n            .column{padding: 30px;}"
+                  "\n            .media-content{padding: 5px;}"
+                  "\n            .card-image{padding-top:20px}"
+                  "\n            img{display: block;"
+                  "\n                margin: 0px auto 0px auto;}"
+                  "\n            a{color:#f8c104;"
+                  "\n                font-weight: bold;"
+                  "\n                font-size: 170%;}"
+                  "\n        </style> "
+                  "\n    </head>"
+                  "\n    <body>  "
+                  "\n      <section class=\"section\">"
+                  "\n        <div class=\"container has-text-centered\">"
+                  "\n            <img src=\"cid:logo\" style=\"max-height: 80px\">"
+                  "\n            <h2 class=\"title has-text-weight-bold\">WELCOME TO OPTILIV</h2>"
+                  "\n            <p>Whether you're renting, buying or looking for an agent. We are here to find your optimal home. </p>"
+                  "\n"
+                  "\n            <div class=\"columns is-centered\" >"
+                  "\n                <div class=\"column\">"
+                  "\n                    <div class=\"card\">"
+                  "\n                        <div class=\"card-image\">"
+                  "\n                            <figure class=\"image\">"
+                  "\n                                <img src=\"cid:rent\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">"
+                  "\n                            </figure>"
+                  "\n                        </div>"
+                  "\n                        <div class=\"card-content\">"
+                  "\n                            <div class=\"media\">"
+                  "\n                                <div class=\"media-content\">"
+                  "\n                                    <a href=\"\">Rent</a> <span class=\"title is-4\"> a Home</span>"
+                  "\n                                </div>"
+                  "\n                            </div>"
+                  "\n                            <div class=\"content\">"
+                  "\n                                Explore our selection of rental properties in various neighborhoods. Find the ideal home that fits your lifestyle and budget."
+                  "\n                            </div>"
+                  "\n                        </div>"
+                  "\n                    </div>"
+                  "\n                </div>"
+                  "\n                <div class=\"column\">"
+                  "\n                    <div class=\"card\">"
+                  "\n                        <div class=\"card-image\">"
+                  "\n                            <figure class=\"image \">"
+                  "\n                                <img src=\"cid:buy\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">"
+                  "\n                            </figure>"
+                  "\n                        </div>"
+                  "\n                        <div class=\"card-content\">"
+                  "\n                            <div class=\"media-content\">"
+                  "\n                                <a href=\"\">Buy</a> <span class=\"title is-4\"> a Home</span>"
+                  "\n                            </div>"
+                  "\n                            <div class=\"content\">"
+                  "\n                                Start your journey to homeownership with us. From starter homes to luxury estates, we offer a wide range "
+                  "\n                                of properties for sale to help you find your dream home."
+                  "\n                            </div>"
+                  "\n                        </div>"
+                  "\n                    </div>"
+                  "\n                </div>"
+                  "\n                <div class=\"column\">"
+                  "\n                    <div class=\"card\">"
+                  "\n                        <div class=\"card-image\">"
+                  "\n                            <figure class=\"image\">"
+                  "\n                                <img src=\"cid:agent\" style=\"max-height: 100px; max-width: 100px;\" alt=\"Placeholder image\">"
+                  "\n                            </figure>"
+                  "\n                        </div>"
+                  "\n                        <div class=\"card-content\">"
+                  "\n                           <div class=\"media-content\">"
+                  "\n                                <a href=\"\">Find</a> <span class=\"title is-4\"> an Agent</span>"
+                  "\n                            </div>"
+                  "\n                            <div class=\"content\">"
+                  "\n                                Let us help you find an agent in your area!"
+                  "\n                                </a>"
+                  "\n                            </div>"
+                  "\n                        </div>"
+                  "\n                    </div>"
+                  "\n                </div>"
+                  "\n            </div>"
+                  "\n        </div>"
+                  "\n      </section>"
+                  "\n    </body>"
+                  "\n</html>")
     }
    {:type    :attachment
-    :content (java.io.File. "resources/public/img/logo2.png")}])
+    :content (java.io.File. "resources/public/img/logo2.png")
+    :content-id "logo"}
+   {:type    :attachment
+    :content (java.io.File. "resources/public/img/rentIcon.png")
+    :content-id "rent"}
+   {:type    :attachment
+    :content (java.io.File. "resources/public/img/buyIcon.png")
+    :content-id "buy"}
+   {:type    :attachment
+    :content (java.io.File. "resources/public/img/agentIcon.png")
+    :content-id "agent"}])
 
 (defn welcome-customer-intro [send-email email]
   (let [subject "Welcome to OptiLiv"]
