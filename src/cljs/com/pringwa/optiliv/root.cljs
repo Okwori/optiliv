@@ -66,7 +66,7 @@
 (k/reg-controller
   :help
   {:params #(when (= :help (-> % :data :name)) true)
-   :start  [:register/load-user-groups]})                   ;;TODO
+   :start  [:register/load-user-groups]})
 
 (k/reg-controller
   :list-property
