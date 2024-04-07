@@ -74,7 +74,7 @@
           [:a {:class "navbar-item is-hidden-desktop"}
            [:span.icon [:i.mdi.mdi-backburger.mdi-24px]]])
         [:a.navbar-item {:on-click #(rf/dispatch [:navigate-to-authenticated-home])}
-         [:img {:src "img/logo2.png"
+         [:img {:src "img/logo.png"
                 :alt "OptiLiv"}]]]
        [:div.navbar-brand.is-right
         [nav-link-icon "navbar-item is-hidden-desktop" :report nil "mdi mdi-bell"]
@@ -87,7 +87,8 @@
         [:div.navbar-end
          (when (= @type "Optiliv")
           [nav-link "navbar-item has-divider" :register "Register" "mdi mdi-account-plus-outline"])
-         [nav-link "navbar-item has-divider" "/cfs" "Find Agents" "mdi mdi-account-plus-outline"]
+         ;[nav-link "navbar-item has-divider" "/cfs" "Find Agents" "mdi mdi-account-plus-outline"]
+         [nav-link "navbar-item has-divider" :list-property "List" "mdi mdi-home-plus"]
          [nav-link "navbar-item has-divider" :buy "Buy" "mdi mdi-cash-multiple"]
          [nav-link "navbar-item has-divider" :rent "Rent" "mdi mdi-cash"]
          [nav-link "navbar-item has-divider" :help "Help" "mdi mdi-help"]]

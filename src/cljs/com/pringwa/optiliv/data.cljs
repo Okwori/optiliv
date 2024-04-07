@@ -139,3 +139,18 @@
     (if (= groups {})
       []
       (vals groups))))
+
+(reg-sub
+  ::tab-select
+  (fn [[_ page-type] _] (subscribe [::page-state page-type]))
+  (fn [page-state _] (get page-state :tab-select)))
+
+(reg-sub
+  ::tab-select-active-tab
+  (fn [[_ page-type] _] (subscribe [::tab-select page-type]))
+  (fn [tab-select _] (get tab-select :tab)))
+
+(reg-sub
+  ::tab-select-active?
+  (fn [[_ page-type] _] (subscribe [::tab-select page-type]))
+  (fn [tab-select _] (get tab-select :active? true)))

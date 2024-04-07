@@ -37,4 +37,16 @@
   (fn [form-id]
     (-> form-id js/document.getElementById .reset)))
 
+(k/reg-event-db
+  ::change-active-tab
+  (fn [db [page-type tab]]
+    (-> db
+        (assoc-in [:page page-type :tab-select :tab] tab)
+        (assoc-in [:page page-type :tab-select :active?] true))))
 
+(k/reg-event-fx
+  ::switch-tab
+  (fn [cofx [page-type new-tab]]
+    (let [current-tab (get-in cofx [:db :page page-type :tab-select :tab])]
+      (if (not= current-tab new-tab)
+        {:dispatch [::change-active-tab page-type new-tab]}))))
