@@ -97,5 +97,5 @@
                                  io.github.kit-clj/kit-generator      {:mvn/version "0.2.1"}
                                  org.clojure/tools.namespace          {:mvn/version "1.4.4"}
                                  com.lambdaisland/classpath           {:mvn/version "0.4.44"}}
-                   :extra-paths ["spec"]
+                   :extra-paths ["spec" "env/dev/clj" "env/dev/resources" "env/test/resources"]
                    :main-opts   ["-m" "speclj.cli" "-c"]}}}
