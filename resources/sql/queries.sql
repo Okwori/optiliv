@@ -87,4 +87,8 @@ WHERE
 
 -- :name update-account-roles! :! :n
 INSERT INTO account_roles (account_id, account_type_id)
-VALUES (:id, :group_id)
+VALUES (:id, :group_id);
+
+-- :name get-properties :? :*
+SELECT * FROM property;
+
