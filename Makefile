@@ -22,7 +22,7 @@ repl:
 	touch $@
 
 uberjar:
-	clj -T:build all
+	clojure -T:build all
 
 frontend:
 	npx shadow-cljs watch app
