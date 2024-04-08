@@ -77,7 +77,6 @@
                   "\n                  <p>You have been invited to join OptiLiv! Click here to create your account:</p><br>"
                   "\n                   <a href=\"http://localhost:3000/signup?token=\"" token ">http://localhost:3000/signup?token=" token
                   "\n                   </a><br>"
-                  "\n                  <div class=\"code has-text-weight-bold\">123456</div><br>"
                   "\n                  <p>If this you did not request access to OptiLiv, ignore this email.</p>"
                   "\n                </div>"
                   "\n              </div>"

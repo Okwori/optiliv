@@ -11,6 +11,7 @@
           token (url-part 64)
           {:strs [email full-name mobile user-group-id]} multipart-params
           account-type-id (Integer/parseInt user-group-id)
+          _ (println "Here: " email full-name token mobile account-type-id)
           ok? (query-fn :create-user! {:email  email :full_name full-name :token token
                                        :mobile mobile :account_type_id account-type-id})
           _ (when ok? (email/welcome-customer send-fn email token))]
