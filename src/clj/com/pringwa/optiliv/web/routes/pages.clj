@@ -17,7 +17,7 @@
   (layout/render request "home.html"))
 
 (defn cws [request]
-  (layout/render request "cws.html"))
+  (layout/render request "loginpage.html"))
 
 (defn cfs [request]
   (layout/render request "cfs.html"))
