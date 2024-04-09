@@ -60,7 +60,7 @@
                               :prod {:jdbc-url #env JDBC_URL}}
  :email/send-fn {:email-type :email-type/smtp
                  :smtp-username #env SMTP_USERNAME
-                 :smtp-password #env SMTP_PASSWWORD
+                 :smtp-password #env SMTP_PASSWORD
                  :smtp-server #env SMTP_SERVER
                  :smtp-port 587
                  :tls true}}
