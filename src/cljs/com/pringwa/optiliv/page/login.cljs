@@ -68,10 +68,7 @@
   (r/with-let
     [xhr-status (rf/subscribe [::data/xhr :current-user])]
     [:<>
-
-     ;<div style="background: url(/img/mountains.png)"></div>
      [:section.hero.is-info.is-fullheight.has-background-image
-      {:style {:background "url(/img/mountains.png)"}}
       [:ul.nav
        [:li  "Log In"]
        [:li  "Sign up"]
