@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      <meta charset="UTF-8"/>
+      <meta content/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="description"
+          content="Live Optimally: We find you apartments and homes tailored for you across the country! "/>
+      <title>Welcome to OptiLiv</title>
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+      <script defer src="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"></script> 
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <title>OptiLiv: Find Your Optimal Home</title>
+        <link rel="stylesheet" href="../../../../OneDrive/Documents/OptiLiv/loginpage.css">
+    </head>
+
+    <body style="-ms-overflow-style: none; scrollbar-width: none; overflow: hidden;">
+        <div class="container" style="background:black">
+            <div class="navbar-brand">
+              <img src="../../../../OneDrive/Documents/OptiLiv/image/logo.png" alt="OptiLiv's Logo" />
+            </div>
+        </div>
+        <section class="hero is-info is-fullheight has-background-image">
+            <ul class="nav">
+                <li onclick="showLogin()">Log In</li>
+                <li onclick="showSignup()">Sign up</li>
+                <li onclick="showForgotPassword()">Forgot password</li>
+                <li onclick="showSubscribe()">Subscribe</li>
+                <li onclick="showContactUs()">Contact us</li>
+              </ul>
+              <div class="wrapper">
+                <div class="rec-prism">
+                  <div class="face face-top">
+                    <div class="content">
+                      <h2>Subscribe</h2>
+                      <small>Enter your email so we can send you the latest updates!</small>
+                      <form onsubmit="event.preventDefault()">
+                        <div class="field-wrapper">
+                          <input type="text" name="email" placeholder="email" required>
+                          <label>e-mail</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <input type="submit">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="face face-front">
+                    <div class="content">
+                      <h2>Log in</h2>
+                      <form onsubmit="event.preventDefault()">
+                        <div class="field">
+                          <label for="" class="label">Email</label>
+                          <div class="control has-icons-left">
+                            <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
+                            <span class="icon is-small is-left">
+                              <i class="mdi mdi-email-box"></i>
+                            </span>
+                          </div>
+                        </div>
+                        <!-- Password Field -->
+                        <div class="field">
+                          <label class="label">Password</label>
+                          <div class="control has-icons-left">
+                            <input type="password" placeholder="*******" class="input" required> 
+                            <span class="icon is-small is-left">
+                              <i class="mdi mdi-lock"></i>
+                            </span>
+                          </div>
+                        </div>
+                        <!-- Remember me Field -->
+                        <div class="field">
+                          <label class="checkbox">
+                            <input type="checkbox">
+                              Remember me
+                          </label>
+                          <span class="psw" onclick="showForgotPassword()" style="margin-top: 5px; margin-bottom: 0px; text-align: left;">Forgot Password?   </span>
+                        </div>
+                        
+                        <!-- Other option Log in -->
+                        <div class="divider" style="display: flex; justify-content: center; align-items: center;"> OR </div>
+                          <div class="social-buttons">
+                            <button class="button is-fullwidth" style="background-color: #fff; border-color: #dbdbdb; display: flex;">
+                              <span class="icon">
+                                <i class="mdi mdi-google"></i>
+                              </span>
+                              <span> Log in with Google</span>
+                            </button>
+                            <button class="button is-fullwidth" style="background-color: #fff; border-color: #dbdbdb; display: flex;">
+                              <span class="icon">
+                                <i class="mdi mdi-facebook"></i>
+                              </span>
+                              <span> Log in with Facebook</span>
+                            </button>
+                            <button class="button is-fullwidth" style="background-color: #fff; border-color: #dbdbdb; display: flex;">
+                              <span class="icon">
+                                <i class="mdi mdi-apple"></i>
+                              </span>
+                              <span> Log in with Apple</span>
+                            </button>
+                          </div>                      
+                        <div class="field-wrapper">
+                          <input type="submit" style="margin-top:-20px">
+                        </div>
+                        <span class="signup" onclick="showSignup()" style="margin-top:5px">Not a user?  Sign up</span>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="face face-back">
+                    <div class="content">
+                      <h2>Forgot your password?</h2>
+                      <small>Enter your email so we can send you a reset link for your password</small>
+                      <form onsubmit="event.preventDefault()">
+                        <div class="field-wrapper">
+                          <input type="text" name="email" placeholder="email" required>
+                          <label>e-mail</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <input type="submit"">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="face face-right">
+                    <div class="content">
+                      <h2>Sign up</h2>
+                      <form onsubmit="event.preventDefault()">                        
+                        <div class="field-wrapper" style="margin-top: -1px">
+                            <input type="text" name="username" placeholder="username" required>
+                            <label>username</label>
+                          </div>
+                        <div class="field-wrapper">
+                          <input type="text" name="email" placeholder="email" required>
+                          <label>e-mail</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <input type="password" name="password" placeholder="password" autocomplete="new-password"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required
+                           title="Password must include at least 1 uppercase, 1 lowercase, 1 number, 1 special character,
+                            and be at least 8 characters long.">
+                          <label>password</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <input type="password" name="password2" placeholder="password" required>
+                          <label>re-enter password</label>
+                        </div>
+                        <label class="checkbox" style="font-size:10px">
+                            <input type="checkbox" required/>
+                            I have read and agreed to the <a href="#">Terms and Conditions</a>
+                        </label>    
+                        <div class="field-wrapper" style="margin-top: 5px; margin-bottom: -15px">
+                          <input type="submit">
+                        </div>
+                        <span class="singin" onclick="showLogin()">Already a user?  Sign in</span>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="face face-left">
+                    <div class="content">
+                      <h2>Contact us</h2>
+                      <form onsubmit="event.preventDefault()">
+                        <div class="field-wrapper">
+                          <input type="text" name="name" placeholder="name" required>
+                          <label>Name</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <input type="text" name="email" placeholder="email" required>
+                          <label>e-mail</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <textarea placeholder="your message" required></textarea>
+                          <label>your message</label>
+                        </div>
+                        <div class="field-wrapper">
+                          <input type="submit">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="face face-bottom">
+                    <div class="content">
+                      <div class="thank-you-msg">
+                        Thank you!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+        <script>
+            let prism = document.querySelector(".rec-prism");
+
+            function showSignup(){
+            prism.style.transform = "translateZ(-100px) rotateY( -90deg)";
+            }
+            function showLogin(){
+            prism.style.transform = "translateZ(-100px)";
+            }
+            function showForgotPassword(){
+            prism.style.transform = "translateZ(-100px) rotateY( -180deg)";
+            }
+
+            function showSubscribe(){
+            prism.style.transform = "translateZ(-100px) rotateX( -90deg)";
+            }
+
+            function showContactUs(){
+            prism.style.transform = "translateZ(-100px) rotateY( 90deg)";
+            }
+
+            function showThankYou(){
+            prism.style.transform = "translateZ(-100px) rotateX( 90deg)";
+            }
+        </script>
+
+    </body>
+
+
+
+
+</html>
