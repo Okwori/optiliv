@@ -1,15 +1,15 @@
 * {
     box-sizing: border-box;
   }
-  
+
   body {
     font-family: Tahoma, Verdana, Segoe, sans-serif;
     font-size: 14px;
-    background: url(image/mountains.png);
+    background: url(img/mountains.png);
     padding: 20px;
     text-align: center;
   }
-  
+
   .wrapper {
     width: 250px;
     height: 350px;
@@ -17,7 +17,7 @@
     perspective: 800px;
     text-align: left;
   }
-  
+
   .rec-prism {
     width: 100%;
     height: 100%;
@@ -26,7 +26,7 @@
     transform: translateZ(-100px);
     transition: transform 0.5s ease-in;
   }
-  
+
   .face {
     position: absolute;
     width: 250px;
@@ -160,7 +160,7 @@
     height: 250px;
     transform: rotateX(-90deg) translateZ(225px);
   }
-  
+
   .nav {
     margin: 20px 0;
     padding: 0;
@@ -186,7 +186,7 @@
   .nav li:hover:after {
     width: 100%;
   }
-  
+
   .psw, .signup, .singin {
     display: block;
     margin: 20px 0;
@@ -195,11 +195,11 @@
     color: #42509e;
     cursor: pointer;
   }
-  
+
   small {
     font-size: 0.7em;
   }
-  
+
   @-webkit-keyframes success {
     from {
       -webkit-transform: translate(-50%, -50%) rotate(0) scale(0);
