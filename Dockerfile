@@ -4,11 +4,12 @@ FROM clojure:openjdk-17 AS build
 WORKDIR /
 COPY . /
 
-#RUN clojure -Sforce -T:build all
+RUN clojure -Sforce -T:build all
 
 FROM azul/zulu-openjdk-alpine:17
 
-COPY --from=build /target/optiliv-standalone.jar /optiliv/optiliv-standalone.jar
+#COPY --from=build /target/optiliv-standalone.jar /optiliv/optiliv-standalone.jar
+COPY optiliv-standalone.jar /optiliv-standalone.jar
 
 EXPOSE $PORT
 
