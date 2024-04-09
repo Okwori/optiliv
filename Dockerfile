@@ -9,7 +9,7 @@ COPY . /
 FROM azul/zulu-openjdk-alpine:17
 
 #COPY --from=build /target/optiliv-standalone.jar /optiliv/optiliv-standalone.jar
-COPY optiliv-standalone.jar /optiliv-standalone.jar
+COPY /optiliv-standalone.jar /optiliv-standalone.jar
 
 EXPOSE $PORT
 
