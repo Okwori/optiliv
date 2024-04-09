@@ -61,4 +61,12 @@
               :else [:<>
                      [login-form]
                      [:br]]))]]]]]
-     [forgot-password-modal]]))
+     [forgot-password-modal]]
+    ))
+
+(defn login-page2 []
+  (r/with-let
+    [xhr-status (rf/subscribe [::data/xhr :current-user])]
+    [:<>
+     ;; Your code goes here
+     ]))
