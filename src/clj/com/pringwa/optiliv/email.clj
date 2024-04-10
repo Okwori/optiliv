@@ -1,5 +1,6 @@
 (ns com.pringwa.optiliv.email
   (:require
+    [clojure.java.io :as io]
     [integrant.core :as ig]
     [postal.core :refer [send-message]]))
 
@@ -75,7 +76,7 @@
                   "\n                  <img src=\"cid:logo\" style=\"max-height: 70px\">"
                   "\n                  <h4 class=\"title is-4 has-text-centered has-text-weight-bold\">Invitation!</h4>"
                   "\n                  <p>You have been invited to join OptiLiv! Click here to create your account:</p><br>"
-                  "\n                   <a href=\"https://optiliv.onrender.com/signup?token=" token ">https://optiliv.onrender.com/signup?token=" token
+                  "\n                   <a href=\"https://optiliv.onrender.com/signup?token=" token "\">https://optiliv.onrender.com/signup?token=" token
                   "\n                   </a><br>"
                   "\n                  <p>If this you did not request access to OptiLiv, ignore this email.</p>"
                   "\n                </div>"
@@ -85,7 +86,7 @@
                   "\n    </body>"
                   "\n</html>")}
    {:type    :attachment
-    :content (java.io.File. "./resources/public/img/logo2.png")
+    :content (io/resource "public/img/logo2.png")
     :content-id "logo"}])
 
 (defn welcome-customer [send-email email token]
@@ -185,16 +186,16 @@
                   "\n</html>")
     }
    {:type    :attachment
-    :content (java.io.File. "./resources/public/img/logo2.png")
+    :content (io/resource "public/img/logo2.png")
     :content-id "logo"}
    {:type    :attachment
-    :content (java.io.File. "./resources/public/img/rentIcon.png")
+    :content (io/resource "public/img/rentIcon.png")
     :content-id "rent"}
    {:type    :attachment
-    :content (java.io.File. "./resources/public/img/buyIcon.png")
+    :content (io/resource "public/img/buyIcon.png")
     :content-id "buy"}
    {:type    :attachment
-    :content (java.io.File. "./resources/public/img/agentIcon.png")
+    :content (io/resource "public/img/agentIcon.png")
     :content-id "agent"}])
 
 (defn welcome-customer-intro [send-email email]
