@@ -22,8 +22,8 @@
       (let [roles (->> (query-fn :get-roles {:identity (:id result)})
                        (mapv (comp keyword :role)))
             _ (query-fn :create-session {:identity (:id result)})
-            ;_ (query-fn :update-last-login! {:id         (:id result)
-            ;                                 :last_login (Date.)})
+            _ (query-fn :update-last-login! {:id         (:id result)
+                                             :last_login (Date.)})
             ]
         {:status  200
          :body    (assoc result :roles roles)
