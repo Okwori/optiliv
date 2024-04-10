@@ -23,6 +23,7 @@ repl:
 
 uberjar:
 	clojure -T:build all
+	cp target/optiliv-standalone.jar .
 
 frontend:
 	npx shadow-cljs watch app
