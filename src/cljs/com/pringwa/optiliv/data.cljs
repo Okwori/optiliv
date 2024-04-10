@@ -103,12 +103,6 @@
     (:token page-state)))
 
 (reg-sub
-  ::signup-token
-  :<- [::page-state :page-type/signup]
-  (fn [page-state _]
-    (:token page-state)))
-
-(reg-sub
   ::signup-email
   :<- [::page-state :page-type/signup]
   (fn [page-state _]
