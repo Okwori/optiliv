@@ -17,7 +17,7 @@
   (rf/clear-subscription-cache!)
   (kf/start! {:routes         root/routes
               :hash-routing?  false
-              :initial-db     {}
+              ;:initial-db     {}
               :root-component [root/root-component]})
   (rf/dispatch [:current-user/load]))
 

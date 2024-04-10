@@ -14,9 +14,9 @@
 
 (reg-xhr-success-event
   :current-user/load :current-user
-  (fn [fx {:keys [type full-name email id roles state]}]
+  (fn [fx {:keys [type full_name email id roles state]}]
     (assoc-in fx [:db :current-user]
-              {:email email, :full-name full-name :type type,
+              {:email email, :full-name full_name :type type,
                :id    id :roles roles :state state})))
 
 (reg-xhr-success-event
@@ -32,7 +32,7 @@
   (fn [fx data]
     (-> fx
         (assoc-in [:db :page :page-type/signup :email] (:email data))
-        (assoc-in [:db :page :page-type/signup :full-name] (:full-name data))
+        (assoc-in [:db :page :page-type/signup :full-name] (:full_name data))
         (assoc-in [:db :page :page-type/signup :mobile] (:mobile data)))))
 
 (reg-xhr-success-event
