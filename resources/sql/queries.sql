@@ -29,7 +29,7 @@ SELECT a.id, a.email, a.full_name, a.active, a.last_login,
 FROM account a
     inner join account_type at on a.account_type_id= at.id
     inner join session s on s.user_id = a.id
-WHERE s.user_id = :identity
+WHERE a.id = :identity
 LIMIT 1;
 
 -- :name delete-session! :! :n

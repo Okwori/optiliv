@@ -33,7 +33,7 @@
 (reg-sub
   ::current-user-name
   :<- [::current-user]
-  (fn [current-user _] (:full_name current-user)))
+  (fn [current-user _] (:full-name current-user)))
 
 (reg-sub
   ::current-user-type
@@ -118,7 +118,7 @@
   ::signup-full-name
   :<- [::page-state :page-type/signup]
   (fn [page-state _]
-    (:full_name page-state)))
+    (:full-name page-state)))
 
 (reg-sub
   ::signup-mobile

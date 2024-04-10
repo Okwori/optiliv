@@ -13,5 +13,6 @@
 (defn handler
   [{:keys [session] :as req}]
   (if (and session (:identity session))
-    {:status 200, :body (get-session (:identity session) req)}
+    (let [_ (println "Session: " session)]
+     {:status 200, :body (get-session (:identity session) req)})
     (utils/error-response 404 "Kindly Login to Access this Page!")))
