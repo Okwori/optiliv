@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS
     account
 (
     id               SERIAL PRIMARY KEY,
-    email            VARCHAR(60) NOT NULL,
+    email            VARCHAR(60) NOT NULL UNIQUE,
     password         VARCHAR(250),
     full_name        VARCHAR(100),
     mobile           VARCHAR(60),
@@ -10,7 +10,5 @@ CREATE TABLE IF NOT EXISTS
     last_login       TIMESTAMP,
     active           BOOLEAN     NOT NULL,
     account_type_id  INT,
-    account_state_id INT,
-
-    UNIQUE(email)
+    account_state_id INT
 );
