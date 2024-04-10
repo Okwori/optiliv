@@ -2,7 +2,7 @@
 
 (goog-define DEBUG false)
 
-(goog-define OPTILIV_API_HOST "")
+(goog-define OPTILIV_API_HOST "optiliv.onrender.com")
 
 (js/console.log "api-host" OPTILIV_API_HOST)
 
