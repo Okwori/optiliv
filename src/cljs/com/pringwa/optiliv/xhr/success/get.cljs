@@ -32,7 +32,7 @@
   (fn [fx data]
     (-> fx
         (assoc-in [:db :page :page-type/signup :email] (:email data))
-        (assoc-in [:db :page :page-type/signup :full-name] (:full_name data))
+        (assoc-in [:db :page :page-type/signup :full_name] (:full_name data))
         (assoc-in [:db :page :page-type/signup :mobile] (:mobile data)))))
 
 (reg-xhr-success-event
