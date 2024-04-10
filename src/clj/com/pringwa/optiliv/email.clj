@@ -85,7 +85,7 @@
                   "\n    </body>"
                   "\n</html>")}
    {:type    :attachment
-    :content (java.io.File. "resources/public/img/logo2.png")
+    :content (java.io.File. "./resources/public/img/logo2.png")
     :content-id "logo"}])
 
 (defn welcome-customer [send-email email token]
@@ -185,16 +185,16 @@
                   "\n</html>")
     }
    {:type    :attachment
-    :content (java.io.File. "resources/public/img/logo2.png")
+    :content (java.io.File. "./resources/public/img/logo2.png")
     :content-id "logo"}
    {:type    :attachment
-    :content (java.io.File. "resources/public/img/rentIcon.png")
+    :content (java.io.File. "./resources/public/img/rentIcon.png")
     :content-id "rent"}
    {:type    :attachment
-    :content (java.io.File. "resources/public/img/buyIcon.png")
+    :content (java.io.File. "./resources/public/img/buyIcon.png")
     :content-id "buy"}
    {:type    :attachment
-    :content (java.io.File. "resources/public/img/agentIcon.png")
+    :content (java.io.File. "./resources/public/img/agentIcon.png")
     :content-id "agent"}])
 
 (defn welcome-customer-intro [send-email email]
