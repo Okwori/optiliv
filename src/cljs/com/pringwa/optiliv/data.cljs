@@ -6,6 +6,10 @@
   (fn [db _] (:current-user db)))
 
 (reg-sub
+  ::active-slide-tab
+  (fn [db _] (:active-slide-tab db)))
+
+(reg-sub
   ::modal
   (fn [db _] (get db :modal)))
 

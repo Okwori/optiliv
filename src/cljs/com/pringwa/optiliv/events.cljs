@@ -32,6 +32,11 @@
     (assoc-in db (into [:xhr] subkeys)
               {:in-flight? false, :error nil, :success? false})))
 
+(k/reg-event-db
+  ::put-next-slide
+  (fn [db _]
+    (assoc db :active-slide-tab true)))
+
 (rf/reg-fx
   :reset-form
   (fn [form-id]
