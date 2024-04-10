@@ -89,7 +89,7 @@
           [nav-link "navbar-item has-divider" :register "Register" "mdi mdi-account-plus-outline"])
          ;[nav-link "navbar-item has-divider" "/cfs" "Find Agents" "mdi mdi-account-plus-outline"]
          [nav-link "navbar-item has-divider" :list-property "List" "mdi mdi-home-plus"]
-         [nav-link "navbar-item has-divider" :buy "Buy" "mdi mdi-cash-multiple"]
-         [nav-link "navbar-item has-divider" :rent "Rent" "mdi mdi-cash"]
+         ;[nav-link "navbar-item has-divider" :buy "Buy" "mdi mdi-cash-multiple"]
+         ;[nav-link "navbar-item has-divider" :rent "Rent" "mdi mdi-cash"]
          [nav-link "navbar-item has-divider" :help "Help" "mdi mdi-help"]]
         [account-submenu fname lname]]])))
