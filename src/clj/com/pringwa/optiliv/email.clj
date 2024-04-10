@@ -75,7 +75,7 @@
                   "\n                  <img src=\"cid:logo\" style=\"max-height: 70px\">"
                   "\n                  <h4 class=\"title is-4 has-text-centered has-text-weight-bold\">Invitation!</h4>"
                   "\n                  <p>You have been invited to join OptiLiv! Click here to create your account:</p><br>"
-                  "\n                   <a href=\"http://localhost:3000/signup?token=" token ">http://localhost:3000/signup?token=" token
+                  "\n                   <a href=\"https://optiliv.onrender.com/signup?token=" token ">https://optiliv.onrender.com/signup?token=" token
                   "\n                   </a><br>"
                   "\n                  <p>If this you did not request access to OptiLiv, ignore this email.</p>"
                   "\n                </div>"
