@@ -72,7 +72,7 @@ SELECT * FROM account_type;
 
 -- :name create-user! :! :n
 INSERT INTO account (email, password, full_name, mobile, token, last_login, active, account_type_id, account_state_id)
-VALUES (:email, :password, :full_name, :mobile, :token, :token, :active, :account_type_id, :account_state_id);
+VALUES (:email, :password, :full_name, :mobile, :token, :last_login, :active, :account_type_id, :account_state_id);
 
 -- :name update-user! :! :n
 UPDATE account
