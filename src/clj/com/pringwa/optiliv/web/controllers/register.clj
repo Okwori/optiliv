@@ -12,8 +12,9 @@
           {:strs [email full-name mobile user-group-id]} multipart-params
           account-type-id (Integer/parseInt user-group-id)
           _ (println "Here: " email full-name token mobile account-type-id)
-          ok? (query-fn :create-user! {:email  email :full_name full-name :token token
-                                       :mobile mobile :account_type_id account-type-id})
+          ok? (query-fn :create-user! {:email  email :password nil :full_name full-name
+                                       :mobile mobile :token token :active false
+                                       :account_type_id account-type-id :account_state_id 1})
           _ (when ok? (email/welcome-customer send-fn email token))]
       {:status 201,
        :body   {}})
