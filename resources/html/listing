@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Listing Form</title>
+</head>
+<body>
+    <h2>House Listing Form</h2>
+    <form action="submit_listing.php" method="post" enctype="multipart/form-data">
+        <label for="address">Property Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="price">Listing Price:</label><br>
+        <input type="text" id="price" name="price" required><br><br>
+
+        <label for="property_type">Property Type:</label><br>
+        <select id="property_type" name="property_type">
+            <option value="single_family">Single Family Home</option>
+            <option value="condo">Condo</option>
+            <option value="townhouse">Townhouse</option>
+            <option value="multi_family">Multi-family</option>
+        </select><br><br>
+
+        <label for="bedrooms">Number of Bedrooms:</label><br>
+        <input type="number" id="bedrooms" name="bedrooms" required><br><br>
+
+        <label for="bathrooms">Number of Bathrooms:</label><br>
+        <input type="number" id="bathrooms" name="bathrooms" required><br><br>
+
+        <label for="square_footage">Square Footage:</label><br>
+        <input type="number" id="square_footage" name="square_footage" required><br><br>
+
+        <label for="lot_size">Lot Size (if applicable):</label><br>
+        <input type="text" id="lot_size" name="lot_size"><br><br>
+
+        <label for="year_built">Year Built:</label><br>
+        <input type="number" id="year_built" name="year_built" required><br><br>
+
+        <label for="description">Description of Property:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="contact_name">Agent/Owner Name:</label><br>
+        <input type="text" id="contact_name" name="contact_name" required><br><br>
+
+        <label for="agency">Agency (if applicable):</label><br>
+        <input type="text" id="agency" name="agency"><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="email">Email Address:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="contact_method">Preferred Method of Contact:</label><br>
+        <input type="radio" id="phone_contact" name="contact_method" value="phone" checked>
+        <label for="phone_contact">Phone</label><br>
+        <input type="radio" id="email_contact" name="contact_method" value="email">
+        <label for="email_contact">Email</label><br>
+        <input type="radio" id="text_contact" name="contact_method" value="text">
+        <label for="text_contact">Text</label><br><br>
+
+        <label for="additional_comments">Additional Comments or Information:</label><br>
+        <textarea id="additional_comments" name="additional_comments" rows="4" cols="50"></textarea><br><br>
+
+        <label for="photos">Upload Photos:</label><br>
+        <input type="file" id="photos" name="photos[]" multiple accept="image/*"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
