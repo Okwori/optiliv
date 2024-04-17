@@ -20,7 +20,9 @@
         current-user-name (rf/subscribe [::data/current-user-name])
         current-user-name-coll (str/split (or @current-user-name "My Account") #" ")
         active-slide-tab @(rf/subscribe [::data/active-slide-tab])]
-    (if-not (= "Optiliv" current-user-type)
+    (if-not (or (= "Optiliv" current-user-type)
+                (= "Agents" current-user-type)
+                (= "Customers" current-user-type))
       [unauthorized]
       [layout/with-verified-email-check
        [layout/standard "home-page"
@@ -69,7 +71,7 @@
                   [:div.column
                    [:div.control
                     [:label.checkbox
-                     [:input {:type "checkbox"}]
+                     [:input {:type "checkbox" :on-change #(rf/dispatch [::events/change-place-types :airport])}]
                      [:span] " Airport"]]]
                   [:div.column
                    [:div.control
@@ -137,8 +139,7 @@
                    [:div.control
                     [:label.checkbox
                      [:input {:type "checkbox"}]
-                     [:span] " West"]]]]]]
-               ]]]]]])
+                     [:span] " West"]]]]]]]]]]]])
         (when active-slide-tab
           [:div.hero
            [:div.hero-body

@@ -14,8 +14,8 @@
   (fn [{:keys [db]} _]
     {:navigate-to (case (-> db :current-user :type)
                     "Optiliv" [:home]
-                    "Agents" [:agents]
-                    "Customers" [:customers]
+                    "Agents" [:home]
+                    "Customers" [:home]
                     [:login])}))
 
 (k/reg-event-db
@@ -55,3 +55,9 @@
     (let [current-tab (get-in cofx [:db :page page-type :tab-select :tab])]
       (if (not= current-tab new-tab)
         {:dispatch [::change-active-tab page-type new-tab]}))))
+
+(k/reg-event-db
+  ::change-place-types
+  (fn [db [place-type]]
+    (-> db
+        (assoc-in [:place-type place-type] not))))
