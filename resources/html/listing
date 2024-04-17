@@ -4,69 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>House Listing Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-    <h2>House Listing Form</h2>
-    <form action="submit_listing.php" method="post" enctype="multipart/form-data">
-        <label for="address">Property Address:</label><br>
-        <input type="text" id="address" name="address" required><br><br>
+    <section class="section">
+        <div class="container">
+            <h2 class="title">House Listing Form</h2>
+            <form action="submit_listing.php" method="post" enctype="multipart/form-data">
+                <div class="field">
+                    <label class="label" for="address">Property Address:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="address" name="address" required>
+                    </div>
+                </div>
 
-        <label for="price">Listing Price:</label><br>
-        <input type="text" id="price" name="price" required><br><br>
+                <div class="field">
+                    <label class="label" for="price">Listing Price:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="price" name="price" required>
+                    </div>
+                </div>
 
-        <label for="property_type">Property Type:</label><br>
-        <select id="property_type" name="property_type">
-            <option value="single_family">Single Family Home</option>
-            <option value="condo">Condo</option>
-            <option value="townhouse">Townhouse</option>
-            <option value="multi_family">Multi-family</option>
-        </select><br><br>
+                <div class="field">
+                    <label class="label" for="property_type">Property Type:</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="property_type" name="property_type">
+                                <option value="single_family">Single Family Home</option>
+                                <option value="condo">Condo</option>
+                                <option value="townhouse">Townhouse</option>
+                                <option value="multi_family">Multi-family</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-        <label for="bedrooms">Number of Bedrooms:</label><br>
-        <input type="number" id="bedrooms" name="bedrooms" required><br><br>
+                <div class="field">
+                    <label class="label" for="bedrooms">Number of Bedrooms:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="bedrooms" name="bedrooms" required>
+                    </div>
+                </div>
 
-        <label for="bathrooms">Number of Bathrooms:</label><br>
-        <input type="number" id="bathrooms" name="bathrooms" required><br><br>
+                <div class="field">
+                    <label class="label" for="bathrooms">Number of Bathrooms:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="bathrooms" name="bathrooms" required>
+                    </div>
+                </div>
 
-        <label for="square_footage">Square Footage:</label><br>
-        <input type="number" id="square_footage" name="square_footage" required><br><br>
+                <div class="field">
+                    <label class="label" for="square_footage">Square Footage:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="square_footage" name="square_footage" required>
+                    </div>
+                </div>
 
-        <label for="lot_size">Lot Size (if applicable):</label><br>
-        <input type="text" id="lot_size" name="lot_size"><br><br>
+                <div class="field">
+                    <label class="label" for="lot_size">Lot Size (if applicable):</label>
+                    <div class="control">
+                        <input class="input" type="text" id="lot_size" name="lot_size">
+                    </div>
+                </div>
 
-        <label for="year_built">Year Built:</label><br>
-        <input type="number" id="year_built" name="year_built" required><br><br>
+                <div class="field">
+                    <label class="label" for="year_built">Year Built:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="year_built" name="year_built" required>
+                    </div>
+                </div>
 
-        <label for="description">Description of Property:</label><br>
-        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+                <div class="field">
+                    <label class="label" for="description">Description of Property:</label>
+                    <div class="control">
+                        <textarea class="textarea" id="description" name="description" rows="4" cols="50" required></textarea>
+                    </div>
+                </div>
 
-        <label for="contact_name">Agent/Owner Name:</label><br>
-        <input type="text" id="contact_name" name="contact_name" required><br><br>
+                <div class="field">
+                    <label class="label" for="contact_name">Agent/Owner Name:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="contact_name" name="contact_name" required>
+                    </div>
+                </div>
 
-        <label for="agency">Agency (if applicable):</label><br>
-        <input type="text" id="agency" name="agency"><br><br>
+                <div class="field">
+                    <label class="label" for="agency">Agency (if applicable):</label>
+                    <div class="control">
+                        <input class="input" type="text" id="agency" name="agency">
+                    </div>
+                </div>
 
-        <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="phone" name="phone" required><br><br>
+                <div class="field">
+                    <label class="label" for="phone">Phone Number:</label>
+                    <div class="control">
+                        <input class="input" type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
 
-        <label for="email">Email Address:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+                <div class="field">
+                    <label class="label" for="email">Email Address:</label>
+                    <div class="control">
+                        <input class="input" type="email" id="email" name="email" required>
+                    </div>
+                </div>
 
-        <label for="contact_method">Preferred Method of Contact:</label><br>
-        <input type="radio" id="phone_contact" name="contact_method" value="phone" checked>
-        <label for="phone_contact">Phone</label><br>
-        <input type="radio" id="email_contact" name="contact_method" value="email">
-        <label for="email_contact">Email</label><br>
-        <input type="radio" id="text_contact" name="contact_method" value="text">
-        <label for="text_contact">Text</label><br><br>
+                <div class="field">
+                    <label class="label">Preferred Method of Contact:</label>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="contact_method" value="phone" checked>
+                            Phone
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="contact_method" value="email">
+                            Email
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="contact_method" value="text">
+                            Text
+                        </label>
+                    </div>
+                </div>
 
-        <label for="additional_comments">Additional Comments or Information:</label><br>
-        <textarea id="additional_comments" name="additional_comments" rows="4" cols="50"></textarea><br><br>
+                <div class="field">
+                    <label class="label" for="additional_comments">Additional Comments or Information:</label>
+                    <div class="control">
+                        <textarea class="textarea" id="additional_comments" name="additional_comments" rows="4" cols="50"></textarea>
+                    </div>
+                </div>
 
-        <label for="photos">Upload Photos:</label><br>
-        <input type="file" id="photos" name="photos[]" multiple accept="image/*"><br><br>
+                <div class="field">
+                    <label class="label" for="photos">Upload Photos:</label>
+                    <div class="control">
+                        <input class="input" type="file" id="photos" name="photos[]" multiple accept="image/*">
+                    </div>
+                </div>
 
-        <input type="submit" value="Submit">
-    </form>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-primary" type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
 </body>
 </html>
