@@ -5,7 +5,7 @@
 body {
     font-family: Tahoma, Verdana, Segoe, sans-serif;
     font-size: 14px;
-    background: url("/img/mountains.png");
+    background: url(public/img/mountains.png);
     padding: 20px;
     text-align: center;
 }
@@ -36,18 +36,18 @@ body {
     border: 3px solid #f5da3f;
     border-radius: 3px;
 }
-.face .content {
+.face .optiliv-content {
     color: #666;
 }
-.face .content h2 {
+.face .optiliv-content h2 {
     font-size: 1.2em;
     color: #000000;
 }
-.face .content .field-wrapper {
+.face .optiliv-content .field-wrapper {
     margin-top: 30px;
     position: relative;
 }
-.face .content .field-wrapper label {
+.face .optiliv-content .field-wrapper optiliv-label {
     position: absolute;
     pointer-events: none;
     font-size: 0.85em;
@@ -57,14 +57,14 @@ body {
     transition: all ease-in 0.25s;
     color: #999999;
 }
-.face .content .field-wrapper input[type=text], .face .content .field-wrapper input[type=password], .face .content .field-wrapper input[type=submit], .face .content .field-wrapper textarea {
+.face .optiliv-content .optiliv-field-wrapper input[type=text], .face .optiliv-content .optiliv-field-wrapper input[type=password], .face .optiliv-content .optiliv-field-wrapper input[type=submit], .face .optiliv-content .optiliv-field-wrapper textarea {
     -webkit-appearance: none;
     appearance: none;
 }
-.face .content .field-wrapper input[type=text]:focus, .face .content .field-wrapper input[type=password]:focus, .face .content .field-wrapper input[type=submit]:focus, .face .content .field-wrapper textarea:focus {
+.face .optiliv-content .optiliv-field-wrapper input[type=text]:focus, .face .optiliv-content .optiliv-field-wrapper input[type=password]:focus, .face .optiliv-content .optiliv-field-wrapper input[type=submit]:focus, .face .optiliv-content .optiliv-field-wrapper textarea:focus {
     outline: none;
 }
-.face .content .field-wrapper input[type=text], .face .content .field-wrapper input[type=password], .face .content .field-wrapper textarea {
+.face .optiliv-content .optiliv-field-wrapper input[type=text], .face .optiliv-content .optiliv-field-wrapper input[type=password], .face .optiliv-content .optiliv-field-wrapper textarea {
     width: 100%;
     border: none;
     background: transparent;
@@ -72,23 +72,23 @@ body {
     border-bottom: 1px solid #000000;
     color: #666;
 }
-.face .content .field-wrapper input[type=text]::-webkit-input-placeholder, .face .content .field-wrapper input[type=password]::-webkit-input-placeholder, .face .content .field-wrapper textarea::-webkit-input-placeholder {
+.face .optiliv-content .optiliv-field-wrapper input[type=text]::-webkit-input-placeholder, .face .optiliv-content .optiliv-field-wrapper input[type=password]::-webkit-input-placeholder, .face .optiliv-content .optiliv-field-wrapper textarea::-webkit-input-placeholder {
     opacity: 0;
 }
-.face .content .field-wrapper input[type=text]::-moz-placeholder, .face .content .field-wrapper input[type=password]::-moz-placeholder, .face .content .field-wrapper textarea::-moz-placeholder {
+.face .optiliv-content .optiliv-field-wrapper input[type=text]::-moz-placeholder, .face .optiliv-content .optiliv-field-wrapper input[type=password]::-moz-placeholder, .face .optiliv-content .optiliv-field-wrapper textarea::-moz-placeholder {
     opacity: 0;
 }
-.face .content .field-wrapper input[type=text]:-ms-input-placeholder, .face .content .field-wrapper input[type=password]:-ms-input-placeholder, .face .content .field-wrapper textarea:-ms-input-placeholder {
+.face .optiliv-content .optiliv-field-wrapper input[type=text]:-ms-input-placeholder, .face .optiliv-content .optiliv-field-wrapper input[type=password]:-ms-input-placeholder, .face .optiliv-content .optiliv-field-wrapper textarea:-ms-input-placeholder {
     opacity: 0;
 }
-.face .content .field-wrapper input[type=text]:-moz-placeholder, .face .content .field-wrapper input[type=password]:-moz-placeholder, .face .content .field-wrapper textarea:-moz-placeholder {
+.face .optiliv-content .optiliv-field-wrapper input[type=text]:-moz-placeholder, .face .optiliv-content .optiliv-field-wrapper input[type=password]:-moz-placeholder, .face .optiliv-content .optiliv-field-wrapper textarea:-moz-placeholder {
     opacity: 0;
 }
-.face .content .field-wrapper input[type=text]:focus + label, .face .content .field-wrapper input[type=text]:not(:placeholder-shown) + label, .face .content .field-wrapper input[type=password]:focus + label, .face .content .field-wrapper input[type=password]:not(:placeholder-shown) + label, .face .content .field-wrapper textarea:focus + label, .face .content .field-wrapper textarea:not(:placeholder-shown) + label {
+.face .optiliv-content .optiliv-field-wrapper input[type=text]:focus + optiliv-label, .face .optiliv-content .optiliv-field-wrapper input[type=text]:not(:placeholder-shown) + optiliv-label, .face .optiliv-content .optiliv-field-wrapper input[type=password]:focus + optiliv-label, .face .optiliv-content .optiliv-field-wrapper input[type=password]:not(:placeholder-shown) + label, .face .optiliv-content .optiliv-field-wrapper textarea:focus + label, .face .optiliv-content .optiliv-field-wrapper textarea:not(:placeholder-shown) + optiliv-label {
     top: -35%;
     color: #e6be2e9a;
 }
-.face .content .field-wrapper input[type=submit] {
+.face .optiliv-content .optiliv-field-wrapper input[type=submit] {
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
@@ -100,17 +100,17 @@ body {
     border-radius: 3px;
     padding: 5px;
 }
-.face .content .field-wrapper input[type=submit]:hover {
+.face .optiliv-content .optiliv-field-wrapper input[type=submit]:hover {
     opacity: 0.9;
 }
-.face .content .field-wrapper input[type=submit]:active {
+.face .optiliv-content .optiliv-field-wrapper input[type=submit]:active {
     transform: scale(0.96);
 }
-.face .content .field-wrapper textarea {
+.face .optiliv-content .optiliv-field-wrapper textarea {
     resize: none;
     line-height: 1em;
 }
-.face .content .field-wrapper textarea:focus + label, .face .content .field-wrapper textarea:not(:placeholder-shown) + label {
+.face .optiliv-content .optiliv-field-wrapper textarea:focus + optiliv-label, .face .optiliv-content .optiliv-field-wrapper textarea:not(:placeholder-shown) + optiliv-label {
     top: -25%;
 }
 .face .thank-you-msg {
@@ -161,11 +161,11 @@ body {
     transform: rotateX(-90deg) translateZ(225px);
 }
 
-.nav {
+.optiliv-nav {
     margin: 20px 0;
     padding: 0;
 }
-.nav li {
+.optiliv-nav li {
     display: inline-block;
     list-style-type: none;
     font-size: 1em;
@@ -174,7 +174,7 @@ body {
     position: relative;
     cursor: pointer;
 }
-.nav li:after {
+.optiliv-nav li:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -183,7 +183,7 @@ body {
     border-bottom: 1px solid #db8814e6;
     transition: all ease-in 0.25s;
 }
-.nav li:hover:after {
+.optiliv-nav li:hover:after {
     width: 100%;
 }
 
