@@ -30,6 +30,10 @@
   (fn [db _] (:xhr db)))
 
 (reg-sub
+  ::place-type
+  (fn [db _] (:place-type db)))
+
+(reg-sub
   ::current-user-id
   :<- [::current-user]
   (fn [current-user _] (:id current-user)))
@@ -152,3 +156,203 @@
   ::tab-select-active?
   (fn [[_ page-type] _] (subscribe [::tab-select page-type]))
   (fn [tab-select _] (get tab-select :active? true)))
+
+(reg-sub
+  ::pt-airport
+  :<- [::place-type]
+  (fn [checked? _] (:airport checked?)))
+
+(reg-sub
+  ::pt-aquarium
+  :<- [::place-type]
+  (fn [checked? _] (:aquarium checked?)))
+
+(reg-sub
+  ::pt-amusement_park
+  :<- [::place-type]
+  (fn [checked? _] (:amusement_park checked?)))
+
+(reg-sub
+  ::pt-atm
+  :<- [::place-type]
+  (fn [checked? _] (:atm checked?)))
+
+(reg-sub
+  ::pt-bakery
+  :<- [::place-type]
+  (fn [checked? _] (:bakery checked?)))
+
+(reg-sub
+  ::pt-bank
+  :<- [::place-type]
+  (fn [checked? _] (:bank checked?)))
+
+(reg-sub
+  ::pt-bar
+  :<- [::place-type]
+  (fn [checked? _] (:bar checked?)))
+
+(reg-sub
+  ::pt-beauty_salon
+  :<- [::place-type]
+  (fn [checked? _] (:beauty_salon checked?)))
+
+(reg-sub
+  ::pt-book_store
+  :<- [::place-type]
+  (fn [checked? _] (:book_store checked?)))
+
+(reg-sub
+  ::pt-bowling_alley
+  :<- [::place-type]
+  (fn [checked? _] (:bowling_alley checked?)))
+
+(reg-sub
+  ::pt-bus_station
+  :<- [::place-type]
+  (fn [checked? _] (:bus_station checked?)))
+
+(reg-sub
+  ::pt-cafe
+  :<- [::place-type]
+  (fn [checked? _] (:cafe checked?)))
+
+(reg-sub
+  ::pt-campground
+  :<- [::place-type]
+  (fn [checked? _] (:campground checked?)))
+
+(reg-sub
+  ::pt-casino
+  :<- [::place-type]
+  (fn [checked? _] (:casino checked?)))
+
+(reg-sub
+  ::pt-church
+  :<- [::place-type]
+  (fn [checked? _] (:church checked?)))
+
+(reg-sub
+  ::pt-city_hall
+  :<- [::place-type]
+  (fn [checked? _] (:city_hall checked?)))
+
+(reg-sub
+  ::pt-clothing_store
+  :<- [::place-type]
+  (fn [checked? _] (:clothing_store checked?)))
+
+(reg-sub
+  ::pt-department_store
+  :<- [::place-type]
+  (fn [checked? _] (:department_store checked?)))
+
+(reg-sub
+  ::pt-grocery_or_supermarket
+  :<- [::place-type]
+  (fn [checked? _] (:grocery_or_supermarket checked?)))
+
+(reg-sub
+  ::pt-gym
+  :<- [::place-type]
+  (fn [checked? _] (:gym checked?)))
+
+(reg-sub
+  ::pt-hospital
+  :<- [::place-type]
+  (fn [checked? _] (:hospital checked?)))
+
+(reg-sub
+  ::pt-bus_station
+  :<- [::place-type]
+  (fn [checked? _] (:bus_station checked?)))
+
+(reg-sub
+  ::pt-library
+  :<- [::place-type]
+  (fn [checked? _] (:library checked?)))
+
+(reg-sub
+  ::pt-mosque
+  :<- [::place-type]
+  (fn [checked? _] (:mosque checked?)))
+
+(reg-sub
+  ::pt-museum
+  :<- [::place-type]
+  (fn [checked? _] (:museum checked?)))
+
+(reg-sub
+  ::pt-night_club
+  :<- [::place-type]
+  (fn [checked? _] (:night_club checked?)))
+
+(reg-sub
+  ::pt-park
+  :<- [::place-type]
+  (fn [checked? _] (:park checked?)))
+
+(reg-sub
+  ::pt-pet_store
+  :<- [::place-type]
+  (fn [checked? _] (:pet_store checked?)))
+
+(reg-sub
+  ::pt-police
+  :<- [::place-type]
+  (fn [checked? _] (:police checked?)))
+
+(reg-sub
+  ::pt-post_office
+  :<- [::place-type]
+  (fn [checked? _] (:post_office checked?)))
+
+(reg-sub
+  ::pt-restaurant
+  :<- [::place-type]
+  (fn [checked? _] (:restaurant checked?)))
+
+(reg-sub
+  ::pt-school
+  :<- [::place-type]
+  (fn [checked? _] (:school checked?)))
+
+(reg-sub
+  ::pt-shopping_mall
+  :<- [::place-type]
+  (fn [checked? _] (:shopping_mall checked?)))
+
+(reg-sub
+  ::pt-spa
+  :<- [::place-type]
+  (fn [checked? _] (:spa checked?)))
+
+(reg-sub
+  ::pt-stadium
+  :<- [::place-type]
+  (fn [checked? _] (:stadium checked?)))
+
+(reg-sub
+  ::pt-subway_station
+  :<- [::place-type]
+  (fn [checked? _] (:subway_station checked?)))
+
+(reg-sub
+  ::pt-taxi_stand
+  :<- [::place-type]
+  (fn [checked? _] (:taxi_stand checked?)))
+
+(reg-sub
+  ::pt-train_station
+  :<- [::place-type]
+  (fn [checked? _] (:train_station checked?)))
+
+(reg-sub
+  ::pt-veterinary_care
+  :<- [::place-type]
+  (fn [checked? _] (:veterinary_care checked?)))
+
+(reg-sub
+  ::pt-zoo
+  :<- [::place-type]
+  (fn [checked? _] (:zoo checked?)))

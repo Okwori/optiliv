@@ -58,6 +58,6 @@
 
 (k/reg-event-db
   ::change-place-types
-  (fn [db [place-type]]
+  (fn [db [place-type val]]
     (-> db
-        (assoc-in [:place-type place-type] not))))
+        (assoc-in [:place-type place-type] val))))

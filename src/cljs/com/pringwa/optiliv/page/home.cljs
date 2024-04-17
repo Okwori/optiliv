@@ -50,10 +50,10 @@
                [:div.tabs.is-fullwidth
                 [:ul
                  [:li
-                  {:disabled true}
-                  [:a
+                  [:a.is-disabled
                    [:span.icon [:i.mdi.mdi-pan-left {:aria-hidden "true"}]]
-                   [:span "Previous"]]]
+                   [:span "Previous"]
+                   [:span.icon [:i.mdi.mdi-cancel {:aria-hidden "true"}]]]]
                  [:li
                   [:a
                    [:span.icon [:i.mdi.mdi-skip-next {:aria-hidden "true"}]]
@@ -64,35 +64,416 @@
                    [:span "Next"]
                    [:span.icon [:i.mdi.mdi-pan-right {:aria-hidden "true"}]]]]]]
                [:div.field
-                [:label.label "Play Types"]
-                [:div.notification.is-success
-                 [:button.delete]
-                 [:div.columns
-                  [:div.column
-                   [:div.control
-                    [:label.checkbox
-                     [:input {:type "checkbox" :on-change #(rf/dispatch [::events/change-place-types :airport])}]
-                     [:span] " Airport"]]]
-                  [:div.column
-                   [:div.control
-                    [:label.checkbox
-                     [:input {:type "checkbox"}]
-                     [:span] " Library"]]]
-                  [:div.column
-                   [:div.control
-                    [:label.checkbox
-                     [:input {:type "checkbox"}]
-                     [:span] " School"]]]
-                  [:div.column
-                   [:div.control
-                    [:label.checkbox
-                     [:input {:type "checkbox"}]
-                     [:span] " Hospital"]]]]]
-                ;; DIstance
+
+                ;; Distance
                 [:label.label "Distance Radius"]
                 [:div.notification.is-info
                  [:button.delete]
                  [:input.input {:type "text" :placeholder "Distance in meters"}]]
+
+                ;; Place Types
+                [:label.label "Play Types"]
+                [:div.notification
+                 [:button.delete]
+                 ;; line 1
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-airport])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :airport
+                                                        (not @(rf/subscribe [::data/pt-airport]))])}]
+                     [:span] " Airport"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-aquarium])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :aquarium
+                                                        (not @(rf/subscribe [::data/pt-aquarium]))])}]
+                     [:span] " Aquarium"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-amusement_park])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :amusement_park
+                                                        (not @(rf/subscribe [::data/pt-amusement_park]))])}]
+                     [:span] " Amusement Park"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-atm])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :atm
+                                                        (not @(rf/subscribe [::data/pt-atm]))])}]
+                     [:span] " ATM"]]]]
+                 ;; line 2
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-bakery])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :bakery
+                                                        (not @(rf/subscribe [::data/pt-bakery]))])}]
+                     [:span] " Bakery"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-bank])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :bank
+                                                        (not @(rf/subscribe [::data/pt-bank]))])}]
+                     [:span] " Bank"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-bar])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :bar
+                                                        (not @(rf/subscribe [::data/pt-bar]))])}]
+                     [:span] " Bar"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-beauty_salon])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :beauty_salon
+                                                        (not @(rf/subscribe [::data/pt-beauty_salon]))])}]
+                     [:span] " Beauty Salon"]]]]
+                 ;; line 3
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-book_store])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :book_store
+                                                        (not @(rf/subscribe [::data/pt-book_store]))])}]
+                     [:span] " Book Store"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-bowling_alley])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :bowling_alley
+                                                        (not @(rf/subscribe [::data/pt-bowling_alley]))])}]
+                     [:span] " Bowling Alley"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-bus_station])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :bus_station
+                                                        (not @(rf/subscribe [::data/pt-bus_station]))])}]
+                     [:span] " Bus Station"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-cafe])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :cafe
+                                                        (not @(rf/subscribe [::data/pt-cafe]))])}]
+                     [:span] " Cafe"]]]]
+                 ;; line 4
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-campground])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :campground
+                                                        (not @(rf/subscribe [::data/pt-campground]))])}]
+                     [:span] " Campground"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-casino])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :casino
+                                                        (not @(rf/subscribe [::data/pt-casino]))])}]
+                     [:span] " Casino"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-church])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :church
+                                                        (not @(rf/subscribe [::data/pt-church]))])}]
+                     [:span] " Church"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-city_hall])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :city_hall
+                                                        (not @(rf/subscribe [::data/pt-city_hall]))])}]
+                     [:span] " City Hall"]]]]
+                 ;; line 5
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-clothing_store])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :clothing_store
+                                                        (not @(rf/subscribe [::data/pt-clothing_store]))])}]
+                     [:span] " Clothing Store"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-department_store])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :department_store
+                                                        (not @(rf/subscribe [::data/pt-department_store]))])}]
+                     [:span] " Department Store"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-grocery_or_supermarket])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :grocery_or_supermarket
+                                                        (not @(rf/subscribe [::data/pt-grocery_or_supermarket]))])}]
+                     [:span] " Grocery/Supermarket"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-gym])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :grocery_or_supermarket
+                                                        (not @(rf/subscribe [::data/pt-gym]))])}]
+                     [:span] " Gym"]]]]
+                 ;; line 6
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-hospital])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :hospital
+                                                        (not @(rf/subscribe [::data/pt-hospital]))])}]
+                     [:span] " Hospital"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-library])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :library
+                                                        (not @(rf/subscribe [::data/pt-library]))])}]
+                     [:span] " Library"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-mosque])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :mosque
+                                                        (not @(rf/subscribe [::data/pt-mosque]))])}]
+                     [:span] " Mosque"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-museum])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :museum
+                                                        (not @(rf/subscribe [::data/pt-museum]))])}]
+                     [:span] " Museum"]]]]
+                 ;; line 7
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-night_club])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :night_club
+                                                        (not @(rf/subscribe [::data/pt-night_club]))])}]
+                     [:span] " Night Club"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-park])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :park
+                                                        (not @(rf/subscribe [::data/pt-park]))])}]
+                     [:span] " Park"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-pet_store])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :pet_store
+                                                        (not @(rf/subscribe [::data/pt-pet_store]))])}]
+                     [:span] " Pet Store"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-police])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :police
+                                                        (not @(rf/subscribe [::data/pt-police]))])}]
+                     [:span] " Police"]]]]
+                 ;; line 8
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-post_office])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :post_office
+                                                        (not @(rf/subscribe [::data/pt-post_office]))])}]
+                     [:span] " Post Office"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-restaurant])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :restaurant
+                                                        (not @(rf/subscribe [::data/pt-restaurant]))])}]
+                     [:span] " Restaurant"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-school])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :school
+                                                        (not @(rf/subscribe [::data/pt-school]))])}]
+                     [:span] " School"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-shopping_mall])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :shopping_mall
+                                                        (not @(rf/subscribe [::data/pt-shopping_mall]))])}]
+                     [:span] " Shopping Mall"]]]]
+                 ;; line 9
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-spa])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :spa
+                                                        (not @(rf/subscribe [::data/pt-spa]))])}]
+                     [:span] " Spa"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-stadium])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :stadium
+                                                        (not @(rf/subscribe [::data/pt-stadium]))])}]
+                     [:span] " Stadium"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-subway_station])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :subway_station
+                                                        (not @(rf/subscribe [::data/pt-subway_station]))])}]
+                     [:span] " Subway Station"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-taxi_stand])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :taxi_stand
+                                                        (not @(rf/subscribe [::data/pt-taxi_stand]))])}]
+                     [:span] " Taxi Stand"]]]]
+                 ;; line 10
+                 [:div.columns
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-train_station])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :train_station
+                                                        (not @(rf/subscribe [::data/pt-train_station]))])}]
+                     [:span] " Train Station"]]]
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type      "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-veterinary_care])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :veterinary_care
+                                                        (not @(rf/subscribe [::data/pt-veterinary_care]))])}]
+                     [:span] " Veterinary Care"]]]
+
+                  [:div.column
+                   [:div.control
+                    [:label.checkbox
+                     [:input {:type "checkbox"
+                              :checked   @(rf/subscribe [::data/pt-zoo])
+                              :on-change #(rf/dispatch [::events/change-place-types
+                                                        :zoo
+                                                        (not @(rf/subscribe [::data/pt-zoo]))])}]
+                     [:span] " Zoo"]]]
+                  [:div.column
+                   ;[:div.control
+                   ; [:label.checkbox
+                   ;  [:input {:type "checkbox"
+                   ;           :checked   @(rf/subscribe [::data/pt-library])
+                   ;           :on-change #(rf/dispatch [::events/change-place-types
+                   ;                                     :library
+                   ;                                     (not @(rf/subscribe [::data/pt-library]))])}]
+                   ;  [:span] " ATM"]]
+                   ]]]
 
                 ;; Polution
                 [:label.label "Pollution Levels"]
