@@ -16,7 +16,7 @@
     [com.pringwa.optiliv.email]
 
     [com.pringwa.optiliv.web.routes.pages]
-    [kit.edge.utils.nrepl]
+    ;[kit.edge.utils.nrepl]
     [kit.edge.db.sql.conman]
     [kit.edge.db.sql.migratus])
   (:gen-class))

@@ -47,8 +47,8 @@
  {:routes #ig/ref :router/routes}
  :reitit.routes/pages {:base-path "",
                        :env #ig/ref :system/env}
- :nrepl/server {:port #long #or [#env NREPL_PORT 7001],
-                :bind #or [#env NREPL_HOST "127.0.0.1"]}
+ ;:nrepl/server {:port #long #or [#env NREPL_PORT 7001],
+ ;               :bind #or [#env NREPL_HOST "127.0.0.1"]}
  :db.sql/query-fn {:conn #ig/ref :db.sql/connection,
                    :options {},
                    :filename "sql/queries.sql"}
