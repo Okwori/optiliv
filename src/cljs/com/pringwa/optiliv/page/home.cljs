@@ -475,6 +475,7 @@
                    ;  [:span] " ATM"]]
                    ]]]
 
+                [:h3.is-danger "In-active Parameters"]
                 ;; Polution
                 [:label.label "Pollution Levels"]
                 [:label.label "Air"]
@@ -487,17 +488,19 @@
                   [:input.slider.is-fullwidth {:type "range" :min "0" :max "100" :value "65"}]]]
 
                 ;; Crime
-                [:label.label "Crime"]
+                [:label.label "Crime Rate"]
                 [:div.notification.is-danger
                  [:button.delete]
                  [:div.columns
                   [:div.column
                    [:div.select.is-rounded
-                    [:select [:option "choose"] [:option "High"] [:option "Medium"] [:option "Low"]]]]]
+                    [:select [:option "choose"]
+                     ;[:option "High"] [:option "Medium"] [:option "Low"]
+                     ]]]]
                  ]
 
                 ;;Sun direction
-                [:label.label "Sun Direction"]
+                [:label.label "Sun Direction (Home facing)"]
                 [:div.notification.is-warning
                  [:button.delete]
                  [:div.columns
@@ -510,7 +513,7 @@
                    [:div.control
                     [:label.checkbox
                      [:input {:type "checkbox"}]
-                     [:span] " North"]]]
+                     [:span] " West"]]]
                   [:div.column
                    [:div.control
                     [:label.checkbox
@@ -520,7 +523,7 @@
                    [:div.control
                     [:label.checkbox
                      [:input {:type "checkbox"}]
-                     [:span] " West"]]]]]]]]]]]])
+                     [:span] " North"]]]]]]]]]]]])
         (when active-slide-tab
           [:div.hero
            [:div.hero-body
