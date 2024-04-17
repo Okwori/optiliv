@@ -69,7 +69,7 @@
                 [:label.label "Distance Radius"]
                 [:div.notification.is-info
                  [:button.delete]
-                 [:input.input {:type "text" :placeholder "Distance in meters"}]]
+                 [:input.input {:type "number" :placeholder "Distance in meters"}]]
 
                 ;; Place Types
                 [:label.label "Play Types"]
