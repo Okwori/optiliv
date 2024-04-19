@@ -25,6 +25,7 @@
 (reg-xhr-failure-event :register :register)
 (reg-xhr-failure-event :reset-password :reset-password)
 (reg-xhr-failure-event :signup :signup)
+(reg-xhr-failure-event :properties :properties)
 
 (k/reg-event-db :login-failure
                 (fn [db [error]]

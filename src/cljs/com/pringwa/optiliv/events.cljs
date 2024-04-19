@@ -37,6 +37,12 @@
   (fn [db _]
     (assoc db :active-slide-tab true)))
 
+(k/reg-event-fx
+  ::load-next-slide-and-properties
+  (fn [{:keys [db]} _]
+    {:dispatch-n [[:load-property (-> db :place-type)]
+                  [::put-next-slide]]}))
+
 (rf/reg-fx
   :reset-form
   (fn [form-id]

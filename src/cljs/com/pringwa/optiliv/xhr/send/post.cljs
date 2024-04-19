@@ -53,3 +53,14 @@
                               [:signup-failure]
                               {:response-format (ajax/text-response-format)})
      :db         (assoc-in (:db cofx) [:xhr :signup] {:in-flight? true})}))
+
+(k/reg-event-fx
+  :load-property
+  (fn [{:keys [db]} [place-types]]
+    {:http-xhrio (post-config "/properties" nil
+                              [:properties-success]
+                              [:properties-failure]
+                              {:format (ajax/transit-request-format)
+                               :params {:place-types place-types}}
+                              )
+     :db         (assoc-in db [:xhr :properties] {:in-flight? true})}))
