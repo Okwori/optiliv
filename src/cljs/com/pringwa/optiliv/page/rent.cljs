@@ -41,7 +41,7 @@
     (if-not (= "Optiliv" current-user-type)
       [unauthorized]
       [layout/with-verified-email-check
-       [layout/standard "register-page"
+       [layout/standard "rent-page"
         [header (first current-user-name-coll) (last current-user-name-coll) false]
         [:section.hero.is-hero-bar.is-main-hero
          [:div.hero-body
