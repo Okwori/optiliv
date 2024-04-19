@@ -90,5 +90,7 @@ INSERT INTO account_roles (account_id, account_type_id)
 VALUES (:id, :group_id);
 
 -- :name get-properties :? :*
-SELECT * FROM property;
+SELECT p.name, p.price, p.address, p.adjusted_by, p.user_id,
+       p.description, p.city_area_id, p.property_type_id
+FROM property p;
 
