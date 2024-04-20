@@ -91,6 +91,6 @@ VALUES (:id, :group_id);
 
 -- :name get-properties :? :*
 SELECT p.name, p.price, p.address, p.adjusted_by, p.user_id,
-       p.description, p.city_area_id, p.property_type_id
+       p.description, p.property_type_id
 FROM property p;
 
