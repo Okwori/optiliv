@@ -53,10 +53,12 @@
                 [:div.tabs.is-fullwidth
                  [:ul
                   [:li
-                   [:a.is-disabled
+                   [:a {:on-mouse-enter #(rf/dispatch [::events/previous-slide true])
+                        :on-mouse-leave #(rf/dispatch [::events/previous-slide false])}
                     [:span.icon [:i.mdi.mdi-pan-left {:aria-hidden "true"}]]
                     [:span "Previous"]
-                    [:span.icon [:i.mdi.mdi-cancel {:aria-hidden "true"}]]]]
+                    (when @(rf/subscribe [::data/previous-slide])
+                      [:span.icon [:i.mdi.mdi-cancel {:aria-hidden "true"}]])]]
                   [:li
                    [:a
                     [:span.icon [:i.mdi.mdi-skip-next {:aria-hidden "true"}]]
@@ -82,11 +84,21 @@
                                bowling_alley bus_station cafe campground casino church city_hall clothing_store
                                department_store grocery_or_supermarket gym hospital library mosque museum
                                night_club park pet_store police post_office restaurant school shopping_mall
-                               spa stadium subway_station taxi_stand train_station veterinary_care zoo]} place-types]
+                               spa stadium subway_station taxi_stand train_station university
+                               veterinary_care zoo]} place-types]
                    [:div.notification
                     [:button.delete]
                     ;; line 1
                     [:div.columns
+                     [:div.column
+                      [:div.control
+                       [:label.checkbox
+                        [:input {:type      "checkbox"
+                                 :checked   @(rf/subscribe [::data/pt-university])
+                                 :on-change #(rf/dispatch [::events/change-place-types
+                                                           :university
+                                                           (not university)])}]
+                        [:span] " LSUS"]]]
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -115,8 +127,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :amusement_park
                                                            (not amusement_park)])}]
-                        [:span] " Amusement Park"]]]
-
+                        [:span] " Amusement Park"]]]]
+                    ;; line 2
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -125,9 +138,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :atm
                                                            (not atm)])}]
-                        [:span] " ATM"]]]]
-                    ;; line 2
-                    [:div.columns
+                        [:span] " ATM"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -156,8 +168,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :bar
                                                            (not bar)])}]
-                        [:span] " Bar"]]]
-
+                        [:span] " Bar"]]]]
+                    ;; line 3
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -166,9 +179,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :beauty_salon
                                                            (not beauty_salon)])}]
-                        [:span] " Beauty Salon"]]]]
-                    ;; line 3
-                    [:div.columns
+                        [:span] " Beauty Salon"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -196,8 +208,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :bus_station
                                                            (not bus_station)])}]
-                        [:span] " Bus Station"]]]
-
+                        [:span] " Bus Station"]]]]
+                    ;; line 4
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -206,9 +219,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :cafe
                                                            (not cafe)])}]
-                        [:span] " Cafe"]]]]
-                    ;; line 4
-                    [:div.columns
+                        [:span] " Cafe"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -235,8 +247,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :church
                                                            (not church)])}]
-                        [:span] " Church"]]]
-
+                        [:span] " Church"]]]]
+                    ;; line 5
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -245,9 +258,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :city_hall
                                                            (not city_hall)])}]
-                        [:span] " City Hall"]]]]
-                    ;; line 5
-                    [:div.columns
+                        [:span] " City Hall"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -275,8 +287,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :grocery_or_supermarket
                                                            (not grocery_or_supermarket)])}]
-                        [:span] " Grocery/Supermarket"]]]
-
+                        [:span] " Grocery/Supermarket"]]]]
+                    ;; line 6
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -285,9 +298,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :gym
                                                            (not gym)])}]
-                        [:span] " Gym"]]]]
-                    ;; line 6
-                    [:div.columns
+                        [:span] " Gym"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -314,8 +326,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :mosque
                                                            (not mosque)])}]
-                        [:span] " Mosque"]]]
-
+                        [:span] " Mosque"]]]]
+                    ;; line 7
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -324,9 +337,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :museum
                                                            (not museum)])}]
-                        [:span] " Museum"]]]]
-                    ;; line 7
-                    [:div.columns
+                        [:span] " Museum"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -354,8 +366,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :pet_store
                                                            (not pet_store)])}]
-                        [:span] " Pet Store"]]]
-
+                        [:span] " Pet Store"]]]]
+                    ;; line 8
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -364,9 +377,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :police
                                                            (not police)])}]
-                        [:span] " Police"]]]]
-                    ;; line 8
-                    [:div.columns
+                        [:span] " Police"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -393,8 +405,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :school
                                                            (not school)])}]
-                        [:span] " School"]]]
-
+                        [:span] " School"]]]]
+                    ;; line 9
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -403,9 +416,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :shopping_mall
                                                            (not shopping_mall)])}]
-                        [:span] " Shopping Mall"]]]]
-                    ;; line 9
-                    [:div.columns
+                        [:span] " Shopping Mall"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -433,8 +445,9 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :subway_station
                                                            (not subway_station)])}]
-                        [:span] " Subway Station"]]]
-
+                        [:span] " Subway Station"]]]]
+                    ;; line 10
+                    [:div.columns
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -443,9 +456,8 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :taxi_stand
                                                            (not taxi_stand)])}]
-                        [:span] " Taxi Stand"]]]]
-                    ;; line 10
-                    [:div.columns
+                        [:span] " Taxi Stand"]]]
+
                      [:div.column
                       [:div.control
                        [:label.checkbox
@@ -473,17 +485,7 @@
                                  :on-change #(rf/dispatch [::events/change-place-types
                                                            :zoo
                                                            (not zoo)])}]
-                        [:span] " Zoo"]]]
-                     [:div.column
-                      ;[:div.control
-                      ; [:label.checkbox
-                      ;  [:input {:type "checkbox"
-                      ;           :checked   @(rf/subscribe [::data/pt-library])
-                      ;           :on-change #(rf/dispatch [::events/change-place-types
-                      ;                                     :library
-                      ;                                     (not @(rf/subscribe [::data/pt-library]))])}]
-                      ;  [:span] " ATM"]]
-                      ]]])
+                        [:span] " Zoo"]]]]])
 
                  [:h3.is-danger "In-active Parameters"]
                  ;; Polution
