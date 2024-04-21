@@ -593,7 +593,7 @@
               [:div.hero-body
                [:div.container
                 [:div#app.row.columns.is-multiline
-                 [:div.column.is-5 {:v-for "card in cardData" ::key "card.id"}
+                 [:div.column.is-5
                   [:div.card.large
                    [:div.card-image
                     [:figure.image.is-16by9
