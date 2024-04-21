@@ -5,10 +5,12 @@ CREATE TABLE IF NOT EXISTS
     name VARCHAR(100),
     price FLOAT,
     address VARCHAR(250),
-    area FLOAT,
+    area INT,
     adjusted_by INT,
     user_id INT,
     description VARCHAR(500),
     city_area_id INT,
-    property_type_id INT
+    property_type_id INT,
+    structure_id INT,
+    furniture_id INT
 );
