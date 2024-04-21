@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS
     name VARCHAR(100),
     price FLOAT,
     address VARCHAR(250),
+    area FLOAT,
     adjusted_by INT,
     user_id INT,
     description VARCHAR(500),
