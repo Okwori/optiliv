@@ -90,7 +90,12 @@ INSERT INTO account_roles (account_id, account_type_id)
 VALUES (:id, :group_id);
 
 -- :name get-properties :? :*
-SELECT p.name, p.price, p.address, p.adjusted_by, p.user_id,
-       p.description, p.property_type_id
-FROM property p;
+SELECT p.id, p.name, p.price, p.address, p.adjusted_by, p.user_id, p.area, p.image_url,
+       p.description, p.property_type_id, pt.name as property_name, p.structure_id,
+       s.name as structure_name, p.furniture_id, f.name as furniture_name
+FROM property p
+    inner join property_type pt on p.property_type_id = pt.id
+    inner join structure s on p.structure_id = s.id
+    inner join furniture f on p.furniture_id = f.id;
+
 
