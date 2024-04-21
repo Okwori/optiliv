@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS
     adjusted_by INT,
     user_id INT,
     description VARCHAR(500),
+    image_url VARCHAR(250),
     city_area_id INT,
     property_type_id INT,
     structure_id INT,
