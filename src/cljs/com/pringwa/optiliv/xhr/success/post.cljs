@@ -35,8 +35,11 @@
               {:in-flight? false, :error nil, :success? true})))
 
 
-(k/reg-event-db
+(k/reg-event-fx
   :properties-success
-  (fn [db [_]]
-    (assoc-in db [:xhr :properties]
-              {:in-flight? false, :error nil, :success? true})))
+  (fn [cofx [result]]
+    {:db (-> (:db cofx)
+             (assoc-in [:xhr :properties]
+                       {:in-flight? false, :error nil, :success? true})
+             (assoc :properties result))
+     :dispatch [:put-next-slide]}))

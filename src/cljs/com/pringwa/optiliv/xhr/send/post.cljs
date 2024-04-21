@@ -61,6 +61,4 @@
                               [:properties-success]
                               [:properties-failure]
                               {:format (ajax/transit-request-format)
-                               :params {:place-types place-types}}
-                              )
-     :db         (assoc-in db [:xhr :properties] {:in-flight? true})}))
+                               :params {:place-types place-types}})}))
