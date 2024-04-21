@@ -25,7 +25,7 @@
            io.github.kit-clj/kit-undertow       {:mvn/version "1.0.6"}
            selmer/selmer                        {:mvn/version "1.12.50"}
            luminus/ring-ttl-session             {:mvn/version "0.3.3"}
-           ;io.github.kit-clj/kit-nrepl          {:mvn/version "1.0.1"}
+           io.github.kit-clj/kit-nrepl          {:mvn/version "1.0.1"}
            io.github.kit-clj/kit-sql-conman     {:mvn/version "1.10.0"}
            io.github.kit-clj/kit-sql-migratus   {:mvn/version "1.0.4"}
            org.postgresql/postgresql            {:mvn/version "42.3.4"}
@@ -46,7 +46,7 @@
            com.draines/postal                   {:mvn/version "2.0.4"}
 
            ;; Google Map
-           com.google.maps/google-maps-services {:mvn/version "2.2.0"}}
+           com.google.maps/google-maps-services {:mvn/version "0.1.17"}}
 
  :aliases {:build {:deps       {io.github.clojure/tools.build {:git/sha "24f2894"
                                                                :git/tag "v0.9.5"
