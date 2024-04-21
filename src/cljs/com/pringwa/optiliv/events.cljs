@@ -33,15 +33,15 @@
               {:in-flight? false, :error nil, :success? false})))
 
 (k/reg-event-db
-  ::put-next-slide
+  :put-next-slide
   (fn [db _]
     (assoc db :active-slide-tab true)))
 
 (k/reg-event-fx
   ::load-next-slide-and-properties
   (fn [{:keys [db]} _]
-    {:dispatch-n [[:load-property (-> db :place-type)]
-                  [::put-next-slide]]}))
+    {:dispatch-n [[:load-property (-> db :place-type)]]
+     :db         (assoc-in db [:xhr :properties] {:in-flight? true})}))
 
 (rf/reg-fx
   :reset-form
