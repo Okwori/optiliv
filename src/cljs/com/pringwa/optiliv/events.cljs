@@ -67,3 +67,9 @@
   (fn [db [place-type val]]
     (-> db
         (assoc-in [:place-type place-type] val))))
+
+(k/reg-event-db
+  ::previous-slide
+  (fn [db [attempt?]]
+    (-> db
+        (assoc-in [:previous-slide] attempt?))))

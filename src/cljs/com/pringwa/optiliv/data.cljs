@@ -348,6 +348,11 @@
   (fn [checked? _] (:train_station checked?)))
 
 (reg-sub
+  ::pt-university
+  :<- [::place-type]
+  (fn [checked? _] (:university checked?)))
+
+(reg-sub
   ::pt-veterinary_care
   :<- [::place-type]
   (fn [checked? _] (:veterinary_care checked?)))
@@ -360,3 +365,7 @@
 (reg-sub
   ::properties
   (fn [db _] (get db :properties)))
+
+(reg-sub
+  ::previous-slide
+  (fn [db _] (get db :previous-slide)))
