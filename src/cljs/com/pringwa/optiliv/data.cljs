@@ -356,3 +356,7 @@
   ::pt-zoo
   :<- [::place-type]
   (fn [checked? _] (:zoo checked?)))
+
+(reg-sub
+  ::properties
+  (fn [db _] (get db :properties)))
