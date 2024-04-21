@@ -10,7 +10,7 @@
                           (:place-types body-params))
         properties (query-fn :get-properties {})
         result (if (empty? place-types)
-                 (map #(assoc % :ratings 0) properties)
+                 (map #(assoc % :rating 0) properties)
                  (pmap #(merge % (map/get-rating 400 (:address %) place-types))
                        properties))]
     result))
