@@ -369,3 +369,7 @@
 (reg-sub
   ::previous-slide
   (fn [db _] (get db :previous-slide)))
+
+(reg-sub
+  ::distance-radius
+  (fn [db _] (get db :distance-radius)))
