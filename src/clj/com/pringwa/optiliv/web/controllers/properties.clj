@@ -9,9 +9,10 @@
         place-types (keep #(when (second %) (name (first %)))
                           (:place-types body-params))
         properties (query-fn :get-properties {})
+        radius (* (Float/parseFloat (:distance-radius body-params)) 0.9144)
         result (if (empty? place-types)
                  (map #(assoc % :rating 0) properties)
-                 (pmap #(merge % (map/get-rating (:distance-radius body-params)
+                 (pmap #(merge % (map/get-rating radius
                                                  (:address %) place-types))
                        properties))]
     result))
