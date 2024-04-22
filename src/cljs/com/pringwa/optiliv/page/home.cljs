@@ -82,9 +82,9 @@
                    [:div.column
                     [:input.input {:type "text" :default-value "Shreveport" :disabled true}]]
                    [:div.column
-                    [:input.input {:type "number" :placeholder "Distance in yards"
+                    [:input.input {:type          "number" :placeholder "Distance in yards"
                                    :default-value @distance-radius
-                                   :on-change #(rf/dispatch [::events/update-distance (-> % .-target .-value)])}]]]]
+                                   :on-change     #(rf/dispatch [::events/update-distance (-> % .-target .-value)])}]]]]
 
                  ;; Place Types
                  [:label.label "Place Types"]
@@ -557,13 +557,13 @@
                 [:div.custom-fields
                  [:div.field
                   [:div.control.custom-control
-                   [:button.button.is-success.is-rounded {:on-click #(rf/dispatch [::events/previous-slide])}
+                   [:button.button.is-success.is-rounded {:on-click #(rf/dispatch [::events/reset-slide])}
                     [:span.mdi.mdi-lock-reset]
                     " Reset"]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control.custom-control
-                   [:button.button.is-info.is-rounded {:on-click "toggleFilters()"}
+                   [:button.button.is-info.is-rounded {:on-click #(rf/dispatch [::events/update-slide])}
                     [:span.mdi.mdi-update]
                     " Update"]]]]
                 [:div.custom-fields
@@ -621,7 +621,9 @@
                 [:div.custom-fields
                  [:div.field
                   [:div.control.custom-control
-                   [:button.button.is-warning.is-rounded {:on-click "toggleFilters()"} "All Filters"]]]]
+                   [:button.button.is-warning.is-rounded
+                    ;{:on-click #(rf/dispatch [::events/previous-slide])} ;;TODO
+                    "All Filters"]]]]
                 ]]]
              [:div.columns
               [:div.column
@@ -630,6 +632,7 @@
                  [:div.container
                   [:div.row.columns.is-multiline
                    (for [property found-properties]
+                     ^{:key (:id property)}
                      [:div.column.is-5
                       [:div.card.large
                        [:div.card-image
