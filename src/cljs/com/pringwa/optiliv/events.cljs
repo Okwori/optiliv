@@ -40,7 +40,13 @@
 (k/reg-event-fx
   ::load-next-slide-and-properties
   (fn [{:keys [db]} _]
-    {:dispatch-n [[:load-property (-> db :place-type)]]
+    {:dispatch-n [[:load-property (-> db :distance-radius) (-> db :place-type)]]
+     :db         (assoc-in db [:xhr :properties] {:in-flight? true})}))
+
+(k/reg-event-fx
+  ::load-skip-slide-and-properties
+  (fn [{:keys [db]} _]
+    {:dispatch-n [[:load-property nil nil]]
      :db         (assoc-in db [:xhr :properties] {:in-flight? true})}))
 
 (rf/reg-fx
@@ -73,3 +79,8 @@
   (fn [db [attempt?]]
     (-> db
         (assoc-in [:previous-slide] attempt?))))
+
+(k/reg-event-db
+  ::update-distance
+  (fn [db [new-value]]
+    (assoc db :distance-radius (* (float new-value) 0.9144))))
