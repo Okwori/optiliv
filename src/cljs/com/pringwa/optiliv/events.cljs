@@ -83,4 +83,20 @@
 (k/reg-event-db
   ::update-distance
   (fn [db [new-value]]
-    (assoc db :distance-radius (* (float new-value) 0.9144))))
+    (assoc db :distance-radius (float new-value))))
+
+(k/reg-event-db
+  ::reset-slide
+  (fn [db [_]]
+    (-> db
+        (dissoc :place-type)
+        (dissoc :distance-radius)
+        (update-in [:xhr] dissoc :properties)
+        (assoc :active-slide-tab false))))
+
+(k/reg-event-db
+  ::update-slide
+  (fn [db [_]]
+    (-> db
+        (update-in [:xhr] dissoc :properties)
+        (assoc :active-slide-tab false))))
