@@ -555,6 +555,18 @@
               [:div.filer-bar
                [:div.columns
                 [:div.custom-fields
+                 [:div.field
+                  [:div.control.custom-control
+                   [:button.button.is-success.is-rounded {:on-click #(rf/dispatch [::events/previous-slide])}
+                    [:span.mdi.mdi-lock-reset]
+                    " Reset"]]]]
+                [:div.custom-fields
+                 [:div.field
+                  [:div.control.custom-control
+                   [:button.button.is-info.is-rounded {:on-click "toggleFilters()"}
+                    [:span.mdi.mdi-update]
+                    " Update"]]]]
+                [:div.custom-fields
                  [:div.field.has-addons.has-addons-right
                   [:div.control
                    [:input.input.is-rounded {:type          "text" :placeholder "City, Neighborhood, ZIP, Address"
@@ -563,21 +575,32 @@
                    [:a.button.is-rounded [:span.mdi.mdi-magnify]]]]]
                 [:div.custom-fields
                  [:div.field
-                  [:div.control
+                  [:div.control.custom-control
                    [:div.select.is-rounded
-                    [:select [:option "For Sale"] [:option "For Rent"] [:option "Sold"]]]]]]
+                    [:select
+                     [:option "Property Type"]
+                     [:option "House"]
+                     [:option "Apartment"]
+                     [:option "Condo"]
+                     [:option "Townhouse"]
+                     [:option "Lot/Land"]]]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control
                    [:div.select.is-rounded
-                    [:select [:option "Beds"] [:option {:value "1"} "1"] [:option {:value "2"} "2"]
+                    [:select [:option "Area"] [:option "For Rent"] [:option "Sold"]]]]]]
+                [:div.custom-fields
+                 [:div.field
+                  [:div.control
+                   [:div.select.is-rounded
+                    [:select [:option "Structure"] [:option {:value "1"} "1"] [:option {:value "2"} "2"]
                      [:option {:value "3"} "3"] [:option {:value "4"} "4"] [:option {:value "5"} "5"]]]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control
                    [:div.select.is-rounded
                     [:select
-                     [:option "Baths"]
+                     [:option "Furnished?"]
                      [:option {:value "1"} "1"]
                      [:option {:value "2"} "2"]
                      [:option {:value "3"} "3"]
@@ -598,18 +621,8 @@
                 [:div.custom-fields
                  [:div.field
                   [:div.control.custom-control
-                   [:div.select.is-rounded
-                    [:select
-                     [:option "Property Type"]
-                     [:option "House"]
-                     [:option "Apartment"]
-                     [:option "Condo"]
-                     [:option "Townhouse"]
-                     [:option "Lot/Land"]]]]]]
-                [:div.custom-fields
-                 [:div.field
-                  [:div.control.custom-control
-                   [:button.button.is-warning.is-rounded {:on-click "toggleFilters()"} "All Filters"]]]]]]]
+                   [:button.button.is-warning.is-rounded {:on-click "toggleFilters()"} "All Filters"]]]]
+                ]]]
              [:div.columns
               [:div.column
                [:section.hero
