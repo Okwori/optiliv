@@ -56,9 +56,10 @@
 
 (k/reg-event-fx
   :load-property
-  (fn [{:keys [db]} [place-types]]
+  (fn [{:keys [db]} [distance-radius place-types]]
     {:http-xhrio (post-config "/properties" nil
                               [:properties-success]
                               [:properties-failure]
                               {:format (ajax/transit-request-format)
-                               :params {:place-types place-types}})}))
+                               :params {:place-types place-types
+                                        :distance-radius distance-radius}})}))
