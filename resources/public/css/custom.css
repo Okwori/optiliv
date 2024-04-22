@@ -17,6 +17,22 @@
     font-size: 18px;
 }
 
+.slider-container {
+    margin-top: 20px;
+}
+
+#slider-value {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.container-slide {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 
 /*body {*/
 /*    font-family: Tahoma, Verdana, Segoe, sans-serif;*/
