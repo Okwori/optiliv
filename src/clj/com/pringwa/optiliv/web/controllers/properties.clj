@@ -11,7 +11,8 @@
         properties (query-fn :get-properties {})
         result (if (empty? place-types)
                  (map #(assoc % :rating 0) properties)
-                 (pmap #(merge % (map/get-rating 400 (:address %) place-types))
+                 (pmap #(merge % (map/get-rating (:distance-radius body-params)
+                                                 (:address %) place-types))
                        properties))]
     result))
 
