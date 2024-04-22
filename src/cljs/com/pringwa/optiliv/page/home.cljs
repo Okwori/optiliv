@@ -21,7 +21,8 @@
         current-user-name (rf/subscribe [::data/current-user-name])
         current-user-name-coll (str/split (or @current-user-name "My Account") #" ")
         active-slide-tab @(rf/subscribe [::data/active-slide-tab])
-        xhr-status (rf/subscribe [::data/xhr :properties])]
+        xhr-status (rf/subscribe [::data/xhr :properties])
+        distance-radius (rf/subscribe [::data/distance-radius])]
     (if-not (or (= "Optiliv" current-user-type)
                 (= "Agents" current-user-type)
                 (= "Customers" current-user-type))
@@ -60,7 +61,7 @@
                     (when @(rf/subscribe [::data/previous-slide])
                       [:span.icon [:i.mdi.mdi-cancel {:aria-hidden "true"}]])]]
                   [:li
-                   [:a
+                   [:a {:on-click #(rf/dispatch [::events/load-skip-slide-and-properties])}
                     [:span.icon [:i.mdi.mdi-skip-next {:aria-hidden "true"}]]
                     [:span "Skip"]]]
                   [:li
@@ -72,10 +73,18 @@
                 [:div.field
 
                  ;; Distance
-                 [:label.label "Distance Radius"]
+                 [:span.columns
+                  [:span.column [:label.label "City"]]
+                  [:span.column [:label.label "Distance Radius"]]]
                  [:div.notification.is-info
                   [:button.delete]
-                  [:input.input {:type "number" :placeholder "Distance in miles"}]]
+                  [:div.columns
+                   [:div.column
+                    [:input.input {:type "text" :default-value "Shreveport" :disabled true}]]
+                   [:div.column
+                    [:input.input {:type "number" :placeholder "Distance in yards"
+                                   :default-value @distance-radius
+                                   :on-change #(rf/dispatch [::events/update-distance (-> % .-target .-value)])}]]]]
 
                  ;; Place Types
                  [:label.label "Place Types"]
@@ -487,20 +496,23 @@
                                                            (not zoo)])}]
                         [:span] " Zoo"]]]]])
 
-                 [:h3.is-danger "In-active Parameters"]
+                 [:h3.has-text-danger "In-active Parameters"]
                  ;; Polution
                  [:label.label "Pollution Levels"]
-                 [:label.label "Air"]
-                 [:div.columns
-                  [:div.column
-                   [:input.slider.is-fullwidth {:type "range" :min "0" :max "100" :value "35"}]]]
-                 [:label.label "Noise"]
-                 [:div.columns
-                  [:div.column
-                   [:input.slider.is-fullwidth {:type "range" :min "0" :max "100" :value "65"}]]]
+
+                 [:div.container-slide
+                  [:div.columns
+                   [:div.column
+                    [:label.label "Air"]
+                    [:div.slider-container
+                     [:input#slider.slider.is-fullwidth {:type "range" :min "0" :max "100" :value "40"}]]]
+                   [:div.column
+                    [:label.label "Noise"]
+                    [:div.slider-container
+                     [:input#slider.slider.is-fullwidth {:type "range" :min "0" :max "100" :value "30"}]]]]]
 
                  ;; Crime
-                 [:label.label "Crime Rate"]
+                 [:label.label "Crime"]
                  [:div.notification.is-danger
                   [:button.delete]
                   [:div.columns
@@ -545,7 +557,7 @@
                 [:div.custom-fields
                  [:div.field.has-addons.has-addons-right
                   [:div.control
-                   [:input.input.is-rounded {:type "text" :placeholder "City, Neighborhood, ZIP, Address"
+                   [:input.input.is-rounded {:type          "text" :placeholder "City, Neighborhood, ZIP, Address"
                                              :default-value "Shreveport"}]]
                   [:p.control
                    [:a.button.is-rounded [:span.mdi.mdi-magnify]]]]]
@@ -610,14 +622,15 @@
                        [:div.card-image
                         [:figure.image.is-16by9
                          [:img {:src (:image_url property) :alt (:name property)}]
-                         [:div.rating-circle {:style {:background-color (rating-color (:rating property))}} (str (:rating property))]]]
+                         [:div.rating-circle
+                          {:style {:background-color (rating-color (:rating property))}} (str (:rating property))]]]
                        [:div.card-content
                         [:div.media
                          [:div.media-content
                           [:p.title.is-5.has-text-weight-bold (str (:name property) " $" (:price property))]
-                          [:p.subtitle.is-6.is-inline.is-centered [:span.mdi.mdi-bed-queen]]
-                          [:p.subtitle.is-6.is-inline.centered-content [:span.mdi.mdi-shower]]
-                          [:p.subtitle.is-6.is-inline.centered-content [:span.mdi.mdi-ruler-square]]
+                          [:p.subtitle.is-6.is-inline.is-centered [:span.mdi.mdi-bed-queen] (str (:structure_name property) " ")]
+                          [:p.subtitle.is-6.is-inline.centered-content [:span.mdi.mdi-shower] "1 Bath "]
+                          [:p.subtitle.is-6.is-inline.centered-content [:span.mdi.mdi-ruler-square] (str (:area property) " SqFt")]
                           [:p.subtitle.is-6 (:address property)]]]]]])]]]]]
               [:div.column
                [:section.hero
