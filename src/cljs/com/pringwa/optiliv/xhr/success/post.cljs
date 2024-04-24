@@ -43,3 +43,10 @@
                        {:in-flight? false, :error nil, :success? true})
              (assoc :properties result))
      :dispatch [:put-next-slide]}))
+
+(k/reg-event-db
+  :list-property-success
+  (fn [db _]
+    (-> db
+        (assoc-in [:xhr :list-property]
+                  {:in-flight? false, :error nil, :success? true}))))

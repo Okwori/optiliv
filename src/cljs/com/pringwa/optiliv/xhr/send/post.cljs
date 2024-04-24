@@ -63,3 +63,11 @@
                               {:format (ajax/transit-request-format)
                                :params {:place-types place-types
                                         :distance-radius distance-radius}})}))
+
+(k/reg-event-fx
+  :list-property
+  (fn [cofx [form-data]]
+    {:http-xhrio (post-config "/list-property" form-data
+                              [:list-property-success form-data]
+                              [:list-property-failure])
+     :db         (assoc-in (:db cofx) [:xhr :list-property] {:in-flight? true})}))
