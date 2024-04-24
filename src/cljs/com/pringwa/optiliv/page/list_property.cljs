@@ -4,12 +4,34 @@
     [com.pringwa.optiliv.events :as events]
     [com.pringwa.optiliv.config :refer [api-url]]
     [com.pringwa.optiliv.fragment.header :refer [header]]
-    [com.pringwa.optiliv.fragment.select-user-groups :refer [select-user-groups]]
     [com.pringwa.optiliv.fragment.unauthorized :refer [unauthorized]]
     [com.pringwa.optiliv.layout :as layout]
     [clojure.string :as str]
     [reagent.core :as r]
     [re-frame.core :as rf]))
+
+(defn- submit-form [event]
+  (.preventDefault event)
+  (let [form-el (.-target event)
+        form-data (js/FormData. form-el)]
+    (rf/dispatch [:list-property form-data])))
+
+(defn- error-status [error-message]
+  [:div.has-text-danger
+   [:p "There was an error with the attempt to list a property. The error "
+    "response from the server follows:"]
+   [:p (interpose [:br] (str/split error-message #"\n"))]])
+
+(defn- register-status []
+  (let [create-xhr-status (rf/subscribe [::data/xhr :list-property])]
+    (fn []
+      (let [{:keys [in-flight? error success?]} @create-xhr-status]
+        (cond
+          in-flight? "⏳"
+          error [error-status error]
+          success?
+          [:div.has-text-success
+           "Property listed successfully"])))))
 
 (defn list-property-page []
   (let [current-user-type @(rf/subscribe [::data/current-user-type])
@@ -28,83 +50,78 @@
              [:div [:h1.title.is-spaced [:b "List a Property"]]]]]]]]
         [:section.section
          [:div.container
-          [:form {:action "submit_listing.php" :method "post" :enctype "multipart/form-data"}
-           [:div.field
-            [:label.label {:for "address"} "Property Address:"]
-            [:div.control
-             [:input#address.input {:type "text" :name "address" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "price"} "Listing Price:"]
-            [:div.control
-             [:input#price.input {:type "text" :name "price" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "property_type"} "Property Type:"]
-            [:div.control
-             [:div.select
-              [:select#property_type {:name "property_type"}
-               [:option {:value "single_family"} "Single Family Home"]
-               [:option {:value "condo"} "Condo"]
-               [:option {:value "townhouse"} "Townhouse"]
-               [:option {:value "multi_family"} "Multi-family"]]]]]
-           [:div.field
-            [:label.label {:for "bedrooms"} "Number of Bedrooms:"]
-            [:div.control
-             [:input#bedrooms.input {:type "number" :name "bedrooms" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "bathrooms"} "Number of Bathrooms:"]
-            [:div.control
-             [:input#bathrooms.input {:type "number" :name "bathrooms" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "square_footage"} "Square Footage:"]
-            [:div.control
-             [:input#square_footage.input {:type "number" :name "square_footage" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "lot_size"} "Lot Size (if applicable):"]
-            [:div.control
-             [:input#lot_size.input {:type "text" :name "lot_size"}]]]
-           [:div.field
-            [:label.label {:for "year_built"} "Year Built:"]
-            [:div.control
-             [:input#year_built.input {:type "number" :name "year_built" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "description"} "Description of Property:"]
-            [:div.control
-             [:textarea#description.textarea {:name "description" :rows "4" :cols "50" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "contact_name"} "Agent/Owner Name:"]
-            [:div.control
-             [:input#contact_name.input {:type "text" :name "contact_name" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "agency"} "Agency (if applicable):"]
-            [:div.control
-             [:input#agency.input {:type "text" :name "agency"}]]]
-           [:div.field
-            [:label.label {:for "phone"} "Phone Number:"]
-            [:div.control
-             [:input#phone.input {:type "tel" :name "phone" :required "true"}]]]
-           [:div.field
-            [:label.label {:for "email"} "Email Address:"]
-            [:div.control
-             [:input#email.input {:type "email" :name "email" :required "true"}]]]
-           [:div.field
-            [:label.label "Preferred Method of Contact:"]
-            [:div.control
-             [:label.radio
-              [:input {:type "radio" :name "contact_method" :value "phone" :checked "true"}] "Phone"]
-             [:label.radio
-              [:input {:type "radio" :name "contact_method" :value "email"}] "Email"]
-             [:label.radio
-              [:input {:type "radio" :name "contact_method" :value "text"}] "Text"]]]
-           [:div.field
-            [:label.label {:for "additional_comments"} "Additional Comments or Information:"]
-            [:div.control
-             [:textarea#additional_comments.textarea {:name "additional_comments" :rows "4" :cols "50"}]]]
-           [:div.field
-            [:label.label {:for "photos"} "Upload Photos:"]
-            [:div.control
-             [:input#photos.input {:type "file" :name "photos[]" :multiple "true" :accept "image/*"}]]]
-           [:div.field
-            [:div.control
-             [:input.button.is-primary {:type "submit" :value "Submit"}]]]]]]]])))
-
-
+          [:form {:action    (api-url "/list-property")
+                  :method    "post"
+                  ;:enctype   "multipart/form-data"
+                  :on-submit #(do
+                                (.preventDefault %)
+                                (rf/dispatch [:list-property (js/FormData. (.-target %))]))}
+           [:div.columns
+            [:div.column
+             [:div.field
+              [:label.label {:for "address"} "Name:"]
+              [:div.control
+               [:input.input {:type "text" :name "name" :required true}]]]
+             [:div.field
+              [:label.label {:for "price"} "Price:"]
+              [:div.control
+               [:input.input {:type "number" :name "price" :required true}]]]
+             [:div.field
+              [:label.label {:for "bathrooms"} "Number of Bathrooms:"]
+              [:div.control
+               [:input.input {:type "number" :name "bathrooms" :required false}]]]]
+            [:div.column
+             [:div.field
+              [:label.label {:for "address"} "Address:"]
+              [:div.control
+               [:input#address.input {:type "text" :name "address" :required true}]]]
+             [:div.field
+              [:label.label {:for "square_footage"} "Area (Square Footage):"]
+              [:div.control
+               [:input.input {:type "number" :name "area" :required false}]]]
+             [:div.field
+              [:label.label {:for "photos"} "Upload Photos:"]
+              [:div.control
+               [:input.input {:type "file" :name "image_url" :multiple "true" :accept "image/*"}]]]]
+            [:div.column
+             [:div.field
+              [:label.label {:for "Property Type"} "Property Type:"]
+              [:div.control
+               [:div.select
+                [:select {:name "property_type_id"}
+                 [:option {:value ""} "Select property type"]
+                 [:option {:value 1} "Apartment"]
+                 [:option {:value 2} "House"]
+                 [:option {:value 3} "Shop"]
+                 [:option {:value 4} "Office Space"]]]]]
+             [:div.field
+              [:label.label {:for "Structure"} "Structure"]
+              [:div.control
+               [:div.select
+                [:select {:name "structure_id"}
+                 [:option {:value ""} "Select property type"]
+                 [:option {:value 1} "Studio"]
+                 [:option {:value 2} "1 Bedroom"]
+                 [:option {:value 3} "1.5 Bedroom"]
+                 [:option {:value 4} "2 Bedrooms"]
+                 [:option {:value 4} "2.5 Bedrooms"]
+                 [:option {:value 4} "3 Bedrooms"]]]]]
+             [:div.field
+              [:label.label {:for "Furniture"} "Furniture"]
+              [:div.control
+               [:div.select
+                [:select#property_type {:name "furniture_id"}
+                 [:option {:value ""} "Furnished?"]
+                 [:option {:value 1} "Furnished"]
+                 [:option {:value 2} "Partly Furnished"]
+                 [:option {:value 3} "Unfurnished"]]]]]]]
+           [:div.columns
+            [:div.column.is-full
+             [:div.field
+              [:label.label {:for "description"} "Description:"]
+              [:div.control
+               [:textarea.textarea {:name "description" :rows "4" :cols "50"}]]]
+             [:div.field
+              [:div.control
+               [:input.button.is-primary {:type "submit" :value "Submit"}]]]]]]
+          [register-status]]]]])))
