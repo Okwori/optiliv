@@ -98,4 +98,7 @@ FROM property p
     inner join structure s on p.structure_id = s.id
     inner join furniture f on p.furniture_id = f.id;
 
+-- :name list-property! :! :n
+INSERT INTO property (name, price, address, area, adjusted_by, user_id, description, image_url, city_area_id, property_type_id, structure_id, furniture_id)
+VALUES (:name, :price, :address, :area, :adjusted_by, :user_id, :description, :image_url, :city_area_id, :property_type_id, :structure_id, :furniture_id);
 
