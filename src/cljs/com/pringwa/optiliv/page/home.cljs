@@ -7,6 +7,7 @@
     [com.pringwa.optiliv.fragment.unauthorized :refer [unauthorized]]
     [com.pringwa.optiliv.fragment.xhr :as xhrs]
     [com.pringwa.optiliv.layout :as layout]
+    [com.pringwa.optiliv.page.rent :as rent]
     [clojure.string :as str]
     [re-frame.core :as rf]))
 
@@ -578,12 +579,11 @@
                   [:div.control.custom-control
                    [:div.select.is-rounded
                     [:select
-                     [:option "Property Type"]
-                     [:option "House"]
-                     [:option "Apartment"]
-                     [:option "Condo"]
-                     [:option "Townhouse"]
-                     [:option "Lot/Land"]]]]]]
+                     [:option {:value "1"} "Property Type"]
+                     [:option {:value "2"} "Apartment"]
+                     [:option {:value "3"} "House"]
+                     [:option {:value "4"} "Shop"]
+                     [:option {:value "5"} "Office Space"]]]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control
@@ -593,31 +593,34 @@
                  [:div.field
                   [:div.control
                    [:div.select.is-rounded
-                    [:select [:option "Structure"] [:option {:value "1"} "1"] [:option {:value "2"} "2"]
-                     [:option {:value "3"} "3"] [:option {:value "4"} "4"] [:option {:value "5"} "5"]]]]]]
+                    [:select
+                     [:option "Structure?"]
+                     [:option {:value "1"} "Studio"]
+                     [:option {:value "2"} "1 Bedroom"]
+                     [:option {:value "3"} "1.5 Bedroom"]
+                     [:option {:value "4"} "2 Bedroom"]
+                     [:option {:value "5"} "2.5 Bedrooms"]
+                     [:option {:value "5"} "3 Bedrooms"]]]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control
                    [:div.select.is-rounded
                     [:select
                      [:option "Furnished?"]
-                     [:option {:value "1"} "1"]
-                     [:option {:value "2"} "2"]
-                     [:option {:value "3"} "3"]
-                     [:option {:value "4"} "4"]
-                     [:option {:value "5"} "5"]]]]]]
+                     [:option {:value "1"} "Furnished"]
+                     [:option {:value "2"} "Partly Furnished"]
+                     [:option {:value "3"} "Unfurnished"]]]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control
                    [:div.select.is-rounded
                     [:select
-                     [:option {:value "-1"} "Price"]
-                     [:option {:value "50,000"} "$50,000"]
-                     [:option {:value "100,000"} "$100,000"]
-                     [:option {:value "150,000"} "$150,000"]
-                     [:option {:value "200,000"} "$200,000"]
-                     [:option {:value "250,000"} "$250,000"]
-                     [:option {:value "300,000"} "$300,000"]]]]]]
+                     [:option {:value ""} "Price"]
+                     [:option {:value ""} "< $500"]
+                     [:option {:value "100,000"} "< $1000"]
+                     [:option {:value "150,000"} "< $1500"]
+                     [:option {:value "200,000"} "< $2000"]
+                     [:option {:value "250,000"} "> $2000"]]]]]]
                 [:div.custom-fields
                  [:div.field
                   [:div.control.custom-control
@@ -637,7 +640,7 @@
                       [:div.card.large
                        [:div.card-image
                         [:figure.image.is-16by9
-                         [:img {:src (:image_url property) :alt (:name property)}]
+                         [:img {:src (or (:image_url property) "img/filterHouse.jpg") :alt (:name property)}]
                          [:div.rating-circle
                           {:style {:background-color (rating-color (:rating property))}} (str (:rating property))]]]
                        [:div.card-content
@@ -656,12 +659,4 @@
                    [:div.media
                     [:div.media-content
                      [:div#googleMap
-                      [:script "function myMap() {
-                                                 var mapProp= {
-                                                     center:new google.maps.LatLng(32.5252,-93.7502),
-                                                     zoom:12,
-                                                 };
-                                                 var map = new google.maps.Map(document.getElementById(\"googleMap\"),mapProp);
-                                             }"]
-                      [:script {:src "https://maps.googleapis.com/maps/api/js?key=AIzaSyCo9newQ_qNyc1HUK_LcpOtaQlUXTjc2co&callback=myMap"}]]]]]]]]]]
-             ]))]])))
+                      [rent/gmap-wrapper]]]]]]]]]]]))]])))
