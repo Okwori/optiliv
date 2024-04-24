@@ -9,6 +9,7 @@
     [com.pringwa.optiliv.layout :as layout]
     [clojure.string :as str]
     [reagent.core :as r]
+    [reagent.dom :as rdom]
     [re-frame.core :as rf]))
 
 (defn- submit-form [event]
@@ -34,6 +35,37 @@
           [:div.has-text-success
            "Success! The user will receive an email with a sign-up link."])))))
 
+; Another attempt, using props and lifecycle to udpate marker position
+(defn gmap-component []
+  (let [gmap    (atom nil)
+        options (clj->js {"zoom" 10})
+        update  (fn [comp]
+                  (let [{:keys [latitude longitude]} (r/props comp)
+                        latlng (js/google.maps.LatLng. 32.5252, -93.7502)]
+                    (.setPosition (:marker @gmap) latlng)
+                    (.panTo ^js (:map @gmap) latlng)))]
+
+    (r/create-class
+      {:reagent-render (fn []
+                         [:div
+                          [:h4 "Map"]
+                          [:div#map-canvas {:style {:height "600px"}}]])
+
+       :component-did-mount (fn [comp]
+                              (let [canvas  (.getElementById js/document "map-canvas")
+                                    gm      (js/google.maps.Map. canvas options)
+                                    marker  (js/google.maps.Marker. (clj->js {:map gm :title "Drone"}))]
+                                (reset! gmap {:map gm :marker marker}))
+                              (update comp))
+
+       :component-did-update update
+       :display-name "gmap-component"})))
+
+(defn gmap-wrapper []
+  (let [pos (rf/subscribe [::data/distance-radius])]
+    (fn []
+      [gmap-component @pos])))
+
 (defn rent-page []
   (let [current-user-type @(rf/subscribe [::data/current-user-type])
         current-user-name (rf/subscribe [::data/current-user-name])
@@ -49,46 +81,4 @@
            [:div.level-left
             [:div.level-item.is-hero-content-item
              [:div [:h1.title.is-spaced [:b "Invite a User!"]]]]]]]]
-        [:section.section.is-main-section
-         [:div.container
-          [:div.columns.is-centered
-           [:div.column.is-two-fifths
-            [:div.card.has-card-header-background
-             [:header.card-header.has-background-primary
-              [:p.card-header-title
-               [:span.icon [:i.mdi.mdi-account-plus]]
-               "New User"]]
-             [:div.card-content
-              [:form {:method    "post"
-                      :action    (api-url "/register")
-                      :on-submit #(do
-                                    (.preventDefault %)
-                                    (rf/dispatch [:register (js/FormData. (.-target %))]))}
-               [:div.field.is-horizontal
-                [:div.field-label.is-normal [:label.label "Email"]]
-                [:div.field
-                 [:div.control
-                  [:input.input {:type "email" :name "email" :required true}]]]]
-               [:div.field.is-horizontal
-                [:div.field-label.is-normal [:label.label "Full Name"]]
-                [:div.field
-                 [:div.control
-                  [:input.input {:type "text" :name "full-name" :required true}]]]]
-               [:div.field.is-horizontal
-                [:div.field-label.is-normal [:label.label "Mobile"]]
-                [:div.field
-                 [:div.control
-                  [:input.input {:type "text" :name "mobile"}]]]]
-               [:div.field.is-horizontal
-                [:div.field-label.is-normal [:label.label "User Group"]]
-                [:div.field
-                 [:div.control.select
-                  [select-user-groups nil]]]]
-               [:hr]
-               [:div.field.is-horizontal
-                [:div.field-label]
-                [:div.field
-                 [:div.field.is-grouped
-                  [:div.control
-                   [:input.button.is-primary {:type "submit", :value "Invite"}]]]]]]
-              [register-status]]]]]]]]])))
+        [gmap-wrapper]]])))
